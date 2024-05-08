@@ -8,22 +8,30 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-image: url(/fondo.jpeg);
+  background-size: 50% 50% 50% 50%;
+  background-repeat: no-repeat;
+
+
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  body {
+    box-sizing: border-box;
+    background-image: url(/fondo-oscuro.jpeg);
+    background-size: 50% 50% 50% 50%;
+    background-repeat: no-repeat ;
+  }
 }
 
 @layer utilities {
