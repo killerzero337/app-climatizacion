@@ -65,34 +65,6 @@ export async function loginGoogle() {
   }
 }
 
-// LOGIN github
-export async function loginGithub() {
-  try {
-    await signIn("github", { redirectTo: "/auth/logout" });
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
-}
-
-export async function loginTwitch() {
-  try {
-    await signIn("twitch", { redirectTo: "/auth/logout" });
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
-}
-
-export async function loginSpotify() {
-  try {
-    await signIn("spotify", { redirectTo: "/auth/logout" });
-  } catch (error) {
-    console.log(error);
-    throw error;
-  }
-}
-
 // LOGOUT
 export async function logout() {
   try {
