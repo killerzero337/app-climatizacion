@@ -5,8 +5,8 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Dungeons & Dragons",
-  description: "Pagina para iniciar una aventura de roll",
+  title: "FloWeather",
+  description: "Pagina para realizar cuentas para climatizar hospedajes en tu ciudad",
 };
 
 export default function RootLayout({ children }) {
