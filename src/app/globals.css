@@ -15,8 +15,6 @@ body {
   background-image: url(/fondo.jpeg);
   background-size: 50% 50% 50% 50%;
   background-repeat: no-repeat;
-
-
 }
 
 @media (prefers-color-scheme: dark) {
@@ -30,8 +28,13 @@ body {
     box-sizing: border-box;
     background-image: url(/fondo-oscuro.jpeg);
     background-size: 50% 50% 50% 50%;
-    background-repeat: no-repeat ;
+    background-repeat: no-repeat;
     overflow-x: hidden;
+  }
+  header {
+    position: fixed;
+    top: 0;
+    z-index: 50;
   }
 }
 
