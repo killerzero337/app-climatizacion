@@ -1,8 +1,9 @@
+
 function About() {
   return (
-    <div className="flex flex-col items-center justify-center h-[70vh] text-[8vh] sm:text-[4vh] sm:h-[80vh]">
+    <div className="flex flex-col items-center justify-center h-[80vh] text-[8vh] sm:text-[4vh] sm:h-[80vh]">
       <div className="text-stone-500 container  items-center border-4 border-sky-700 p-8 rounded-md bg-gray-200/80">
-        <h1>Sobre mí:</h1>
+        <h1 className=" text-[4vh]">Sobre mí:</h1>
         <p className=" text-[2vh]">
           ¡Hola, soy Jose Manuel Garrido González, un desarrollador junior
           apasionado. Enfoco mi energía en crear una aplicacion web para el
