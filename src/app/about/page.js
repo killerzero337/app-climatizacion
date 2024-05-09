@@ -2,7 +2,6 @@ import Tarjeta from "@/components/Tarjeta";
 function About() {
   return (
     <Tarjeta>
-      <div className="text-stone-500 container  items-center border-4 p-2 rounded-md bg-gray-200/80">
         <h1 className=" text-[4vh]">Sobre mí:</h1>
         <p className=" text-[2vh]">
           ¡Hola, soy Jose Manuel Garrido González, un desarrollador junior
@@ -13,7 +12,7 @@ function About() {
           aventura contigo! 🚀
           <div className="container bg-contain rounded-[50%] bg-no-repeat bg-center bg-[url('/icono.png')] w-full h-72"></div>
         </p>
-      </div>
+      
     </Tarjeta>
   );
 }
