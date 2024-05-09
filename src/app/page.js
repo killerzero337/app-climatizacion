@@ -1,14 +1,33 @@
 import Link from "next/link";
+import Tarjeta from "@/components/Tarjeta";
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center h-[80vh]">
-    <h1 className="text-2xl mb-4">Inicio</h1>
-    <div className="container flex flex-col items-center gap-4 border-2 border-sky-700 p-8 rounded-md bg-gray-200/80">
-      
-      
-      
-      
-    </div>
-  </div>
+    <>
+      <div className="flex flex-col items-center justify-center h-[80vh]">
+        <Tarjeta>
+          <h2 className="text-xl mb-4">
+            Bienvenido a nuestra aplicación de climatización
+          </h2>
+          <p className="mb-2">
+            Aquí puedes encontrar herramientas y recursos para optimizar el
+            clima interior de tus espacios.
+          </p>
+          <p className="mb-2">Nuestros servicios incluyen:</p>
+          <ul className="list-disc pl-6 mb-4">
+            <li>Asesoramiento sobre sistemas de climatización eficientes.</li>
+            <li>Pronósticos detallados sobre el clima interior y exterior.</li>
+            <li>Control y ajuste remoto de la temperatura y humedad.</li>
+            <li>Información sobre ahorro energético y sostenibilidad.</li>
+          </ul>
+          <p className="mb-4">
+            Empieza hoy mismo a mejorar el ambiente de tus espacios con nuestra
+            aplicación.
+          </p>
+          <Link href="/climatizacion" className="text-blue-500 hover:underline">
+            Ver servicios de climatización
+          </Link>
+        </Tarjeta>
+      </div>
+    </>
   );
 }
