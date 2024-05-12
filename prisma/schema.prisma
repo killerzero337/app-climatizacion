@@ -22,14 +22,15 @@ datasource db {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String      @id @default(cuid())
   name          String
-  email         String?   @unique
+  email         String?     @unique
   password      String?
   emailVerified DateTime?
   image         String?
-  role          String?   @default("USER") // o  ADMIN
+  role          String?     @default("USER") // o  ADMIN
   accounts      Account[]
+  workspace     Workspace[]
 }
 
 model Account {
@@ -49,4 +50,24 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+}
+
+model Workspace {
+  id               Int      @id @default(autoincrement())
+  T_ext_invierno   Float?
+  T_ext_verano     Float?
+  T_suelo_invierno Float?
+  T_suelo_verano   Float?
+  Titulo           String
+  Autor_Proyecto   String
+  Fecha            DateTime
+  H_R_ext_invierno Float?
+  H_R_ext_verano   Float?
+  Ciudad           String
+  Altitud          Int
+  Cliente          String
+  Observaciones    String?
+  userId           String
+
+  user User @relation(fields: [userId], references: [id])
 }

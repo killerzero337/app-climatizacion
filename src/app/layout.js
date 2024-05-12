@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "FloWeather",
   description: "Pagina para realizar cuentas para climatizar hospedajes en tu ciudad",
+  manifest: '/manifest.json'
 };
 
 export default function RootLayout({ children }) {
