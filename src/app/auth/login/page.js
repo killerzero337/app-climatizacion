@@ -1,5 +1,6 @@
 import LoginForm from "@/components/login-form";
 import OAuthForm from "@/components/oauth-form";
+import Tarjeta from "@/components/Tarjeta";
 
 const errors = new Map();
 errors.set("OAuthSignin", "Error al construir una URL de autorización.");
@@ -38,15 +39,14 @@ function Page({ searchParams }) {
   const { error } = searchParams;
 
   return (
-    <div className="flex flex-col items-center justify-center h-[80vh]">
-      <h1 className="text-2xl mb-4">Iniciar sesión</h1>
-      <div className="container flex flex-col items-center gap-4 border-2 border-sky-700 p-8 rounded-md bg-gray-200/80">
-        {error && <h3 className="text-red-700">{errors.get(error)}</h3>}
-        <LoginForm />
-        {/* Pasar el error como prop al componente OAuthForm */}
-        <OAuthForm error={error} />
-      </div>
-    </div>
+    <Tarjeta>
+      <h1 className="text-2xl mb-4 text-center">Iniciar sesión</h1>
+
+      {error && <h3 className="text-red-700">{errors.get(error)}</h3>}
+      <LoginForm />
+      {/* Pasar el error como prop al componente OAuthForm */}
+      <OAuthForm error={error} />
+    </Tarjeta>
   );
 }
 
