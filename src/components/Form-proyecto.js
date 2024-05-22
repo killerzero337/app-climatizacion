@@ -289,7 +289,7 @@ export function FormProyecto() {
         </div>
       </div>
       <div className="flex justify-center mt-6">
-        <Boton title="Crear proyecto" />
+        <button title="Crear proyecto"> </button>
       </div>
     </>
   );
