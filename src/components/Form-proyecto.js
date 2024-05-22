@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Boton from "@/components/Boton";
-import Popover from "@/components/Popover";
+import Boton from "@/components/boton";
+import Popover from "@/components/popover";
 
 async function getDataLocalidades() {
   const res = await fetch("https://api-climatologia.onrender.com/localidades");
@@ -20,7 +20,7 @@ async function getDataCoef() {
   return res.json();
 }
 
-export function FormProyecto() {
+export function FormProyecto({ action, title, proyecto, disabled = false }) {
   const [data, setData] = useState([]);
   const [coef, setCoef] = useState({});
   const [selectedLocalidad, setSelectedLocalidad] = useState({});
@@ -241,14 +241,8 @@ export function FormProyecto() {
             <div className="mb-2" key={key}>
               <label className="flex items-center">
                 {key.replace("_", " / ")}:
-                <Popover
-                  content={`Valor de coeficiente ${key.replace("_", " / ")}`}
-                >
-                  <img
-                    src="/question.svg"
-                    className="ml-2 w-5 h-5"
-                    alt="info"
-                  />
+                <Popover content={`Valor de coeficiente ${key.replace("_", " / ")}`}>
+                  <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
                 </Popover>
               </label>
               <input
@@ -267,14 +261,8 @@ export function FormProyecto() {
             <div className="mb-2" key={key}>
               <label className="flex items-center">
                 {key.replace("_", " / ")}:
-                <Popover
-                  content={`Valor de tabique ${key.replace("_", " / ")}`}
-                >
-                  <img
-                    src="/question.svg"
-                    className="ml-2 w-5 h-5"
-                    alt="info"
-                  />
+                <Popover content={`Valor de tabique ${key.replace("_", " / ")}`}>
+                  <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
                 </Popover>
               </label>
               <input
@@ -289,10 +277,12 @@ export function FormProyecto() {
         </div>
       </div>
       <div className="flex justify-center mt-6">
-        <button title="Crear proyecto"> </button>
+        <Boton title="Crear proyecto" />
       </div>
     </>
   );
 }
+
+
 
 export default FormProyecto;
