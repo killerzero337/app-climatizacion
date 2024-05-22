@@ -3,7 +3,7 @@ import Tarjeta from "@/components/Tarjeta";
 export default function Home() {
   return (
     <>
-      <div className="flex flex-col items-center justify-center h-[80vh]">
+      <div className="flex flex-col items-center justify-center h-[90vh]">
         <Tarjeta>
           <h2 className="text-xl mb-4">
             Bienvenido a nuestra aplicación de climatización

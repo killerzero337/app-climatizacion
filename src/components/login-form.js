@@ -21,7 +21,7 @@ function LoginForm() {
   return (
     <form
       action={wrapper}
-      className="credentials flex flex-col items-center text-stone-500"
+      className="credentials flex flex-col items-center text-sky-500"
     >
       <div className="flex flex-col items-center mb-4 ">
         <label className="mb-2">Email</label>
@@ -29,7 +29,7 @@ function LoginForm() {
           type="email"
           name="email"
           placeholder="nombre@gmail.com"
-          className="border p-2 rounded"
+          className="border p-2 rounded text-center"
         />
       </div>
       <div className="flex flex-col items-center mb-4">
@@ -38,7 +38,7 @@ function LoginForm() {
           type="password"
           name="password"
           placeholder="******"
-          className="border p-2 rounded"
+          className="border p-2 rounded text-center"
         />
       </div>
       <div className="flex justify-around gap-5 mb-5">
