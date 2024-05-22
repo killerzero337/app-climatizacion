@@ -20,7 +20,7 @@ async function getDataCoef() {
   return res.json();
 }
 
-export function FormProyecto({ action, title, proyecto, disabled = false }) {
+export function FormProyecto() {
   const [data, setData] = useState([]);
   const [coef, setCoef] = useState({});
   const [selectedLocalidad, setSelectedLocalidad] = useState({});
