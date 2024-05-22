@@ -16,6 +16,8 @@ body {
   background-size: 50% 50% 50% 50%;
   background-repeat:round;
   overflow-x: hidden;
+  height: 100%;
+
 }
 
 header {
