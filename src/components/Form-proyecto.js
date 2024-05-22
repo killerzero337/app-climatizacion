@@ -48,15 +48,31 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
 
   if (loading) {
     return (
-      <div role="status" className="flex flex-col gap-2 animate-pulse">
-        <div className="bg-gray-400 rounded-sm dark:bg-gray-700 w-full p-5"></div>
-        <div className="bg-gray-400 rounded-sm dark:bg-gray-700 w-full p-5"></div>
-        <div className="bg-gray-400 rounded-sm dark:bg-gray-700 w-full p-5"></div>
-        <div className="bg-gray-400 rounded-sm dark:bg-gray-700 w-full p-5"></div>
-        <div className="bg-gray-400 rounded-sm dark:bg-gray-700 w-full p-5"></div>
-        <div className="bg-gray-400 rounded-sm dark:bg-gray-700 w-full p-5"></div>
-        <span className="sr-only">Cargando...</span>
-      </div>
+      <>
+        <div role="status" className="flex flex-col gap-2 animate-pulse">
+          <div class="relative animate-pulse">
+            <div class="h-10 bg-gray-400 rounded-sm dark:bg-gray-700 w-full"></div>
+          </div>
+          <div class="mt-4 p-4 bg rounded shadow-md animate-pulse">
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+              <div class="h-16  bg-gray-400 rounded-sm dark:bg-gray-700"></div>
+              <div class="h-16  bg-gray-400 rounded-sm dark:bg-gray-700"></div>
+              <div class="h-16  bg-gray-400 rounded-sm dark:bg-gray-700"></div>
+            </div>
+          </div>
+
+          <div class="mt-4 p-4 bg rounded flex flex-col shadow-md md:grid md:grid-cols-4 gap-1 animate-pulse">
+            <div class="h-16  bg-gray-400 rounded-sm dark:bg-gray-700"></div>
+            <div class="h-16  bg-gray-400 rounded-sm dark:bg-gray-700"></div>
+            <div class="h-16  bg-gray-400 rounded-sm dark:bg-gray-700"></div>
+            <div class="h-16  bg-gray-400 rounded-sm dark:bg-gray-700"></div>
+          </div>
+
+          <div class="flex justify-center mt-6 animate-pulse">
+            <div class="h-10 bg-gray-400 rounded-sm dark:bg-gray-700 w-32"></div>
+          </div>
+        </div>
+      </>
     );
   }
 
@@ -116,67 +132,67 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
         </datalist>
       </div>
       <div className="mt-4 p-4 border rounded shadow-md">
-      <div className="mt-4 p-4 border rounded flex flex-col shadow-md md:grid md:grid-cols-3 gap-1">
-        <div className="mb-2">
-          <label className="block">Temperatura (Verano):</label>
-          <input
-            type="number"
-            name="temp_ext_ver"
-            defaultValue={selectedLocalidad.temp_ext_ver}
-            onChange={handleInputChange}
-            className="border-2 border-gray-300 rounded p-2 w-full"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block">Humedad (Verano):</label>
-          <input
-            type="number"
-            name="hr_ext_ver"
-            defaultValue={selectedLocalidad.hr_ext_ver}
-            onChange={handleInputChange}
-            className="border-2 border-gray-300 rounded p-2 w-full"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block">Temperatura (Invierno):</label>
-          <input
-            type="number"
-            name="temp_ext_inv"
-            defaultValue={selectedLocalidad.temp_ext_inv}
-            onChange={handleInputChange}
-            className="border-2 border-gray-300 rounded p-2 w-full"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block">Humedad (Invierno):</label>
-          <input
-            type="number"
-            name="hr_ext_inv"
-            defaultValue={selectedLocalidad.hr_ext_inv}
-            onChange={handleInputChange}
-            className="border-2 border-gray-300 rounded p-2 w-full"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block">Altitud:</label>
-          <input
-            type="number"
-            name="altitud"
-            defaultValue={selectedLocalidad.altitud}
-            onChange={handleInputChange}
-            className="border-2 border-gray-300 rounded p-2 w-full"
-          />
-        </div>
-        <div className="mb-2">
-          <label className="block">Zona climatica:</label>
-          <input
-            type="text"
-            name="zona climatica"
-            defaultValue={selectedLocalidad["zona climatica"]}
-            onChange={handleInputChange}
-            className="border-2 border-gray-300 rounded p-2 w-full"
-          />
-        </div>
+        <div className="mt-4 p-4 border rounded flex flex-col shadow-md md:grid md:grid-cols-3 gap-1">
+          <div className="mb-2">
+            <label className="block">Temperatura (Verano):</label>
+            <input
+              type="number"
+              name="temp_ext_ver"
+              defaultValue={selectedLocalidad.temp_ext_ver}
+              onChange={handleInputChange}
+              className="border-2 border-gray-300 rounded p-2 w-full"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block">Humedad (Verano):</label>
+            <input
+              type="number"
+              name="hr_ext_ver"
+              defaultValue={selectedLocalidad.hr_ext_ver}
+              onChange={handleInputChange}
+              className="border-2 border-gray-300 rounded p-2 w-full"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block">Temperatura (Invierno):</label>
+            <input
+              type="number"
+              name="temp_ext_inv"
+              defaultValue={selectedLocalidad.temp_ext_inv}
+              onChange={handleInputChange}
+              className="border-2 border-gray-300 rounded p-2 w-full"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block">Humedad (Invierno):</label>
+            <input
+              type="number"
+              name="hr_ext_inv"
+              defaultValue={selectedLocalidad.hr_ext_inv}
+              onChange={handleInputChange}
+              className="border-2 border-gray-300 rounded p-2 w-full"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block">Altitud:</label>
+            <input
+              type="number"
+              name="altitud"
+              defaultValue={selectedLocalidad.altitud}
+              onChange={handleInputChange}
+              className="border-2 border-gray-300 rounded p-2 w-full"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="block">Zona climatica:</label>
+            <input
+              type="text"
+              name="zona climatica"
+              defaultValue={selectedLocalidad["zona climatica"]}
+              onChange={handleInputChange}
+              className="border-2 border-gray-300 rounded p-2 w-full"
+            />
+          </div>
         </div>
         <div className="mt-4 p-4 border rounded flex flex-col shadow-md md:grid md:grid-cols-4 gap-1">
           {Object.keys(selectedCoef).map((key) => (
@@ -193,8 +209,8 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
           ))}
         </div>
       </div>
-      <div className="flex justify-end">
-        <Boton title="Crear nuevo proyecto" />
+      <div className="flex justify-center mt-6">
+        <Boton title="Crear proyecto" />
       </div>
     </>
   );
