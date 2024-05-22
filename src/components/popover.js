@@ -1,25 +1,26 @@
 import React, { useState } from "react";
 
 const Popover = ({ content, children }) => {
-  const [showPopover, setShowPopover] = useState(false);
+  const [showPopover, setMostrarPopover] = useState(false);
 
-  const handleMouseEnter = () => {
-    setShowPopover(true);
+  const handleCursorDentro = () => {
+    setMostrarPopover(true);
   };
 
-  const handleMouseLeave = () => {
-    setShowPopover(false);
+  const handleCursorFuera = () => {
+    setMostrarPopover(false);
   };
 
   return (
     <div
       className="relative inline-block"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={handleCursorDentro}
+      onMouseLeave={handleCursorFuera}
     >
       {children}
       {showPopover && (
-        <div className="absolute z-10 w-64 p-2 mt-2 text-sm text-white bg-black rounded shadow-lg">
+        <div className="absolute z-10 w-64 p-2 text-sm text-white bg-black rounded shadow-lg"
+             style={{ left: "50%", transform: "translateX(-50%)", marginTop: "0.5rem" }}>
           {content}
         </div>
       )}
