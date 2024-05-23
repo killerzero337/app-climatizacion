@@ -106,18 +106,39 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
 
   return (
     <>
-      <div className="relative">
-        <label className="block">Localidad:</label>
-        <input
-          className="border-2 border-black rounded p-2 w-full"
-          list="localidades"
-          onChange={handleLocalidadChange}
-        />
-        <datalist id="localidades">
-          {data.map((item, index) => (
-            <option key={index} value={item.nombre} />
-          ))}
-        </datalist>
+      <div className="flex flex-col md:flex-row justify-around">
+        <div>
+          <label className="block">Nombre de proyecto:</label>
+          <input
+            className="border-2 border-black rounded p-2 w-full"
+            type="text"
+            name="nombre"
+            placeholder="Nombre del proyecto"
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="relative">
+          <label className="block">Localidad:</label>
+          <input
+            className="border-2 border-black rounded p-2 w-full"
+            list="localidades"
+            onChange={handleLocalidadChange}
+          />
+          <datalist id="localidades">
+            {data.map((item, index) => (
+              <option key={index} value={item.nombre} />
+            ))}
+          </datalist>
+        </div>
+        <div>
+          <label className="block">Fecha de Proyecto:</label>
+          <input
+            className="border-2 border-black rounded p-2 w-full"
+            type="date"
+            name="fecha"
+            onChange={handleInputChange}
+          />
+        </div>
       </div>
       <div className="mt-4 p-4 border rounded shadow-md">
         <div className="flex flex-col gap-4 md:grid md:grid-cols-3">
@@ -214,61 +235,114 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
         </div>
 
         <div className="mt-4 p-4 border rounded shadow-md grid grid-cols-1 gap-4 md:grid-cols-4">
-          {Object.keys(selectedCoef).map((key) => (
-            <div className="mb-2" key={key}>
-              <label className="flex items-center">
-                {key.replace("_", " / ")}:
-                <Popover
-                  content={`Valor de coeficiente exterior en % ${key.replace(
-                    "_",
-                    " / "
-                  )}`}
-                >
-                  <img
-                    src="/question.svg"
-                    className="ml-2 w-5 h-5"
-                    alt="info"
-                  />
-                </Popover>
-              </label>
-              <input
-                type="number"
-                name={key}
-                value={selectedCoef[key]}
-                onChange={handleCoefChange}
-                className="border-2 border-gray-300 rounded p-2 w-full"
-              />
-            </div>
-          ))}
+          <div className="mb-2">
+            <label className="flex items-center">
+              us/um:
+              <Popover content="Valor de coeficiente exterior en % us/um">
+                <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
+              </Popover>
+            </label>
+            <input
+              type="number"
+              name="us/um"
+              value={selectedCoef["us/um"]}
+              onChange={handleCoefChange}
+              className="border-2 border-gray-300 rounded p-2 w-full"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="flex items-center">
+              uc:
+              <Popover content="Valor de coeficiente exterior en % uc">
+                <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
+              </Popover>
+            </label>
+            <input
+              type="number"
+              name="uc"
+              value={selectedCoef["uc"]}
+              onChange={handleCoefChange}
+              className="border-2 border-gray-300 rounded p-2 w-full"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="flex items-center">
+              ut/umd:
+              <Popover content="Valor de coeficiente exterior en % ut/umd">
+                <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
+              </Popover>
+            </label>
+            <input
+              type="number"
+              name="ut/umd"
+              value={selectedCoef["ut/umd"]}
+              onChange={handleCoefChange}
+              className="border-2 border-gray-300 rounded p-2 w-full"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="flex items-center">
+              uh:
+              <Popover content="Valor de coeficiente exterior en % uh">
+                <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
+              </Popover>
+            </label>
+            <input
+              type="number"
+              name="uh"
+              value={selectedCoef["uh"]}
+              onChange={handleCoefChange}
+              className="border-2 border-gray-300 rounded p-2 w-full"
+            />
+          </div>
         </div>
 
         <div className="mt-4 p-4 border rounded shadow-md grid grid-cols-1 gap-4 md:grid-cols-3">
-          {Object.keys(selectedTabiques).map((key) => (
-            <div className="mb-2" key={key}>
-              <label className="flex items-center">
-                {key.replace("_", " / ")}:
-                <Popover
-                  content={`Valor de tabique interior ${key.replace(
-                    "_",
-                    " / "
-                  )}`}
-                >
-                  <img
-                    src="/question.svg"
-                    className="ml-2 w-5 h-5"
-                    alt="info"
-                  />
-                </Popover>
-              </label>
-              <input
-                type="number"
-                name={key}
-                value={selectedTabiques[key]}
-                onChange={handleTabiquesChange}
-                className="border-2 border-gray-300 rounded p-2 w-full"
-              />
-            </div>
-          ))}
+          <div className="mb-2">
+            <label className="flex items-center">
+              TPH:
+              <Popover content="Valor de tabique interior TPH">
+                <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
+              </Popover>
+            </label>
+            <input
+              type="number"
+              name="TPH"
+              value={selectedTabiques["TPH"]}
+              onChange={handleTabiquesChange}
+              className="border-2 border-gray-300 rounded p-2 w-full"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="flex items-center">
+              TPV:
+              <Popover content="Valor de tabique interior TPV">
+                <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
+              </Popover>
+            </label>
+            <input
+              type="number"
+              name="TPV"
+              value={selectedTabiques["TPV"]}
+              onChange={handleTabiquesChange}
+              className="border-2 border-gray-300 rounded p-2 w-full"
+            />
+          </div>
+          <div className="mb-2">
+            <label className="flex items-center">
+              TPHV:
+              <Popover content="Valor de tabique interior TPHV">
+                <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
+              </Popover>
+            </label>
+            <input
+              type="number"
+              name="TPHV"
+              value={selectedTabiques["TPHV"]}
+              onChange={handleTabiquesChange}
+              className="border-2 border-gray-300 rounded p-2 w-full"
+            />
+          </div>
         </div>
       </div>
       <div className="flex justify-center mt-6">
