@@ -2,6 +2,12 @@ function Articulo({ children, proyecto }) {
   return (
     <div style={{ border: "1px solid lightgrey", padding: "50px" }}>
       <p>
+        <strong>{proyecto?.nombre}</strong>
+        <p>{proyecto?.fecha}</p>
+        <p>{proyecto?.cliente}</p>
+        <p>{proyecto?.anotacion}</p>
+      </p>
+      <p>
         <strong>{proyecto?.localidad}</strong>
       </p>
       <p>{proyecto?.temperatura_verano.toString()} C</p>
@@ -28,6 +34,17 @@ function Articulo({ children, proyecto }) {
       <div className="">
         <p className="font-bold">Factor Mayoracion</p>
         <p>{proyecto?.seguridad.toString()}%</p>
+      </div>
+      <div className="">
+        <p className="font-bold">Tabiques interiores/exteriores</p>
+        <p>{proyecto?.usum.toString()}%</p>
+        <p>{proyecto?.uc.toString()}%</p>
+        <p>{proyecto?.utumd.toString()}%</p>
+        <p>{proyecto?.uh.toString()}%</p>
+        <p>{proyecto?.up.toString()}%</p>
+        <p>{proyecto?.uph.toString()}%</p>
+        <p>{proyecto?.upv.toString()}%</p>
+        <p>{proyecto?.uphv.toString()}%</p>
       </div>
       {children}
     </div>

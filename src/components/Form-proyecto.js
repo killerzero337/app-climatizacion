@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Boton from "@/components/boton";
 import Popover from "@/components/popover";
+import Skeleton from "@/components/skeletons/formProyectosSkeleton";
 
 async function getDataLocalidades() {
   const res = await fetch("https://api-climatologia.onrender.com/localidades");
@@ -49,31 +50,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
   }, []);
 
   if (loading) {
-    return (
-      <div role="status" className="flex flex-col gap-2 animate-pulse">
-        <div className="relative animate-pulse">
-          <div className="h-10 bg-gray-400 rounded-sm dark:bg-gray-700 w-full"></div>
-        </div>
-        <div className="mt-4 p-4 bg-gray-400 rounded shadow-md animate-pulse">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            <div className="h-16 bg-gray-400 rounded-sm dark:bg-gray-700"></div>
-            <div className="h-16 bg-gray-400 rounded-sm dark:bg-gray-700"></div>
-            <div className="h-16 bg-gray-400 rounded-sm dark:bg-gray-700"></div>
-          </div>
-        </div>
-        <div className="mt-4 p-4 bg-gray-400 rounded shadow-md animate-pulse">
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
-            <div className="h-16 bg-gray-400 rounded-sm dark:bg-gray-700"></div>
-            <div className="h-16 bg-gray-400 rounded-sm dark:bg-gray-700"></div>
-            <div className="h-16 bg-gray-400 rounded-sm dark:bg-gray-700"></div>
-            <div className="h-16 bg-gray-400 rounded-sm dark:bg-gray-700"></div>
-          </div>
-        </div>
-        <div className="flex justify-center mt-6 animate-pulse">
-          <div className="h-10 bg-gray-400 rounded-sm dark:bg-gray-700 w-32"></div>
-        </div>
-      </div>
-    );
+    return <Skeleton />;
   }
 
   if (error) {
@@ -147,7 +124,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
           <div className="mb-2">
             <label className="flex items-center">
               Temperatura (Verano):
-              <Popover content="Temperatura máxima en verano">
+              <Popover content="Temperatura máxima en verano en °C">
                 <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
               </Popover>
             </label>
@@ -177,7 +154,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
           <div className="mb-2">
             <label className="flex items-center">
               Temperatura (Invierno):
-              <Popover content="Temperatura mínima en invierno">
+              <Popover content="Temperatura mínima en invierno °C">
                 <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
               </Popover>
             </label>
@@ -192,7 +169,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
           <div className="mb-2">
             <label className="flex items-center">
               Humedad (Invierno):
-              <Popover content="Humedad relativa en invierno">
+              <Popover content="Humedad relativa en invierno en %">
                 <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
               </Popover>
             </label>
@@ -241,8 +218,17 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
             <div className="mb-2" key={key}>
               <label className="flex items-center">
                 {key.replace("_", " / ")}:
-                <Popover content={`Valor de coeficiente ${key.replace("_", " / ")}`}>
-                  <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
+                <Popover
+                  content={`Valor de coeficiente exterior en % ${key.replace(
+                    "_",
+                    " / "
+                  )}`}
+                >
+                  <img
+                    src="/question.svg"
+                    className="ml-2 w-5 h-5"
+                    alt="info"
+                  />
                 </Popover>
               </label>
               <input
@@ -256,13 +242,22 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
           ))}
         </div>
 
-        <div className="mt-4 p-4 border rounded shadow-md grid grid-cols-1 gap-4 md:grid-cols-4">
+        <div className="mt-4 p-4 border rounded shadow-md grid grid-cols-1 gap-4 md:grid-cols-3">
           {Object.keys(selectedTabiques).map((key) => (
             <div className="mb-2" key={key}>
               <label className="flex items-center">
                 {key.replace("_", " / ")}:
-                <Popover content={`Valor de tabique ${key.replace("_", " / ")}`}>
-                  <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
+                <Popover
+                  content={`Valor de tabique interior ${key.replace(
+                    "_",
+                    " / "
+                  )}`}
+                >
+                  <img
+                    src="/question.svg"
+                    className="ml-2 w-5 h-5"
+                    alt="info"
+                  />
                 </Popover>
               </label>
               <input
@@ -282,7 +277,5 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
     </>
   );
 }
-
-
 
 export default FormProyecto;
