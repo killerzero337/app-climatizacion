@@ -29,6 +29,8 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
   const [selectedTabiques, setSelectedTabiques] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [customLocalidad, setCustomLocalidad] = useState(false);
+
 
   useEffect(() => {
     async function fetchData() {
@@ -106,248 +108,477 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
 
   return (
     <>
-      <div className="flex flex-col md:flex-row justify-around">
-        <div>
-          <label className="block">Nombre de proyecto:</label>
-          <input
-            className="border-2 border-black rounded p-2 w-full"
-            type="text"
-            name="nombre"
-            placeholder="Nombre del proyecto"
-            onChange={handleInputChange}
-          />
-        </div>
-        <div className="relative">
-          <label className="block">Localidad:</label>
-          <input
-            className="border-2 border-black rounded p-2 w-full"
-            list="localidades"
-            onChange={handleLocalidadChange}
-          />
-          <datalist id="localidades">
-            {data.map((item, index) => (
-              <option key={index} value={item.nombre} />
-            ))}
-          </datalist>
-        </div>
-        <div>
-          <label className="block">Fecha de Proyecto:</label>
-          <input
-            className="border-2 border-black rounded p-2 w-full"
-            type="date"
-            name="fecha"
-            onChange={handleInputChange}
-          />
-        </div>
-      </div>
-      <div className="mt-4 p-4 border rounded shadow-md">
-        <div className="flex flex-col gap-4 md:grid md:grid-cols-3">
-          <div className="mb-2">
-            <label className="flex items-center">
-              Temperatura (Verano):
-              <Popover content="Temperatura máxima en verano en °C">
-                <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
-              </Popover>
-            </label>
-            <input
-              type="number"
-              name="temp_ext_ver"
-              defaultValue={selectedLocalidad.temp_ext_ver}
-              onChange={handleInputChange}
-              className="border-2 border-gray-300 rounded p-2 w-full"
-            />
+      <form action={action}>
+        <fieldset disabled={disabled}>
+          <div className="flex flex-col md:flex-row justify-around">
+            <div>
+              <label className="block">Nombre de proyecto:</label>
+              <input
+                className="border-2 border-black rounded p-2 w-full"
+                type="text"
+                name="nombre"
+                placeholder="Nombre del proyecto"
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="relative">
+              <label className="block">Localidad:</label>
+              {!customLocalidad ? (
+                <select
+                  className="border-2 border-black rounded p-2 w-full"
+                  defaultValue={proyecto?.localidad}
+                  onChange={handleLocalidadChange}
+                >
+                  {data.map((item, index) => (
+                    <option key={index} value={item.nombre}>
+                      {item.nombre}
+                    </option>
+                  ))}
+                </select>
+              ) : (
+                <input
+                  className="border-2 border-black rounded p-2 w-full"
+                  type="text"
+                  name="localidad"
+                  placeholder="Introduce una localidad"
+                  defaultValue={proyecto?.localidad}
+                  onChange={handleInputChange}
+                />
+              )}
+              <div className="mt-2">
+                <label className="flex items-center">
+                  <input
+                    type="checkbox"
+                    checked={customLocalidad}
+                    onChange={() => setCustomLocalidad((prev) => !prev)}
+                  />
+                  <span className="ml-2">Introducir una localidad propia</span>
+                </label>
+              </div>
+            </div>
+            <div>
+              <label className="block">Fecha de Proyecto:</label>
+              <input
+                className="border-2 border-black rounded p-2 w-full"
+                type="date"
+                name="fecha"
+                defaultValue={proyecto?.fecha}
+                onChange={handleInputChange}
+              />
+            </div>
           </div>
-          <div className="mb-2">
-            <label className="flex items-center">
-              Humedad (Verano):
-              <Popover content="Humedad relativa en verano">
-                <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
-              </Popover>
-            </label>
-            <input
-              type="number"
-              name="hr_ext_ver"
-              defaultValue={selectedLocalidad.hr_ext_ver}
-              onChange={handleInputChange}
-              className="border-2 border-gray-300 rounded p-2 w-full"
-            />
-          </div>
-          <div className="mb-2">
-            <label className="flex items-center">
-              Temperatura (Invierno):
-              <Popover content="Temperatura mínima en invierno °C">
-                <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
-              </Popover>
-            </label>
-            <input
-              type="number"
-              name="temp_ext_inv"
-              defaultValue={selectedLocalidad.temp_ext_inv}
-              onChange={handleInputChange}
-              className="border-2 border-gray-300 rounded p-2 w-full"
-            />
-          </div>
-          <div className="mb-2">
-            <label className="flex items-center">
-              Humedad (Invierno):
-              <Popover content="Humedad relativa en invierno en %">
-                <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
-              </Popover>
-            </label>
-            <input
-              type="number"
-              name="hr_ext_inv"
-              defaultValue={selectedLocalidad.hr_ext_inv}
-              onChange={handleInputChange}
-              className="border-2 border-gray-300 rounded p-2 w-full"
-            />
-          </div>
-          <div className="mb-2">
-            <label className="flex items-center">
-              Altitud:
-              <Popover content="Altitud sobre el nivel del mar">
-                <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
-              </Popover>
-            </label>
-            <input
-              type="number"
-              name="altitud"
-              defaultValue={selectedLocalidad.altitud}
-              onChange={handleInputChange}
-              className="border-2 border-gray-300 rounded p-2 w-full"
-            />
-          </div>
-          <div className="mb-2">
-            <label className="flex items-center">
-              Zona climatica:
-              <Popover content="Zona climática de la localidad">
-                <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
-              </Popover>
-            </label>
-            <input
-              type="text"
-              name="zona climatica"
-              defaultValue={selectedLocalidad["zona climatica"]}
-              onChange={handleInputChange}
-              className="border-2 border-gray-300 rounded p-2 w-full"
-            />
-          </div>
-        </div>
+          <div className="mt-4 p-4 border rounded shadow-md">
+            <div className="flex flex-col gap-4 md:grid md:grid-cols-3">
+              <div className="mb-2">
+                <label className="flex items-center">
+                  Temperatura (Verano):
+                  <Popover content="Temperatura máxima en verano en °C">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="temp_ext_ver"
+                  defaultValue={
+                    selectedLocalidad.temp_ext_ver || proyecto?.temp_ext_ver
+                  }
+                  onChange={handleInputChange}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+              <div className="mb-2">
+                <label className="flex items-center">
+                  Humedad (Verano):
+                  <Popover content="Humedad relativa en verano">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="hr_ext_ver"
+                  defaultValue={
+                    selectedLocalidad.hr_ext_ver || proyecto?.hr_ext_ver
+                  }
+                  onChange={handleInputChange}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+              <div className="mb-2">
+                <label className="flex items-center">
+                  Temperatura (Invierno):
+                  <Popover content="Temperatura mínima en invierno °C">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="temp_ext_inv"
+                  defaultValue={
+                    selectedLocalidad.temp_ext_inv || proyecto?.temp_ext_inv
+                  }
+                  onChange={handleInputChange}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+              <div className="mb-2">
+                <label className="flex items-center">
+                  Humedad (Invierno):
+                  <Popover content="Humedad relativa en invierno en %">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="hr_ext_inv"
+                  defaultValue={
+                    selectedLocalidad.hr_ext_inv || proyecto?.hr_ext_inv
+                  }
+                  onChange={handleInputChange}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+              <div className="mb-2">
+                <label className="flex items-center">
+                  Altitud:
+                  <Popover content="Altitud sobre el nivel del mar">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="altitud"
+                  defaultValue={selectedLocalidad.altitud || proyecto?.altitud}
+                  onChange={handleInputChange}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+              <div className="mb-2">
+                <label className="flex items-center">
+                  Zona climatica:
+                  <Popover content="Zona climática de la localidad">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="text"
+                  name="zona climatica"
+                  defaultValue={
+                    selectedLocalidad["zona climatica"] ||
+                    proyecto?.zona_climatica
+                  }
+                  onChange={handleInputChange}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+            </div>
 
-        <div className="mt-4 p-4 border rounded shadow-md grid grid-cols-1 gap-4 md:grid-cols-4">
-          <div className="mb-2">
-            <label className="flex items-center">
-              us/um:
-              <Popover content="Valor de coeficiente exterior en % us/um">
-                <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
-              </Popover>
-            </label>
-            <input
-              type="number"
-              name="us/um"
-              value={selectedCoef["us/um"]}
-              onChange={handleCoefChange}
-              className="border-2 border-gray-300 rounded p-2 w-full"
-            />
-          </div>
-          <div className="mb-2">
-            <label className="flex items-center">
-              uc:
-              <Popover content="Valor de coeficiente exterior en % uc">
-                <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
-              </Popover>
-            </label>
-            <input
-              type="number"
-              name="uc"
-              value={selectedCoef["uc"]}
-              onChange={handleCoefChange}
-              className="border-2 border-gray-300 rounded p-2 w-full"
-            />
-          </div>
-          <div className="mb-2">
-            <label className="flex items-center">
-              ut/umd:
-              <Popover content="Valor de coeficiente exterior en % ut/umd">
-                <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
-              </Popover>
-            </label>
-            <input
-              type="number"
-              name="ut/umd"
-              value={selectedCoef["ut/umd"]}
-              onChange={handleCoefChange}
-              className="border-2 border-gray-300 rounded p-2 w-full"
-            />
-          </div>
-          <div className="mb-2">
-            <label className="flex items-center">
-              uh:
-              <Popover content="Valor de coeficiente exterior en % uh">
-                <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
-              </Popover>
-            </label>
-            <input
-              type="number"
-              name="uh"
-              value={selectedCoef["uh"]}
-              onChange={handleCoefChange}
-              className="border-2 border-gray-300 rounded p-2 w-full"
-            />
-          </div>
-        </div>
+            <div className="mt-4 p-4 border rounded shadow-md grid grid-cols-1 gap-4 md:grid-cols-4">
+              <div className="mb-2">
+                <label className="flex items-center">
+                  us/um:
+                  <Popover content="Valor de coeficiente exterior en % us/um">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="us/um"
+                  defaultValue={selectedCoef["us/um"] || proyecto?.us_um}
+                  onChange={handleCoefChange}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+              <div className="mb-2">
+                <label className="flex items-center">
+                  uc:
+                  <Popover content="Valor de coeficiente exterior en % uc">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="uc"
+                  defaultValue={selectedCoef["uc"] || proyecto?.uc}
+                  onChange={handleCoefChange}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+              <div className="mb-2">
+                <label className="flex items-center">
+                  ut/umd:
+                  <Popover content="Valor de coeficiente exterior en % ut/umd">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="ut/umd"
+                  defaultValue={selectedCoef["ut/umd"] || proyecto?.ut_umd}
+                  onChange={handleCoefChange}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+              <div className="mb-2">
+                <label className="flex items-center">
+                  uh:
+                  <Popover content="Valor de coeficiente exterior en % uh">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="uh"
+                  defaultValue={selectedCoef["uh"] || proyecto?.uh}
+                  onChange={handleCoefChange}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+              <div className="mb-2">
+                <label className="flex items-center">
+                  up:
+                  <Popover content="Valor de coeficiente exterior en % uh">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="up"
+                  defaultValue={selectedCoef["up"] || proyecto?.up}
+                  onChange={handleCoefChange}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+              <div className="mb-2">
+                <label className="flex items-center">
+                  uph:
+                  <Popover content="Valor de coeficiente exterior en % uh">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="uph"
+                  defaultValue={selectedCoef["uph"] || proyecto?.uph}
+                  onChange={handleCoefChange}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+              <div className="mb-2">
+                <label className="flex items-center">
+                  upv:
+                  <Popover content="Valor de coeficiente exterior en % uh">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="upv"
+                  defaultValue={selectedCoef["upv"] || proyecto?.upv}
+                  onChange={handleCoefChange}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+              <div className="mb-2">
+                <label className="flex items-center">
+                  uphv:
+                  <Popover content="Valor de coeficiente exterior en % uh">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="uphv"
+                  defaultValue={selectedCoef["uh"] || proyecto?.uphv}
+                  onChange={handleCoefChange}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+            </div>
 
-        <div className="mt-4 p-4 border rounded shadow-md grid grid-cols-1 gap-4 md:grid-cols-3">
-          <div className="mb-2">
-            <label className="flex items-center">
-              TPH:
-              <Popover content="Valor de tabique interior TPH">
-                <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
-              </Popover>
-            </label>
-            <input
-              type="number"
-              name="TPH"
-              value={selectedTabiques["TPH"]}
-              onChange={handleTabiquesChange}
-              className="border-2 border-gray-300 rounded p-2 w-full"
-            />
+            <div className="mt-4 p-4 border rounded shadow-md grid grid-cols-1 gap-4 md:grid-cols-3">
+              <div className="mb-2">
+                <label className="flex items-center">
+                  TPH:
+                  <Popover content="Valor de tabique interior TPH">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="tph"
+                  defaultValue={selectedTabiques["TPH"] || proyecto?.tph}
+                  onChange={handleTabiquesChange}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+              <div className="mb-2">
+                <label className="flex items-center">
+                  TPV:
+                  <Popover content="Valor de tabique interior TPV">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="tpv"
+                  defaultValue={
+                    selectedTabiques["TPV"] || Number(proyecto?.tpv)
+                  }
+                  onChange={handleTabiquesChange}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+              <div className="mb-2">
+                <label className="flex items-center">
+                  TPHV:
+                  <Popover content="Valor de tabique interior TPHV">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="tphv"
+                  defaultValue={
+                    selectedTabiques["TPHV"] || Number(proyecto?.tphv)
+                  }
+                  onChange={handleTabiquesChange}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+            </div>
+            <div className="mt-4 p-4 border rounded shadow-md grid grid-cols-1 gap-4 md:grid-cols-3">
+              <div className="mb-2">
+                <label className="flex items-center">
+                  Numero personas:
+                  <Popover content="Valor de numero aglomerado de personas">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="numero_personas"
+                  defaultValue={Number(proyecto?.numero_personas)}
+                  onChange={handleTabiquesChange}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+              <div className="mb-2">
+                <label className="flex items-center">
+                  W por personas:
+                  <Popover content="Valor de numero por Watt de personas">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="numero_personas"
+                  defaultValue={Number(proyecto?.w_personas)}
+                  onChange={handleTabiquesChange}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+              <div className="mb-2">
+                <label className="flex items-center">
+                  Caudales por IDA:
+                  <Popover content="Valor de numero por Watt de personas">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="caudales_ida"
+                  defaultValue={Number(proyecto?.caudales_ida)}
+                  onChange={handleTabiquesChange}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+            </div>
           </div>
-          <div className="mb-2">
-            <label className="flex items-center">
-              TPV:
-              <Popover content="Valor de tabique interior TPV">
-                <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
-              </Popover>
-            </label>
-            <input
-              type="number"
-              name="TPV"
-              value={selectedTabiques["TPV"]}
-              onChange={handleTabiquesChange}
-              className="border-2 border-gray-300 rounded p-2 w-full"
-            />
-          </div>
-          <div className="mb-2">
-            <label className="flex items-center">
-              TPHV:
-              <Popover content="Valor de tabique interior TPHV">
-                <img src="/question.svg" className="ml-2 w-5 h-5" alt="info" />
-              </Popover>
-            </label>
-            <input
-              type="number"
-              name="TPHV"
-              value={selectedTabiques["TPHV"]}
-              onChange={handleTabiquesChange}
-              className="border-2 border-gray-300 rounded p-2 w-full"
-            />
-          </div>
+        </fieldset>
+        <div className="flex justify-center mt-6">
+          <Boton title={title} />
         </div>
-      </div>
-      <div className="flex justify-center mt-6">
-        <Boton title="Crear proyecto" />
-      </div>
+      </form>
     </>
   );
 }

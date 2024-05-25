@@ -18,13 +18,13 @@ function Articulo({ children, proyecto }) {
       <p>{proyecto?.zona_climatica}</p>
       <div className="">
         <p className="font-bold">Ocupacion</p>
-        <p>{proyecto?.numero_personas}</p>
-        <p>{proyecto?.watios_personas}</p>
+        <p>{proyecto?.numero_personas.toString()}</p>
+        <p>{proyecto?.w_personas.toString()}</p>
       </div>
       <div className="">
         <p className="font-bold">Caudales</p>
-        <p>{proyecto?.caudales_ida}</p>
-        <p>{proyecto?.caudales_aire}</p>
+        <p>{proyecto?.caudales_ida.toString()}</p>
+        <p>{proyecto?.caudales_aire.toString()}</p>
       </div>
       <div className="">
         <p className="font-bold">Iluminacion</p>
