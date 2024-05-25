@@ -31,7 +31,6 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
   const [error, setError] = useState(null);
   const [customLocalidad, setCustomLocalidad] = useState(false);
 
-
   useEffect(() => {
     async function fetchData() {
       try {
@@ -105,7 +104,8 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
     const { name, value } = e.target;
     setSelectedTabiques((prev) => ({ ...prev, [name]: value }));
   };
-
+  console.log(coef);
+  console.log(selectedCoef);
   return (
     <>
       <form action={action}>
@@ -485,9 +485,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <input
                   type="number"
                   name="tpv"
-                  defaultValue={
-                    selectedTabiques["TPV"] || Number(proyecto?.tpv)
-                  }
+                  defaultValue={selectedTabiques["TPV"] || proyecto?.tpv}
                   onChange={handleTabiquesChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
@@ -506,9 +504,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <input
                   type="number"
                   name="tphv"
-                  defaultValue={
-                    selectedTabiques["TPHV"] || Number(proyecto?.tphv)
-                  }
+                  defaultValue={selectedTabiques["TPHV"] || proyecto?.tphv}
                   onChange={handleTabiquesChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
