@@ -104,8 +104,8 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
     const { name, value } = e.target;
     setSelectedTabiques((prev) => ({ ...prev, [name]: value }));
   };
-  console.log(coef);
   console.log(selectedCoef);
+  console.log(selectedTabiques);
   return (
     <>
       <form action={action}>
@@ -525,8 +525,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <input
                   type="number"
                   name="numero_personas"
-                  defaultValue={Number(proyecto?.numero_personas)}
-                  onChange={handleTabiquesChange}
+                  defaultValue={proyecto?.numero_personas}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
               </div>
@@ -544,7 +543,82 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <input
                   type="number"
                   name="numero_personas"
-                  defaultValue={Number(proyecto?.w_personas)}
+                  defaultValue={proyecto?.w_personas}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+              <div className="mb-2">
+                <label className="flex items-center">
+                  Caudales por IDA:
+                  <Popover content="Valor de numero por Watt de personas">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="caudales_ida"
+                  defaultValue={proyecto?.caudales_ida}
+                  onChange={handleTabiquesChange}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+              <div className="mb-2">
+                <label className="flex items-center">
+                  Caudales de aire m3:
+                  <Popover content="Valor de numero por Watt de personas">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="caudales_ida"
+                  defaultValue={proyecto?.caudales_ida}
+                  onChange={handleTabiquesChange}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+              <div className="mb-2">
+                <label className="flex items-center">
+                  Caudales por IDA:
+                  <Popover content="Valor de numero por Watt de personas">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="caudales_ida"
+                  defaultValue={proyecto?.caudales_ida}
+                  onChange={handleTabiquesChange}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
+              <div className="mb-2">
+                <label className="flex items-center">
+                  Caudales por IDA:
+                  <Popover content="Valor de numero por Watt de personas">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="caudales_ida"
+                  defaultValue={Number(proyecto?.caudales_ida)}
                   onChange={handleTabiquesChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
