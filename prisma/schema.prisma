@@ -55,31 +55,31 @@ model Proyecto {
   id               Int       @id @default(autoincrement())
   nombre           String
   localidad        String
-  fecha            DateTime?
-  temp_ext_ver     Decimal?
-  hr_ext_ver       Decimal?
-  temp_ext_inv     Decimal?
-  hr_ext_inv       Decimal?
-  altitud          Decimal?
+  fecha            DateTime? @db.Date
+  temp_ext_ver     Decimal?  @db.Decimal(4, 2)
+  hr_ext_ver       Decimal?  @db.Decimal(3, 0)
+  temp_ext_inv     Decimal?  @db.Decimal(4, 2)
+  hr_ext_inv       Decimal?  @db.Decimal(3, 0)
+  altitud          Decimal?  @db.Decimal(4, 2)
   zona_climatica   String?
-  us_um            Decimal?
-  uc               Decimal?
-  ut_umd           Decimal?
-  uh               Decimal?
-  up               Decimal?
-  uph              Decimal?
-  upv              Decimal?
-  uphv             Decimal?
-  tph              Decimal?
-  tpv              Decimal?
-  tphv             Decimal?
+  us_um            Decimal? @db.Decimal(4, 2)
+  uc               Decimal? @db.Decimal(4, 2)
+  ut_umd           Decimal? @db.Decimal(4, 2)
+  uh               Decimal? @db.Decimal(4, 2)
+  up               Decimal? @db.Decimal(4, 2)
+  uph              Decimal? @db.Decimal(4, 2)
+  upv              Decimal? @db.Decimal(4, 2)
+  uphv             Decimal? @db.Decimal(4, 2)
+  tph              Decimal? @db.Decimal(4, 2)
+  tpv              Decimal? @db.Decimal(4, 2)
+  tphv             Decimal? @db.Decimal(4, 2)
   numero_personas  Int?
-  w_persona        Decimal?
-  caudales_ida     Decimal?
-  caudales_aire    Decimal?
+  w_persona        Decimal? @db.Decimal(10, 2)
+  caudales_ida     Decimal? @db.Decimal(10, 2)
+  caudales_aire    Decimal? @db.Decimal(10, 2)
   tipo_lampara     String
-  potencia_lampara Decimal?
-  valor_seguridad  Decimal?
+  potencia_lampara Decimal? @db.Decimal(10, 2)
+  valor_seguridad  Decimal? @db.Decimal(3, 0)
   comentarios      String?   @db.Text
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @updatedAt

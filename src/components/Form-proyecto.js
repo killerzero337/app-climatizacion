@@ -184,6 +184,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <input
                   type="number"
                   name="temp_ext_ver"
+                  step="0.01"
                   defaultValue={
                     selectedLocalidad.temp_ext_ver || proyecto?.temp_ext_ver
                   }
@@ -226,6 +227,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <input
                   type="number"
                   name="temp_ext_inv"
+                  step="0.01"
                   defaultValue={
                     selectedLocalidad.temp_ext_inv || proyecto?.temp_ext_inv
                   }
@@ -236,7 +238,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
               <div className="mb-2">
                 <label className="flex items-center">
                   Humedad (Invierno):
-                  <Popover content="Humedad relativa en invierno en %">
+                  <Popover content="Humedad relativa en invierno por %">
                     <img
                       src="/question.svg"
                       className="ml-2 w-5 h-5"
@@ -301,7 +303,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
               <div className="mb-2">
                 <label className="flex items-center">
                   us/um:
-                  <Popover content="Valor de coeficiente exterior en % us/um">
+                  <Popover content="Valor de coeficiente exterior us/um">
                     <img
                       src="/question.svg"
                       className="ml-2 w-5 h-5"
@@ -312,6 +314,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <input
                   type="number"
                   name="us_um"
+                  step="0.01"
                   defaultValue={selectedCoef["us/um"] || proyecto?.us_um}
                   onChange={handleCoefChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
@@ -320,7 +323,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
               <div className="mb-2">
                 <label className="flex items-center">
                   uc:
-                  <Popover content="Valor de coeficiente exterior en % uc">
+                  <Popover content="Valor de coeficiente exterior uc">
                     <img
                       src="/question.svg"
                       className="ml-2 w-5 h-5"
@@ -331,6 +334,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <input
                   type="number"
                   name="uc"
+                  step="0.01"
                   defaultValue={selectedCoef["uc"] || proyecto?.uc}
                   onChange={handleCoefChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
@@ -339,7 +343,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
               <div className="mb-2">
                 <label className="flex items-center">
                   ut/umd:
-                  <Popover content="Valor de coeficiente exterior en % ut/umd">
+                  <Popover content="Valor de coeficiente exterior ut/umd">
                     <img
                       src="/question.svg"
                       className="ml-2 w-5 h-5"
@@ -350,6 +354,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <input
                   type="number"
                   name="ut_umd"
+                  step="0.01"
                   defaultValue={selectedCoef["ut/umd"] || proyecto?.ut_umd}
                   onChange={handleCoefChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
@@ -358,7 +363,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
               <div className="mb-2">
                 <label className="flex items-center">
                   uh:
-                  <Popover content="Valor de coeficiente exterior en % uh">
+                  <Popover content="Valor de coeficiente exterior uh">
                     <img
                       src="/question.svg"
                       className="ml-2 w-5 h-5"
@@ -369,6 +374,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <input
                   type="number"
                   name="uh"
+                  step="0.01"
                   defaultValue={selectedCoef["uh"] || proyecto?.uh}
                   onChange={handleCoefChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
@@ -377,7 +383,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
               <div className="mb-2">
                 <label className="flex items-center">
                   up:
-                  <Popover content="Valor de coeficiente exterior en % uh">
+                  <Popover content="Valor de coeficiente exterior uh">
                     <img
                       src="/question.svg"
                       className="ml-2 w-5 h-5"
@@ -388,6 +394,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <input
                   type="number"
                   name="up"
+                  step="0.01"
                   defaultValue={selectedCoef["up"] || proyecto?.up}
                   onChange={handleCoefChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
@@ -396,7 +403,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
               <div className="mb-2">
                 <label className="flex items-center">
                   uph:
-                  <Popover content="Valor de coeficiente exterior en % uh">
+                  <Popover content="Valor de coeficiente exterior uh">
                     <img
                       src="/question.svg"
                       className="ml-2 w-5 h-5"
@@ -407,6 +414,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <input
                   type="number"
                   name="uph"
+                  step="0.01"
                   defaultValue={selectedCoef["uph"] || proyecto?.uph}
                   onChange={handleCoefChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
@@ -415,7 +423,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
               <div className="mb-2">
                 <label className="flex items-center">
                   upv:
-                  <Popover content="Valor de coeficiente exterior en % uh">
+                  <Popover content="Valor de coeficiente exterior uh">
                     <img
                       src="/question.svg"
                       className="ml-2 w-5 h-5"
@@ -426,6 +434,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <input
                   type="number"
                   name="upv"
+                  step="0.01"
                   defaultValue={selectedCoef["upv"] || proyecto?.upv}
                   onChange={handleCoefChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
@@ -434,7 +443,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
               <div className="mb-2">
                 <label className="flex items-center">
                   uphv:
-                  <Popover content="Valor de coeficiente exterior en % uh">
+                  <Popover content="Valor de coeficiente exterior uh">
                     <img
                       src="/question.svg"
                       className="ml-2 w-5 h-5"
@@ -445,6 +454,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <input
                   type="number"
                   name="uphv"
+                  step="0.01"
                   defaultValue={selectedCoef["uphv"] || proyecto?.uphv}
                   onChange={handleCoefChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
@@ -467,6 +477,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <input
                   type="number"
                   name="tph"
+                  step="0.01"
                   defaultValue={selectedTabiques["TPH"] || proyecto?.tph}
                   onChange={handleTabiquesChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
@@ -486,6 +497,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <input
                   type="number"
                   name="tpv"
+                  step="0.01"
                   defaultValue={selectedTabiques["TPV"] || proyecto?.tpv}
                   onChange={handleTabiquesChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
@@ -505,6 +517,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <input
                   type="number"
                   name="tphv"
+                  step="0.01"
                   defaultValue={selectedTabiques["TPHV"] || proyecto?.tphv}
                   onChange={handleTabiquesChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
@@ -526,6 +539,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <input
                   type="number"
                   name="numero_personas"
+                  step="0.01"
                   defaultValue={proyecto?.numero_personas}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
@@ -544,6 +558,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <input
                   type="number"
                   name="w_persona"
+                  step="0.01"
                   defaultValue={proyecto?.w_persona}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
@@ -562,6 +577,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <input
                   type="number"
                   name="caudales_ida"
+                  step="0.01"
                   defaultValue={proyecto?.caudales_ida}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
@@ -580,6 +596,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <input
                   type="number"
                   name="caudales_aire"
+                  step="0.01"
                   defaultValue={proyecto?.caudales_aire}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
@@ -618,6 +635,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <input
                   type="number"
                   name="potencia_lampara"
+                  step="0.01"
                   defaultValue={proyecto?.potencia_lampara}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />

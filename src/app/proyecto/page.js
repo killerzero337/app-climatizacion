@@ -1,4 +1,5 @@
 import React from "react";
+import { getProyecto } from "@/lib/actions-proyecto";
 import Tarjeta from "@/components/Tarjeta";
 import CardPrisma from "@/components/tarjetaprisma";
 import Link from "next/link";

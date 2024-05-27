@@ -3,10 +3,10 @@ import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-export async function getProyectos() {
+export async function getProyecto() {
   try {
-    const proyectos = await prisma.proyecto.findMany();
-    return proyectos;
+    const proyecto = await prisma.proyecto.findMany();
+    return proyecto;
   } catch (error) {
     // console.log(error);
     return null;
@@ -17,11 +17,11 @@ export async function newProyecto(formData) {
   try {
     const nombre = formData.get("nombre");
     const localidad = formData.get("localidad");
-    const fecha = formData.get("fecha");
+    const fechaDate = formData.get("fecha");
     const temp_ext_ver = Number(formData.get("temp_ext_ver"));
     const temp_ext_inv = Number(formData.get("temp_ext_inv"));
-    const hr_ext_inv = Number(formData.get("hum_ext_inv"));
-    const hr_ext_ver = Number(formData.get("hum_ext_ver"));
+    const hr_ext_inv = Number(formData.get("hr_ext_inv"));
+    const hr_ext_ver = Number(formData.get("hr_ext_ver"));
     const altitud = Number(formData.get("altitud"));
     const zona_climatica = formData.get("zona_climatica");
     const numero_personas = Number(formData.get("numero_personas"));
@@ -43,6 +43,7 @@ export async function newProyecto(formData) {
     const potencia_lampara = Number(formData.get("potencia_lampara"));
     const valor_seguridad = Number(formData.get("valor_seguridad"));
     const comentarios = formData.get("comentarios");
+    const fecha = new Date(`${fechaDate}T00:00:00.000Z`);
 
     const proyecto = await prisma.proyecto.create({
       data: {
@@ -53,6 +54,7 @@ export async function newProyecto(formData) {
         hr_ext_inv,
         hr_ext_ver,
         altitud,
+        fecha,
         zona_climatica,
         numero_personas,
         w_persona,
