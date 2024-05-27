@@ -36,15 +36,16 @@ errors.set(
 errors.set("Default", "No se puede iniciar sesión.");
 
 function Page({ searchParams }) {
-  const { error } = searchParams;
+  const { error, callbackUrl } = searchParams;
+  // Usamos globalThis para almacenar variable global
+  // La usaremos en los actions de login
+  globalThis.callbackUrl = decodeURIComponent(callbackUrl ?? "%2Fdashboard");
 
   return (
     <Tarjeta>
       <h1 className="text-2xl mb-4 text-center">Iniciar sesión</h1>
-
       {error && <h3 className="text-red-700">{errors.get(error)}</h3>}
       <LoginForm />
-      {/* Pasar el error como prop al componente OAuthForm */}
       <OAuthForm error={error} />
     </Tarjeta>
   );

@@ -34,7 +34,6 @@ header {
   }
 
   body {
-    box-sizing: border-box;
     background-image: url(/fondo-oscuro.jpeg);
     background-size: 50% 50% 50% 50%;
     background-repeat:round;

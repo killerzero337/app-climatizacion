@@ -531,7 +531,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
               </div>
               <div className="mb-2">
                 <label className="flex items-center">
-                  W por personas:
+                  W por persona:
                   <Popover content="Valor de numero por Watt de personas">
                     <img
                       src="/question.svg"
@@ -542,8 +542,8 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 </label>
                 <input
                   type="number"
-                  name="numero_personas"
-                  defaultValue={proyecto?.w_personas}
+                  name="w_persona"
+                  defaultValue={proyecto?.w_persona}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
               </div>
@@ -579,15 +579,35 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 </label>
                 <input
                   type="number"
-                  name="caudales_ida"
-                  defaultValue={proyecto?.caudales_ida}
+                  name="caudales_aire"
+                  defaultValue={proyecto?.caudales_aire}
                   onChange={handleTabiquesChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
               </div>
               <div className="mb-2">
                 <label className="flex items-center">
-                  Caudales por IDA:
+                  Tipo lamapara:
+                  <Popover content="Tipo de lampara a utilizar">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <select
+                  name="tipo_lampara"
+                  defaultValue={proyecto?.tipo_lampara}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                >
+                  <option value="fluorescente">Fluorescente</option>
+                  <option value="led">LED</option>
+                </select>
+              </div>
+              <div className="mb-2">
+                <label className="flex items-center">
+                  Potencia luminica:
                   <Popover content="Valor de numero por Watt de personas">
                     <img
                       src="/question.svg"
@@ -598,16 +618,15 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 </label>
                 <input
                   type="number"
-                  name="caudales_ida"
-                  defaultValue={proyecto?.caudales_ida}
-                  onChange={handleTabiquesChange}
+                  name="potencia_lampara"
+                  defaultValue={proyecto?.potencia_lampara}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
               </div>
               <div className="mb-2">
                 <label className="flex items-center">
-                  Caudales por IDA:
-                  <Popover content="Valor de numero por Watt de personas">
+                  Factor seguridad:
+                  <Popover content="Valor de seguridad de el proyecto general">
                     <img
                       src="/question.svg"
                       className="ml-2 w-5 h-5"
@@ -617,16 +636,17 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 </label>
                 <input
                   type="number"
-                  name="caudales_ida"
-                  defaultValue={Number(proyecto?.caudales_ida)}
-                  onChange={handleTabiquesChange}
+                  name="valor_seguridad"
+                  defaultValue={proyecto?.valor_seguridad}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
               </div>
+            </div>
+            <div className="mt-4 p-4 border rounded shadow-md">
               <div className="mb-2">
                 <label className="flex items-center">
-                  Caudales por IDA:
-                  <Popover content="Valor de numero por Watt de personas">
+                  Comentarios:
+                  <Popover content="Comentarios de el proyecto">
                     <img
                       src="/question.svg"
                       className="ml-2 w-5 h-5"
@@ -634,12 +654,13 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                     />
                   </Popover>
                 </label>
-                <input
-                  type="number"
-                  name="caudales_ida"
-                  defaultValue={Number(proyecto?.caudales_ida)}
-                  onChange={handleTabiquesChange}
-                  className="border-2 border-gray-300 rounded p-2 w-full"
+                <textarea
+                  name="comentarios"
+                  placeholder="Comentarios"
+                  maxLength={300}
+                  defaultValue={proyecto?.comentarios}
+                  className="border-2 border-gray-300 rounded p-2 w-full h-24"
+                  onChange={handleInputChange}
                 />
               </div>
             </div>

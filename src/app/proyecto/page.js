@@ -11,7 +11,7 @@ async function page() {
     return (
       <Tarjeta>
         <div className="text-center">
-          {" "}
+          
           <h1 className="text-2xl">
             Para acceder a esta pagina tienes que iniciar sesión
           </h1>
