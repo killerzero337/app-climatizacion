@@ -15,27 +15,52 @@ export async function getProyectos() {
 
 export async function newProyecto(formData) {
   try {
-    const localidad = formData.get("nombre");
-    const temperatura_verano = formData.get("temperatura_verano");
-    const humedad_verano = formData.get("humedad_verano");
-    const temperatura_invierno = formData.get("temperatura_invierno");
-    const humedad_invierno = formData.get("humedad_invierno");
-    const altitud = formData.get("altitud");
+    const localidad = formData.get("localidad");
+    console.log(localidad);
+    const temperatura_verano = parseFloat(formData.get("temp_ext_ver"));
+    console.log(temperatura_verano);
+    const humedad_verano = parseFloat(formData.get("hr_ext_ver"));
+    console.log(humedad_verano);
+    const temperatura_invierno = parseFloat(formData.get("temp_ext_inv"));
+    console.log(temperatura_invierno);
+    const humedad_invierno = parseFloat(formData.get("hr_ext_inv"));
+    console.log(humedad_invierno);
+    const altitud = parseFloat(formData.get("altitud"));
+    console.log(altitud);
     const zona_climatica = formData.get("zona_climatica");
-    const numero_personas = formData.get("numero_personas");
-    const watios_personas = formData.get("watios_personas");
-    const caudales_ida = formData.get("caudales_ida");
-    const caudales_aire = formData.get("caudales_aire");
-    const tipo_iluminacion = formData.get("tipo_iluminacion");
-    const potencia_iluminacion = formData.get("potencia_iluminacion");
-    const seguridad = formData.get("seguridad");
-
+    console.log(zona_climatica);
+    const numero_personas = parseInt(formData.get("numero_personas"));
+    console.log(numero_personas);
+    const watios_personas = parseFloat(formData.get("w_persona"));
+    console.log(watios_personas);
+    const caudales_ida = parseFloat(formData.get("caudales_ida"));
+    console.log(caudales_ida);
+    const caudales_aire = parseFloat(formData.get("caudales_aire"));
+    console.log(caudales_aire);
+    const tipo_iluminacion = formData.get("tipo_lampara");
+    console.log(tipo_iluminacion);
+    const potencia_iluminacion = parseFloat(formData.get("potencia_lampara"));
+    console.log(potencia_iluminacion);
+    const seguridad = parseFloat(formData.get("valor_seguridad"));
+    console.log(seguridad);
+    const us_um = parseFloat(formData.get("us_um"));
+    const uc = parseFloat(formData.get("uc"));
+    const ut_umd = parseFloat(formData.get("ut_umd"));
+    const uh = parseFloat(formData.get("uh"));
+    const up = parseFloat(formData.get("up"));
+    const uph = parseFloat(formData.get("uph"));
+    const upv = parseFloat(formData.get("upv"));
+    const uphv = parseFloat(formData.get("uphv"));
+    const tph = parseFloat(formData.get("tph"));
+    const tpv = parseFloat(formData.get("tpv"));
+    const tphv = parseFloat(formData.get("tphv"));
+    const comentarios = formData.get("comentarios");
     const proyecto = await prisma.articulo.create({
       data: {
         localidad,
         temperatura_verano,
-        humedad_verano,
         temperatura_invierno,
+        humedad_verano,
         humedad_invierno,
         altitud,
         zona_climatica,
@@ -43,16 +68,28 @@ export async function newProyecto(formData) {
         watios_personas,
         caudales_ida,
         caudales_aire,
+        comentarios,
         tipo_iluminacion,
         potencia_iluminacion,
-        seguridad
+        seguridad,
+        us_um,
+        uc,
+        ut_umd,
+        uh,
+        up,
+        uph,
+        upv,
+        uphv,
+        tph,
+        tpv,
+        tphv,
       },
     });
 
-    console.log(proyecto);
+    console.log("Proyecto creado:", proyecto);
     revalidatePath("/proyecto");
   } catch (error) {
-    console.log(error);
+    console.error("Error creando nuevo proyecto:", error);
   }
   redirect("/proyecto");
 }
@@ -75,9 +112,9 @@ export async function editProyecto(formData) {
   const seguridad = formData.get("seguridad");
 
   try {
-    const articulo = await prisma.articulo.update({
+    const proyecto = await prisma.articulo.update({
       where: { id },
-      data: { 
+      data: {
         localidad,
         temperatura_verano,
         humedad_verano,
@@ -91,8 +128,8 @@ export async function editProyecto(formData) {
         caudales_aire,
         tipo_iluminacion,
         potencia_iluminacion,
-        seguridad
-    },
+        seguridad,
+      },
     });
     console.log(articulo);
     revalidatePath("/articulos");

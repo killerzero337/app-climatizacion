@@ -127,6 +127,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <select
                   className="border-2 border-black rounded p-2 w-full"
                   defaultValue={proyecto?.localidad}
+                  name="localidad"
                   onChange={handleLocalidadChange}
                 >
                   {data.map((item, index) => (
@@ -285,7 +286,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 </label>
                 <input
                   type="text"
-                  name="zona climatica"
+                  name="zona_climatica"
                   defaultValue={
                     selectedLocalidad["zona climatica"] ||
                     proyecto?.zona_climatica
@@ -310,7 +311,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 </label>
                 <input
                   type="number"
-                  name="us/um"
+                  name="us_um"
                   defaultValue={selectedCoef["us/um"] || proyecto?.us_um}
                   onChange={handleCoefChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
@@ -348,7 +349,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 </label>
                 <input
                   type="number"
-                  name="ut/umd"
+                  name="ut_umd"
                   defaultValue={selectedCoef["ut/umd"] || proyecto?.ut_umd}
                   onChange={handleCoefChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
@@ -444,7 +445,7 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                 <input
                   type="number"
                   name="uphv"
-                  defaultValue={selectedCoef["uh"] || proyecto?.uphv}
+                  defaultValue={selectedCoef["uphv"] || proyecto?.uphv}
                   onChange={handleCoefChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
@@ -562,7 +563,6 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                   type="number"
                   name="caudales_ida"
                   defaultValue={proyecto?.caudales_ida}
-                  onChange={handleTabiquesChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
               </div>
@@ -581,7 +581,6 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                   type="number"
                   name="caudales_aire"
                   defaultValue={proyecto?.caudales_aire}
-                  onChange={handleTabiquesChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
               </div>

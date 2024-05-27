@@ -55,7 +55,7 @@ model Proyecto {
   id                 Int      @id @default(autoincrement())
   nombre             String
   localidad          String
-  fecha              DateTime
+  fecha              DateTime?
   temp_ext_ver       Float?
   hr_ext_ver         Float?
   temp_ext_inv       Float?
@@ -77,15 +77,10 @@ model Proyecto {
   w_persona          Float?
   caudales_ida       Float?
   caudales_aire      Float?
-  tipo_lampara       TipoLampara
+  tipo_lampara       String
   potencia_lampara   Float?
   valor_seguridad    Float?
   comentarios        String?  @db.Text
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
-}
-
-enum TipoLampara {
-  fluorescente
-  led
 }
