@@ -30,7 +30,6 @@ model User {
   image         String?
   role          String?     @default("USER") // o  ADMIN
   accounts      Account[]
-  workspace     Workspace[]
 }
 
 model Account {
@@ -52,22 +51,41 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
-model Workspace {
-  id               Int      @id @default(autoincrement())
-  T_ext_invierno   Float?
-  T_ext_verano     Float?
-  T_suelo_invierno Float?
-  T_suelo_verano   Float?
-  Titulo           String
-  Autor_Proyecto   String
-  Fecha            DateTime
-  H_R_ext_invierno Float?
-  H_R_ext_verano   Float?
-  Ciudad           String
-  Altitud          Int
-  Cliente          String
-  Observaciones    String?
-  userId           String
+model Proyecto {
+  id                 Int      @id @default(autoincrement())
+  nombre             String
+  localidad          String
+  fecha              DateTime
+  temp_ext_ver       Float?
+  hr_ext_ver         Float?
+  temp_ext_inv       Float?
+  hr_ext_inv         Float?
+  altitud            Float?
+  zona_climatica     String?
+  us_um              Float?
+  uc                 Float?
+  ut_umd             Float?
+  uh                 Float?
+  up                 Float?
+  uph                Float?
+  upv                Float?
+  uphv               Float?
+  tph                Float?
+  tpv                Float?
+  tphv               Float?
+  numero_personas    Int?
+  w_persona          Float?
+  caudales_ida       Float?
+  caudales_aire      Float?
+  tipo_lampara       TipoLampara
+  potencia_lampara   Float?
+  valor_seguridad    Float?
+  comentarios        String?  @db.Text
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
 
-  user User @relation(fields: [userId], references: [id])
+enum TipoLampara {
+  fluorescente
+  led
 }
