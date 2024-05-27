@@ -22,13 +22,13 @@ datasource db {
 }
 
 model User {
-  id            String      @id @default(cuid())
+  id            String    @id @default(cuid())
   name          String
-  email         String?     @unique
+  email         String?   @unique
   password      String?
   emailVerified DateTime?
   image         String?
-  role          String?     @default("USER") // o  ADMIN
+  role          String?   @default("USER") // o  ADMIN
   accounts      Account[]
 }
 
@@ -52,35 +52,35 @@ model Account {
 }
 
 model Proyecto {
-  id                 Int      @id @default(autoincrement())
-  nombre             String
-  localidad          String
-  fecha              DateTime?
-  temp_ext_ver       Float?
-  hr_ext_ver         Float?
-  temp_ext_inv       Float?
-  hr_ext_inv         Float?
-  altitud            Float?
-  zona_climatica     String?
-  us_um              Float?
-  uc                 Float?
-  ut_umd             Float?
-  uh                 Float?
-  up                 Float?
-  uph                Float?
-  upv                Float?
-  uphv               Float?
-  tph                Float?
-  tpv                Float?
-  tphv               Float?
-  numero_personas    Int?
-  w_persona          Float?
-  caudales_ida       Float?
-  caudales_aire      Float?
-  tipo_lampara       String
-  potencia_lampara   Float?
-  valor_seguridad    Float?
-  comentarios        String?  @db.Text
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
+  id               Int       @id @default(autoincrement())
+  nombre           String
+  localidad        String
+  fecha            DateTime?
+  temp_ext_ver     Decimal?
+  hr_ext_ver       Decimal?
+  temp_ext_inv     Decimal?
+  hr_ext_inv       Decimal?
+  altitud          Decimal?
+  zona_climatica   String?
+  us_um            Decimal?
+  uc               Decimal?
+  ut_umd           Decimal?
+  uh               Decimal?
+  up               Decimal?
+  uph              Decimal?
+  upv              Decimal?
+  uphv             Decimal?
+  tph              Decimal?
+  tpv              Decimal?
+  tphv             Decimal?
+  numero_personas  Int?
+  w_persona        Decimal?
+  caudales_ida     Decimal?
+  caudales_aire    Decimal?
+  tipo_lampara     String
+  potencia_lampara Decimal?
+  valor_seguridad  Decimal?
+  comentarios      String?   @db.Text
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
 }

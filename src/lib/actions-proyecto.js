@@ -15,63 +15,47 @@ export async function getProyectos() {
 
 export async function newProyecto(formData) {
   try {
+    const nombre = formData.get("nombre");
     const localidad = formData.get("localidad");
-    console.log(localidad);
-    const temperatura_verano = parseFloat(formData.get("temp_ext_ver"));
-    console.log(temperatura_verano);
-    const humedad_verano = parseFloat(formData.get("hr_ext_ver"));
-    console.log(humedad_verano);
-    const temperatura_invierno = parseFloat(formData.get("temp_ext_inv"));
-    console.log(temperatura_invierno);
-    const humedad_invierno = parseFloat(formData.get("hr_ext_inv"));
-    console.log(humedad_invierno);
-    const altitud = parseFloat(formData.get("altitud"));
-    console.log(altitud);
+    const fecha = formData.get("fecha");
+    const temp_ext_ver = Number(formData.get("temp_ext_ver"));
+    const temp_ext_inv = Number(formData.get("temp_ext_inv"));
+    const hr_ext_inv = Number(formData.get("hum_ext_inv"));
+    const hr_ext_ver = Number(formData.get("hum_ext_ver"));
+    const altitud = Number(formData.get("altitud"));
     const zona_climatica = formData.get("zona_climatica");
-    console.log(zona_climatica);
-    const numero_personas = parseInt(formData.get("numero_personas"));
-    console.log(numero_personas);
-    const watios_personas = parseFloat(formData.get("w_persona"));
-    console.log(watios_personas);
-    const caudales_ida = parseFloat(formData.get("caudales_ida"));
-    console.log(caudales_ida);
-    const caudales_aire = parseFloat(formData.get("caudales_aire"));
-    console.log(caudales_aire);
-    const tipo_iluminacion = formData.get("tipo_lampara");
-    console.log(tipo_iluminacion);
-    const potencia_iluminacion = parseFloat(formData.get("potencia_lampara"));
-    console.log(potencia_iluminacion);
-    const seguridad = parseFloat(formData.get("valor_seguridad"));
-    console.log(seguridad);
-    const us_um = parseFloat(formData.get("us_um"));
-    const uc = parseFloat(formData.get("uc"));
-    const ut_umd = parseFloat(formData.get("ut_umd"));
-    const uh = parseFloat(formData.get("uh"));
-    const up = parseFloat(formData.get("up"));
-    const uph = parseFloat(formData.get("uph"));
-    const upv = parseFloat(formData.get("upv"));
-    const uphv = parseFloat(formData.get("uphv"));
-    const tph = parseFloat(formData.get("tph"));
-    const tpv = parseFloat(formData.get("tpv"));
-    const tphv = parseFloat(formData.get("tphv"));
+    const numero_personas = Number(formData.get("numero_personas"));
+    const w_persona = Number(formData.get("w_persona"));
+    const us_um = Number(formData.get("us_um"));
+    const uc = Number(formData.get("uc"));
+    const ut_umd = Number(formData.get("ut_umd"));
+    const uh = Number(formData.get("uh"));
+    const up = Number(formData.get("up"));
+    const uph = Number(formData.get("uph"));
+    const upv = Number(formData.get("upv"));
+    const uphv = Number(formData.get("uphv"));
+    const tph = Number(formData.get("tph"));
+    const tpv = Number(formData.get("tpv"));
+    const tphv = Number(formData.get("tphv"));
+    const caudales_ida = Number(formData.get("caudales_ida"));
+    const caudales_aire = Number(formData.get("caudales_aire"));
+    const tipo_lampara = formData.get("tipo_lampara");
+    const potencia_lampara = Number(formData.get("potencia_lampara"));
+    const valor_seguridad = Number(formData.get("valor_seguridad"));
     const comentarios = formData.get("comentarios");
-    const proyecto = await prisma.articulo.create({
+
+    const proyecto = await prisma.proyecto.create({
       data: {
+        nombre,
         localidad,
-        temperatura_verano,
-        temperatura_invierno,
-        humedad_verano,
-        humedad_invierno,
+        temp_ext_ver,
+        temp_ext_inv,
+        hr_ext_inv,
+        hr_ext_ver,
         altitud,
         zona_climatica,
         numero_personas,
-        watios_personas,
-        caudales_ida,
-        caudales_aire,
-        comentarios,
-        tipo_iluminacion,
-        potencia_iluminacion,
-        seguridad,
+        w_persona,
         us_um,
         uc,
         ut_umd,
@@ -83,76 +67,19 @@ export async function newProyecto(formData) {
         tph,
         tpv,
         tphv,
-      },
-    });
-
-    console.log("Proyecto creado:", proyecto);
-    revalidatePath("/proyecto");
-  } catch (error) {
-    console.error("Error creando nuevo proyecto:", error);
-  }
-  redirect("/proyecto");
-}
-
-export async function editProyecto(formData) {
-  const id = Number(formData.get("id"));
-  const localidad = formData.get("localidad");
-  const temperatura_verano = formData.get("temperatura_verano");
-  const humedad_verano = formData.get("humedad_verano");
-  const temperatura_invierno = formData.get("temperatura_invierno");
-  const humedad_invierno = formData.get("humedad_invierno");
-  const altitud = formData.get("altitud");
-  const zona_climatica = formData.get("zona_climatica");
-  const numero_personas = formData.get("numero_personas");
-  const watios_personas = formData.get("watios_personas");
-  const caudales_ida = formData.get("caudales_ida");
-  const caudales_aire = formData.get("caudales_aire");
-  const tipo_iluminacion = formData.get("tipo_iluminacion");
-  const potencia_iluminacion = formData.get("potencia_iluminacion");
-  const seguridad = formData.get("seguridad");
-
-  try {
-    const proyecto = await prisma.articulo.update({
-      where: { id },
-      data: {
-        localidad,
-        temperatura_verano,
-        humedad_verano,
-        temperatura_invierno,
-        humedad_invierno,
-        altitud,
-        zona_climatica,
-        numero_personas,
-        watios_personas,
         caudales_ida,
         caudales_aire,
-        tipo_iluminacion,
-        potencia_iluminacion,
-        seguridad,
+        tipo_lampara,
+        potencia_lampara,
+        valor_seguridad,
+        comentarios,
       },
     });
-    console.log(articulo);
-    revalidatePath("/articulos");
+
+    console.log(proyecto);
+    revalidatePath("/proyecto");
   } catch (error) {
     console.log(error);
   }
-  redirect("/articulos");
-}
-
-export async function deleteArticulo(formData) {
-  try {
-    const id = Number(formData.get("id"));
-
-    const articulo = await prisma.articulo.delete({
-      where: {
-        id: id,
-      },
-    });
-    console.log(articulo);
-    revalidatePath("/articulos");
-  } catch (error) {
-    console.log(error);
-  }
-
-  redirect("/articulos");
+  redirect("/proyecto");
 }
