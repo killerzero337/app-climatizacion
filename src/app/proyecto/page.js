@@ -30,7 +30,7 @@ async function page() {
             Crear Proyecto
           </Link>
         </div>
-        <div className="flex md:flex-row flex-col items-center justify-around">
+        <div className="flex md:flex-row flex-col gap-5 items-center justify-center">
           {proyectos.map((proyecto) => (
             <CardPrisma key={proyecto.id} proyecto={proyecto} />
           ))}
