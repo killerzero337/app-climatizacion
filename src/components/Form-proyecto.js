@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Imagen from "@/components/imagen";
 import Boton from "@/components/boton";
 import Popover from "@/components/popover";
 import Skeleton from "@/components/skeletons/formProyectosSkeleton";
@@ -658,6 +659,24 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
               </div>
+              <div className="mb-2">
+                <label className="flex items-center">
+                  Carga latente:
+                  <Popover content="Carga latente por persona">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <input
+                  type="number"
+                  name="carga_latente"
+                  defaultValue={proyecto?.carga_latente}
+                  className="border-2 border-gray-300 rounded p-2 w-full"
+                />
+              </div>
             </div>
             <div className="mt-4 p-4 border rounded shadow-md">
               <div className="mb-2">
@@ -679,6 +698,25 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
                   className="border-2 border-gray-300 rounded p-2 w-full h-24"
                   onChange={handleInputChange}
                 />
+              </div>
+            </div>
+            <div className="mt-4 p-4 border rounded shadow-md">
+              <div className="mb-2">
+                <label className="flex items-center">
+                  Imagen del proyecto:
+                  <Popover content="Puede clicar o arrastrar una imagen para asociar al proyecto">
+                    <img
+                      src="/question.svg"
+                      className="ml-2 w-5 h-5"
+                      alt="info"
+                    />
+                  </Popover>
+                </label>
+                <div className="flex justify-center h-32 w-full">
+                  <Imagen
+                    img={proyecto?.imagen ?? "/project-image-default.jpg"}
+                  />
+                </div>
               </div>
             </div>
           </div>

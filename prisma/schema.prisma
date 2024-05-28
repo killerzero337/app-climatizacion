@@ -56,31 +56,33 @@ model Proyecto {
   nombre           String
   localidad        String
   fecha            DateTime? @db.Date
-  temp_ext_ver     Decimal?  @db.Decimal(4, 2)
-  hr_ext_ver       Decimal?  @db.Decimal(3, 0)
-  temp_ext_inv     Decimal?  @db.Decimal(4, 2)
+  temp_ext_ver     Decimal?  @db.Decimal(6, 2)
+  hr_ext_ver       Decimal?  @db.Decimal(6, 0)
+  temp_ext_inv     Decimal?  @db.Decimal(6, 2)
   hr_ext_inv       Decimal?  @db.Decimal(3, 0)
-  altitud          Decimal?  @db.Decimal(4, 2)
+  altitud          Decimal?  @db.Decimal(6, 2)
   zona_climatica   String?
-  us_um            Decimal? @db.Decimal(4, 2)
-  uc               Decimal? @db.Decimal(4, 2)
-  ut_umd           Decimal? @db.Decimal(4, 2)
-  uh               Decimal? @db.Decimal(4, 2)
-  up               Decimal? @db.Decimal(4, 2)
-  uph              Decimal? @db.Decimal(4, 2)
-  upv              Decimal? @db.Decimal(4, 2)
-  uphv             Decimal? @db.Decimal(4, 2)
-  tph              Decimal? @db.Decimal(4, 2)
-  tpv              Decimal? @db.Decimal(4, 2)
-  tphv             Decimal? @db.Decimal(4, 2)
+  us_um            Decimal?  @db.Decimal(6, 2)
+  uc               Decimal?  @db.Decimal(6, 2)
+  ut_umd           Decimal?  @db.Decimal(6, 2)
+  uh               Decimal?  @db.Decimal(6, 2)
+  up               Decimal?  @db.Decimal(6, 2)
+  uph              Decimal?  @db.Decimal(6, 2)
+  upv              Decimal?  @db.Decimal(6, 2)
+  uphv             Decimal?  @db.Decimal(6, 2)
+  tph              Decimal?  @db.Decimal(6, 2)
+  tpv              Decimal?  @db.Decimal(6, 2)
+  tphv             Decimal?  @db.Decimal(6, 2)
   numero_personas  Int?
-  w_persona        Decimal? @db.Decimal(10, 2)
-  caudales_ida     Decimal? @db.Decimal(10, 2)
-  caudales_aire    Decimal? @db.Decimal(10, 2)
+  w_persona        Decimal?  @db.Decimal(10, 2)
+  carga_latente    Decimal?  @db.Decimal(10, 2)
+  caudales_ida     Decimal?  @db.Decimal(10, 2)
+  caudales_aire    Decimal?  @db.Decimal(10, 2)
   tipo_lampara     String
-  potencia_lampara Decimal? @db.Decimal(10, 2)
-  valor_seguridad  Decimal? @db.Decimal(3, 0)
+  potencia_lampara Decimal?  @db.Decimal(10, 2)
+  valor_seguridad  Decimal?  @db.Decimal(3, 0)
   comentarios      String?   @db.Text
+  imagen           String?   @db.VarChar(200)
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @updatedAt
 }

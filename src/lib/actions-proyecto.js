@@ -3,6 +3,35 @@ import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+async function imgCreate(file) {
+  console.log(file);
+
+  const fileBuffer = await file.arrayBuffer();
+
+  let mime = file.type;
+  let encoding = "base64";
+  let base64Data = Buffer.from(fileBuffer).toString("base64");
+  let fileUri = "data:" + mime + ";" + encoding + "," + base64Data;
+
+  try {
+    // width: 600, aspect-ratio: 1
+    const result = await cloudinary.uploader.upload(fileUri, {
+      invalidate: true,
+      folder: "galeria",
+      public_id: file.name.split(".").slice(0, -1).join("."), // eliminamos extensión del archivo
+      aspect_ratio: "1.0",
+      width: 600,
+      crop: "fill",
+      gravity: "center",
+    });
+    console.log(result);
+    return result.secure_url;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+
 export async function getProyecto() {
   try {
     const proyecto = await prisma.proyecto.findMany();
@@ -42,9 +71,10 @@ export async function newProyecto(formData) {
     const tipo_lampara = formData.get("tipo_lampara");
     const potencia_lampara = Number(formData.get("potencia_lampara"));
     const valor_seguridad = Number(formData.get("valor_seguridad"));
+    const carga_latente = Number(formData.get("carga_latente"));
     const comentarios = formData.get("comentarios");
     const fecha = new Date(`${fechaDate}T00:00:00.000Z`);
-
+    const imagen = formData.get("file");
     const proyecto = await prisma.proyecto.create({
       data: {
         nombre,
@@ -58,6 +88,7 @@ export async function newProyecto(formData) {
         zona_climatica,
         numero_personas,
         w_persona,
+        carga_latente,
         us_um,
         uc,
         ut_umd,
@@ -75,6 +106,7 @@ export async function newProyecto(formData) {
         potencia_lampara,
         valor_seguridad,
         comentarios,
+        imagen: await imgCreate(imagen),
       },
     });
 
