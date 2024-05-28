@@ -18,7 +18,7 @@ async function imgCreate(file) {
     const result = await cloudinary.uploader.upload(fileUri, {
       invalidate: true,
       folder: "galeria",
-      public_id: file.name.split(".").slice(0, -1).join("."), // eliminamos extensión del archivo
+      public_id: file.name.split(".").slice(0, -1).join("."), 
       aspect_ratio: "1.0",
       width: 600,
       crop: "fill",
@@ -32,12 +32,12 @@ async function imgCreate(file) {
   }
 }
 
-export async function getProyecto() {
+export async function getProyectos() {
   try {
-    const proyecto = await prisma.proyecto.findMany();
-    return proyecto;
+    const proyectos = await prisma.proyecto.findMany();
+    return proyectos;
   } catch (error) {
-    // console.log(error);
+    console.log(error);
     return null;
   }
 }
