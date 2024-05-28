@@ -21,21 +21,23 @@ async function page() {
     );
   } else {
     return (
-      <Tarjeta>
-        <div className="flex flex-col items-center justify-center h-[10vh] sm:h-[10vh] text-blue-500">
-          <Link
-            href="/proyecto/new"
-            className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Crear Proyecto
-          </Link>
+      <div className="flex flex-col items-center justify-center min-h-screen text-blue-500">
+        <div className="container mx-auto p-8 border-4 border-sky-400 dark:border-sky-700 rounded-md bg-gray-200/90 dark:bg-gray-900/90">
+          <div className="flex justify-center -mb-24">
+            <Link
+              href="/proyecto/new"
+              className="inline-flex items-center px-5 py-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Crear Proyecto
+            </Link>
+          </div>
+          <div className="flex flex-wrap gap-10 items-center justify-center ">
+            {proyectos.map((proyecto) => (
+              <CardPrisma key={proyecto.id} proyecto={proyecto} />
+            ))}
+          </div>
         </div>
-        <div className="flex md:flex-row flex-col gap-5 items-center justify-center">
-          {proyectos.map((proyecto) => (
-            <CardPrisma key={proyecto.id} proyecto={proyecto} />
-          ))}
-        </div>
-      </Tarjeta>
+      </div>
     );
   }
 }
