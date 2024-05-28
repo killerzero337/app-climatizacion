@@ -13,7 +13,7 @@ function Menu({ sesion}) {
             href="/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
-            <img src="/cli-logo.svg" className="h-14" alt="FloWeather Logo" />
+            <img src="/cli-logo.svg" className="h-12" alt="FloWeather Logo" />
             <span className="xs:hidden  self-center text-2xl font-semibold whitespace-nowrap text-gray-100/80">
               FloWeather
             </span>
