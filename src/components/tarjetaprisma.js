@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 function tarjetaPrisma({ children, proyecto }) {
   return (
-    <div className="flex flex-col items-center justify-center h-[120vh] sm:h-[30vh] text-blue-500">
+    <div className="flex flex-col items-center justify-center h-[10vh] sm:h-[30vh] text-blue-500">
       <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
         <Link href="#">
           <img
