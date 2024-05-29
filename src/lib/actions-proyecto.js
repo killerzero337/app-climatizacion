@@ -2,7 +2,9 @@
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { auth } from "@/auth";
 
+const sesion = await auth();
 async function imgCreate(file) {
   console.log(file);
 
@@ -18,7 +20,7 @@ async function imgCreate(file) {
     const result = await cloudinary.uploader.upload(fileUri, {
       invalidate: true,
       folder: "galeria",
-      public_id: file.name.split(".").slice(0, -1).join("."), 
+      public_id: file.name.split(".").slice(0, -1).join("."),
       aspect_ratio: "1.0",
       width: 600,
       crop: "fill",
@@ -30,6 +32,14 @@ async function imgCreate(file) {
     console.log(error);
     return null;
   }
+}
+
+export async function getIdUsuario(email) {
+  const user = await prisma.user.findUnique({
+    where: { email: email },
+  })
+
+  return user.id;
 }
 
 export async function getProyectos() {
@@ -45,6 +55,7 @@ export async function getProyectos() {
 export async function newProyecto(formData) {
   try {
     const nombre = formData.get("nombre");
+    const userId = formData.get("usuario_correo");
     const localidad = formData.get("localidad");
     const fechaDate = formData.get("fecha");
     const temp_ext_ver = Number(formData.get("temp_ext_ver"));
@@ -79,6 +90,7 @@ export async function newProyecto(formData) {
       data: {
         nombre,
         localidad,
+        userId,
         temp_ext_ver,
         temp_ext_inv,
         hr_ext_inv,

@@ -22,7 +22,13 @@ async function getDataCoef() {
   return res.json();
 }
 
-export function FormProyecto({ action, title, proyecto, disabled = false }) {
+export function FormProyecto({
+  action,
+  title,
+  proyecto,
+  sesion,
+  disabled = false,
+}) {
   const [data, setData] = useState([]);
   const [coef, setCoef] = useState({});
   const [selectedLocalidad, setSelectedLocalidad] = useState({});
@@ -107,10 +113,16 @@ export function FormProyecto({ action, title, proyecto, disabled = false }) {
   };
   console.log(selectedCoef);
   console.log(selectedTabiques);
+  console.log(sesion);
   return (
     <>
       <form action={action}>
         <fieldset disabled={disabled}>
+          <input
+            type="hidden"
+            name="usuario_Id"
+            value={proyecto?.userId || sesion}
+          />
           <div className="flex flex-col md:flex-row justify-around">
             <div>
               <label className="block">Nombre de proyecto:</label>

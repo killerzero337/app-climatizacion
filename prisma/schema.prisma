@@ -22,14 +22,15 @@ datasource db {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String     @id @default(cuid())
   name          String
-  email         String?   @unique
+  email         String?    @unique
   password      String?
   emailVerified DateTime?
   image         String?
-  role          String?   @default("USER") // o  ADMIN
+  role          String?    @default("USER") // o  ADMIN
   accounts      Account[]
+  Proyecto      Proyecto[]
 }
 
 model Account {
@@ -55,6 +56,8 @@ model Proyecto {
   id               Int       @id @default(autoincrement())
   nombre           String
   localidad        String
+  userId           String?
+  user             User?     @relation(fields: [userId], references: [id])
   fecha            DateTime? @db.Date
   temp_ext_ver     Decimal?  @db.Decimal(6, 2)
   hr_ext_ver       Decimal?  @db.Decimal(6, 0)
@@ -85,4 +88,6 @@ model Proyecto {
   imagen           String?   @db.VarChar(200)
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @updatedAt
+
+  @@index([userId], name: "user_id_index")
 }
