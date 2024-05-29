@@ -6,6 +6,7 @@ import Boton from "@/components/boton";
 import Popover from "@/components/popover";
 import Skeleton from "@/components/skeletons/formProyectosSkeleton";
 
+
 async function getDataLocalidades() {
   const res = await fetch("https://api-climatologia.onrender.com/localidades");
   if (!res.ok) {
@@ -198,7 +199,8 @@ export function FormProyecto({
                   name="temp_ext_ver"
                   step="0.01"
                   defaultValue={
-                    selectedLocalidad.temp_ext_ver || proyecto?.temp_ext_ver
+                    selectedLocalidad.temp_ext_ver ||
+                    Number(proyecto?.temp_ext_ver)
                   }
                   onChange={handleInputChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
@@ -219,7 +221,8 @@ export function FormProyecto({
                   type="number"
                   name="hr_ext_ver"
                   defaultValue={
-                    selectedLocalidad.hr_ext_ver || proyecto?.hr_ext_ver
+                    selectedLocalidad.hr_ext_ver ||
+                    Number(proyecto?.hr_ext_ver)
                   }
                   onChange={handleInputChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
@@ -241,7 +244,8 @@ export function FormProyecto({
                   name="temp_ext_inv"
                   step="0.01"
                   defaultValue={
-                    selectedLocalidad.temp_ext_inv || proyecto?.temp_ext_inv
+                    selectedLocalidad.temp_ext_inv ||
+                    Number(proyecto?.temp_ext_inv)
                   }
                   onChange={handleInputChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
@@ -262,7 +266,8 @@ export function FormProyecto({
                   type="number"
                   name="hr_ext_inv"
                   defaultValue={
-                    selectedLocalidad.hr_ext_inv || proyecto?.hr_ext_inv
+                    selectedLocalidad.hr_ext_inv ||
+                    Number(proyecto?.hr_ext_inv)
                   }
                   onChange={handleInputChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
@@ -282,7 +287,9 @@ export function FormProyecto({
                 <input
                   type="number"
                   name="altitud"
-                  defaultValue={selectedLocalidad.altitud || proyecto?.altitud}
+                  defaultValue={
+                    selectedLocalidad.altitud || Number(proyecto?.altitud)
+                  }
                   onChange={handleInputChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
@@ -327,7 +334,9 @@ export function FormProyecto({
                   type="number"
                   name="us_um"
                   step="0.01"
-                  defaultValue={selectedCoef["us/um"] || proyecto?.us_um}
+                  defaultValue={
+                    selectedCoef["us/um"] || Number(proyecto?.us_um)
+                  }
                   onChange={handleCoefChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
@@ -347,7 +356,7 @@ export function FormProyecto({
                   type="number"
                   name="uc"
                   step="0.01"
-                  defaultValue={selectedCoef["uc"] || proyecto?.uc}
+                  defaultValue={selectedCoef["uc"] || Number(proyecto?.uc)}
                   onChange={handleCoefChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
@@ -367,7 +376,9 @@ export function FormProyecto({
                   type="number"
                   name="ut_umd"
                   step="0.01"
-                  defaultValue={selectedCoef["ut/umd"] || proyecto?.ut_umd}
+                  defaultValue={
+                    selectedCoef["ut/umd"] || Number(proyecto?.ut_umd)
+                  }
                   onChange={handleCoefChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
@@ -387,7 +398,7 @@ export function FormProyecto({
                   type="number"
                   name="uh"
                   step="0.01"
-                  defaultValue={selectedCoef["uh"] || proyecto?.uh}
+                  defaultValue={selectedCoef["uh"] || Number(proyecto?.uh)}
                   onChange={handleCoefChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
@@ -407,7 +418,7 @@ export function FormProyecto({
                   type="number"
                   name="up"
                   step="0.01"
-                  defaultValue={selectedCoef["up"] || proyecto?.up}
+                  defaultValue={selectedCoef["up"] || Number(proyecto?.up)}
                   onChange={handleCoefChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
@@ -427,7 +438,7 @@ export function FormProyecto({
                   type="number"
                   name="uph"
                   step="0.01"
-                  defaultValue={selectedCoef["uph"] || proyecto?.uph}
+                  defaultValue={selectedCoef["uph"] || Number(proyecto?.uph)}
                   onChange={handleCoefChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
@@ -447,7 +458,7 @@ export function FormProyecto({
                   type="number"
                   name="upv"
                   step="0.01"
-                  defaultValue={selectedCoef["upv"] || proyecto?.upv}
+                  defaultValue={selectedCoef["upv"] || Number(proyecto?.upv)}
                   onChange={handleCoefChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
@@ -467,7 +478,7 @@ export function FormProyecto({
                   type="number"
                   name="uphv"
                   step="0.01"
-                  defaultValue={selectedCoef["uphv"] || proyecto?.uphv}
+                  defaultValue={selectedCoef["uphv"] || Number(proyecto?.uphv)}
                   onChange={handleCoefChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
@@ -490,7 +501,9 @@ export function FormProyecto({
                   type="number"
                   name="tph"
                   step="0.01"
-                  defaultValue={selectedTabiques["TPH"] || proyecto?.tph}
+                  defaultValue={
+                    selectedTabiques["TPH"] || Number(proyecto?.tph)
+                  }
                   onChange={handleTabiquesChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
@@ -510,7 +523,9 @@ export function FormProyecto({
                   type="number"
                   name="tpv"
                   step="0.01"
-                  defaultValue={selectedTabiques["TPV"] || proyecto?.tpv}
+                  defaultValue={
+                    selectedTabiques["TPV"] || Number(proyecto?.tpv)
+                  }
                   onChange={handleTabiquesChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
@@ -530,7 +545,9 @@ export function FormProyecto({
                   type="number"
                   name="tphv"
                   step="0.01"
-                  defaultValue={selectedTabiques["TPHV"] || proyecto?.tphv}
+                  defaultValue={
+                    selectedTabiques["TPHV"] || Number(proyecto?.tphv)
+                  }
                   onChange={handleTabiquesChange}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
@@ -552,7 +569,7 @@ export function FormProyecto({
                   type="number"
                   name="numero_personas"
                   step="0.01"
-                  defaultValue={proyecto?.numero_personas}
+                  defaultValue={Number(proyecto?.numero_personas)}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
               </div>
@@ -571,7 +588,7 @@ export function FormProyecto({
                   type="number"
                   name="w_persona"
                   step="0.01"
-                  defaultValue={proyecto?.w_persona}
+                  defaultValue={Number(proyecto?.w_persona)}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
               </div>
@@ -590,7 +607,7 @@ export function FormProyecto({
                   type="number"
                   name="caudales_ida"
                   step="0.01"
-                  defaultValue={proyecto?.caudales_ida}
+                  defaultValue={Number(proyecto?.caudales_ida)}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
               </div>
@@ -609,7 +626,7 @@ export function FormProyecto({
                   type="number"
                   name="caudales_aire"
                   step="0.01"
-                  defaultValue={proyecto?.caudales_aire}
+                  defaultValue={Number(proyecto?.caudales_aire)}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
               </div>
@@ -626,7 +643,7 @@ export function FormProyecto({
                 </label>
                 <select
                   name="tipo_lampara"
-                  defaultValue={proyecto?.tipo_lampara}
+                  defaultValue={Number(proyecto?.tipo_lampara)}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 >
                   <option value="fluorescente">Fluorescente</option>
@@ -648,7 +665,7 @@ export function FormProyecto({
                   type="number"
                   name="potencia_lampara"
                   step="0.01"
-                  defaultValue={proyecto?.potencia_lampara}
+                  defaultValue={Number(proyecto?.potencia_lampara)}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
               </div>
@@ -666,7 +683,7 @@ export function FormProyecto({
                 <input
                   type="number"
                   name="valor_seguridad"
-                  defaultValue={proyecto?.valor_seguridad}
+                  defaultValue={Number(proyecto?.valor_seguridad)}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
               </div>
@@ -684,7 +701,7 @@ export function FormProyecto({
                 <input
                   type="number"
                   name="carga_latente"
-                  defaultValue={proyecto?.carga_latente}
+                  defaultValue={Number(proyecto?.carga_latente)}
                   className="border-2 border-gray-300 rounded p-2 w-full"
                 />
               </div>
