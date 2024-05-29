@@ -42,6 +42,7 @@ export async function getIdUsuario(email) {
   return user.id;
 }
 
+
 export async function getProyectos() {
   try {
     const proyectos = await prisma.proyecto.findMany();
@@ -55,7 +56,7 @@ export async function getProyectos() {
 export async function newProyecto(formData) {
   try {
     const nombre = formData.get("nombre");
-    const userId = formData.get("usuario_correo");
+    const userId = formData.get("usuario_Id");
     const localidad = formData.get("localidad");
     const fechaDate = formData.get("fecha");
     const temp_ext_ver = Number(formData.get("temp_ext_ver"));

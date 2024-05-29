@@ -113,7 +113,7 @@ export function FormProyecto({
   };
   console.log(selectedCoef);
   console.log(selectedTabiques);
-  console.log(sesion);
+  console.log("Id usuario: " + sesion);
   return (
     <>
       <form action={action}>
@@ -121,7 +121,7 @@ export function FormProyecto({
           <input
             type="hidden"
             name="usuario_Id"
-            value={proyecto?.userId || sesion}
+            Defaultvalue={proyecto?.userId || sesion}
           />
           <div className="flex flex-col md:flex-row justify-around">
             <div>
