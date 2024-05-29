@@ -37,15 +37,26 @@ async function imgCreate(file) {
 export async function getIdUsuario(email) {
   const user = await prisma.user.findUnique({
     where: { email: email },
-  })
+  });
 
   return user.id;
 }
 
-
 export async function getProyectos() {
   try {
     const proyectos = await prisma.proyecto.findMany();
+    return proyectos;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+
+export async function getProyectosPorId(userId) {
+  try {
+    const proyectos = await prisma.proyecto.findMany({
+      where: { userId: userId },
+    });
     return proyectos;
   } catch (error) {
     console.log(error);

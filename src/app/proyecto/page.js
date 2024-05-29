@@ -1,4 +1,8 @@
-import { getProyectos } from "@/lib/actions-proyecto";
+import {
+  getProyectos,
+  getProyectosPorId,
+  getIdUsuario,
+} from "@/lib/actions-proyecto";
 import Tarjeta from "@/components/Tarjeta";
 import CardPrisma from "@/components/tarjetaprisma";
 import Link from "next/link";
@@ -7,8 +11,13 @@ import { auth } from "@/auth";
 export const dynamic = "force-dynamic";
 
 async function page() {
-  const proyectos = await getProyectos();
   const sesion = await auth();
+  const { user } = sesion;
+  console.log("USUARIO ACTUAL: " + user?.email);
+  const userId = await getIdUsuario(user?.email);
+  console.log("ID del usuario:" + userId);
+
+  const proyectos = await getProyectosPorId(userId);
 
   if (sesion === null) {
     return (
