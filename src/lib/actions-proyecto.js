@@ -4,7 +4,6 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 
-const sesion = await auth();
 async function imgCreate(file) {
   console.log(file);
 

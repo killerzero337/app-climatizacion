@@ -15,7 +15,9 @@ export default function RootLayout({ children }) {
     <html lang="en" viewport="width=device-width, initial-scale=1.0">
       <body className={inter.className}>
         <Nav />
+        <main className="mb-4">
         {children}
+        </main>
         <Footer />
       </body>
     </html>

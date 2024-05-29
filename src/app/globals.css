@@ -14,6 +14,7 @@ body {
   box-sizing: border-box;
   background-image: url(/fondo.jpeg);
   background-size: 50% 50% 50% 50%;
+  background-attachment: fixed;
   background-repeat:round;
   overflow-x: hidden;
   height: 100%;

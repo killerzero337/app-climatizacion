@@ -121,7 +121,7 @@ export function FormProyecto({
           <input
             type="hidden"
             name="usuario_Id"
-            Defaultvalue={proyecto?.userId || sesion}
+            defaultValue={proyecto?.userId || sesion}
           />
           <div className="flex flex-col md:flex-row justify-around">
             <div>
