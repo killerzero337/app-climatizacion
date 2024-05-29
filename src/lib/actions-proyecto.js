@@ -2,7 +2,7 @@
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { auth } from "@/auth";
+import cloudinary from "@/lib/cloudinary";
 
 async function imgCreate(file) {
   console.log(file);
@@ -68,7 +68,9 @@ export async function newProyecto(formData) {
     const nombre = formData.get("nombre");
     const userId = formData.get("usuario_Id");
     const localidad = formData.get("localidad");
-    const fechaDate = formData.get("fecha");
+    const fecha = formData.get("fecha")
+      ? formData.get("fecha" + "T00:00:00.000Z")
+      : new Date().toISOString();
     const temp_ext_ver = Number(formData.get("temp_ext_ver"));
     const temp_ext_inv = Number(formData.get("temp_ext_inv"));
     const hr_ext_inv = Number(formData.get("hr_ext_inv"));
@@ -95,8 +97,9 @@ export async function newProyecto(formData) {
     const valor_seguridad = Number(formData.get("valor_seguridad"));
     const carga_latente = Number(formData.get("carga_latente"));
     const comentarios = formData.get("comentarios");
-    const fecha = new Date(`${fechaDate}T00:00:00.000Z`);
     const imagen = formData.get("file");
+    const rutaImagen = await imgCreate(imagen);
+
     const proyecto = await prisma.proyecto.create({
       data: {
         nombre,
@@ -129,7 +132,7 @@ export async function newProyecto(formData) {
         potencia_lampara,
         valor_seguridad,
         comentarios,
-        imagen: await imgCreate(imagen),
+        imagen: rutaImagen,
       },
     });
 

@@ -1,5 +1,4 @@
 import {
-  getProyectos,
   getProyectosPorId,
   getIdUsuario,
 } from "@/lib/actions-proyecto";

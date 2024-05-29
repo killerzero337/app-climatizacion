@@ -12,14 +12,12 @@ function Imagen({ img }) {
         <>
             <img
                 id='imgPreview'
+                className='w-96 h-72 rounded'
                 src={img}
                 onDrop={dropHandler}
                 onDragOver={dragOverHandler}
                 onDoubleClick={dblclickHandler}
-                style={{
-                    objectFit: 'cover',
-                    objectPosition: 'center'
-                }}
+                
             />
             <input type='file'
                 name='file'

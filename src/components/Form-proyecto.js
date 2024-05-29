@@ -177,7 +177,6 @@ export function FormProyecto({
                 type="date"
                 name="fecha"
                 defaultValue={proyecto?.fecha}
-                onChange={handleInputChange}
               />
             </div>
           </div>
@@ -724,7 +723,7 @@ export function FormProyecto({
                     />
                   </Popover>
                 </label>
-                <div className="flex justify-center h-32 w-full">
+                <div className="flex justify-center h-72 w-full">
                   <Imagen
                     img={proyecto?.imagen ?? "/project-image-default.jpg"}
                   />
