@@ -8,17 +8,18 @@ export function FormProyecto({
   sesion,
   disabled = false,
 }) {
-  console.log(proyecto?.id);
+
   return (
-    <>
+    
       <form action={action}>
-        <fieldset disabled={disabled}>
-          <input type="hidden" name="id" defaultValue={proyecto?.id} />
+          <input type="hidden" name='id' defaultValue={proyecto?.id} />
           <input
             type="hidden"
             name="usuario_id"
             defaultValue={proyecto?.userId || sesion}
           />
+        <fieldset disabled={disabled}>
+
           <div className="flex flex-col md:flex-row justify-around">
             <div>
               <label className="block">Nombre de proyecto:</label>
@@ -391,7 +392,7 @@ export function FormProyecto({
           <Boton title={title} />
         </div>
       </form>
-    </>
+
   );
 }
 
