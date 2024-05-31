@@ -1,4 +1,4 @@
-function Articulo({ children, proyecto }) {
+function Proyecto({ children, proyecto }) {
   return (
     <div style={{ border: "1px solid lightgrey", padding: "50px" }}>
       <p>
@@ -51,4 +51,4 @@ function Articulo({ children, proyecto }) {
   );
 }
 
-export default Articulo;
+export default Proyecto;

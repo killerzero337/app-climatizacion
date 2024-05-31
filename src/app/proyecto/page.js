@@ -43,7 +43,9 @@ async function page() {
           <div className="flex flex-wrap gap-5 sm:gap-10 items-center justify-center">
             {proyectos.map((proyecto) => (
               <CardPrisma key={proyecto.id} proyecto={proyecto} />
+              
             ))}
+            
           </div>
         </div>
       </div>

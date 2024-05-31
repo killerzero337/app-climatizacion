@@ -6,18 +6,17 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "FloWeather",
-  description: "Pagina para realizar cuentas para climatizar hospedajes en tu ciudad",
-  manifest: '/manifest.json'
+  description:
+    "Pagina para realizar cuentas para climatizar hospedajes en tu ciudad",
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" viewport="width=device-width, initial-scale=1.0">
+    <html lang="en">
       <body className={inter.className}>
         <Nav />
-        <main className="mb-4">
-        {children}
-        </main>
+        <main className=" my-24">{children}</main>
         <Footer />
       </body>
     </html>

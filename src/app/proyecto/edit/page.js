@@ -22,6 +22,7 @@ async function page({ searchParams }) {
         <FormProyecto
           title={"Editar Proyecto"}
           sesion={userId}
+          id={searchParams.id}
           action={editProyecto}
           proyecto={proyecto}
         />

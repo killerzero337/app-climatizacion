@@ -6,7 +6,7 @@ function Menu({ sesion}) {
   
 
   return (
-    <nav className="bg-sky-400 border-gray-200 dark:bg-transparent -mx-[5%]">
+    <nav className="bg-sky-400 border-gray-200 dark:bg-transparent -mx-[10%]">
       <div className="max-w-screen-xl flex flex-wrap items-center mx-auto">
         <div className="">
           <Link

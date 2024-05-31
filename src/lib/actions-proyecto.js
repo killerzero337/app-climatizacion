@@ -66,11 +66,12 @@ export async function getProyectosPorId(userId) {
 export async function newProyecto(formData) {
   try {
     const nombre = formData.get("nombre");
-    const userId = formData.get("usuario_Id");
+    const userId = formData.get("usuario_id");
     const localidad = formData.get("localidad");
     const fecha = formData.get("fecha")
       ? formData.get("fecha" + "T00:00:00.000Z")
       : new Date().toISOString();
+    console.log(fecha);
     const temp_ext_ver = Number(formData.get("temp_ext_ver"));
     const temp_ext_inv = Number(formData.get("temp_ext_inv"));
     const hr_ext_inv = Number(formData.get("hr_ext_inv"));
@@ -96,6 +97,10 @@ export async function newProyecto(formData) {
     const potencia_lampara = Number(formData.get("potencia_lampara"));
     const valor_seguridad = Number(formData.get("valor_seguridad"));
     const carga_latente = Number(formData.get("carga_latente"));
+    const longitud = Number(formData.get("longitud"));
+    const anchura = Number(formData.get("anchura"));
+    const altura = Number(formData.get("altura"));
+    const volumen = Number(formData.get("volumen"));
     const comentarios = formData.get("comentarios");
     const imagen = formData.get("file");
     const rutaImagen = await imgCreate(imagen);
@@ -131,6 +136,10 @@ export async function newProyecto(formData) {
         tipo_lampara,
         potencia_lampara,
         valor_seguridad,
+        longitud,
+        anchura,
+        altura,
+        volumen,
         comentarios,
         imagen: rutaImagen,
       },
@@ -177,6 +186,10 @@ export async function editProyecto(formData) {
   const potencia_lampara = Number(formData.get("potencia_lampara"));
   const valor_seguridad = Number(formData.get("valor_seguridad"));
   const carga_latente = Number(formData.get("carga_latente"));
+  const longitud = Number(formData.get("longitud"));
+  const anchura = Number(formData.get("anchura"));
+  const altura = Number(formData.get("altura"));
+  const volumen = Number(formData.get("volumen"));
   const comentarios = formData.get("comentarios");
   const imagen = formData.get("file");
   const rutaImagen = await imgCreate(imagen);
@@ -208,6 +221,10 @@ export async function editProyecto(formData) {
         tph,
         tpv,
         tphv,
+        longitud,
+        anchura,
+        altura,
+        volumen,
         caudales_ida,
         caudales_aire,
         tipo_lampara,
@@ -229,7 +246,7 @@ export async function editProyecto(formData) {
 export async function deleteProyecto(formData) {
   try {
     const id = Number(formData.get("id"));
-
+    console.log("Delete: ", id);
     const proyecto = await prisma.proyecto.delete({
       where: {
         id: id,
