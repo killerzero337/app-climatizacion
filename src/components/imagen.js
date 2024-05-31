@@ -12,7 +12,7 @@ function Imagen({ img }) {
         <>
             <img
                 id='imgPreview'
-                className='w-96 h-72 rounded'
+                className='w-120 h-72 rounded object-cover'
                 src={img}
                 onDrop={dropHandler}
                 onDragOver={dragOverHandler}
