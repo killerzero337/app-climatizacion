@@ -360,7 +360,7 @@ export function FormProyecto({
                     src="/question.svg"
                     className="ml-2 w-5 h-5"
                     alt="info"
-                    data-title="Añadir comentario"
+                    title="Añadir comentario"
                     
                   />
                 </label>
@@ -368,7 +368,7 @@ export function FormProyecto({
                 <textarea 
                   name="comentarios"
                   placeholder="Comentarios"
-                  data-title="Añadir comentario del proyecto"
+                  title="Añadir comentario del proyecto"
                   maxLength={300}
                   defaultValue={proyecto?.comentarios}
                   className="border-2 border-gray-300 rounded p-2 w-full h-24"
