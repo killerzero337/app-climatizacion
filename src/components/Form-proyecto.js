@@ -8,17 +8,18 @@ export function FormProyecto({
   sesion,
   disabled = false,
 }) {
-  console.log(proyecto?.id);
+
   return (
-    <>
+    
       <form action={action}>
-        <fieldset disabled={disabled}>
-          <input type="hidden" name="id" defaultValue={proyecto?.id} />
+          <input type="hidden" name='id' defaultValue={proyecto?.id} />
           <input
             type="hidden"
             name="usuario_id"
             defaultValue={proyecto?.userId || sesion}
           />
+        <fieldset disabled={disabled}>
+
           <div className="flex flex-col md:flex-row justify-around">
             <div>
               <label className="block">Nombre de proyecto:</label>
@@ -360,10 +361,11 @@ export function FormProyecto({
                     className="ml-2 w-5 h-5"
                     alt="info"
                     title="Añadir comentario"
+                    
                   />
                 </label>
 
-                <textarea
+                <textarea 
                   name="comentarios"
                   placeholder="Comentarios"
                   title="Añadir comentario del proyecto"
@@ -391,7 +393,7 @@ export function FormProyecto({
           <Boton title={title} />
         </div>
       </form>
-    </>
+
   );
 }
 

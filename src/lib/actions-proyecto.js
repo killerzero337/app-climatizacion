@@ -15,12 +15,12 @@ async function imgCreate(file) {
   let fileUri = "data:" + mime + ";" + encoding + "," + base64Data;
 
   try {
-    // width: 600, aspect-ratio: 1
+    // width: 600, aspect-ratio: 1,6666...
     const result = await cloudinary.uploader.upload(fileUri, {
       invalidate: true,
       folder: "galeria",
       public_id: file.name.split(".").slice(0, -1).join("."),
-      aspect_ratio: "1.0",
+      aspect_ratio: "600:360",
       width: 600,
       crop: "fill",
       gravity: "center",
@@ -64,12 +64,11 @@ export async function getProyectosPorId(userId) {
 }
 
 export async function newProyecto(formData) {
-  try {
     const nombre = formData.get("nombre");
     const userId = formData.get("usuario_id");
     const localidad = formData.get("localidad");
     const fecha = formData.get("fecha")
-      ? formData.get("fecha" + "T00:00:00.000Z")
+      ? formData.get("fecha") + "T00:00:00.000Z"
       : new Date().toISOString();
     console.log(fecha);
     const temp_ext_ver = Number(formData.get("temp_ext_ver"));
@@ -105,6 +104,8 @@ export async function newProyecto(formData) {
     const imagen = formData.get("file");
     const rutaImagen = await imgCreate(imagen);
 
+    console.log('ACTION NEW: ', userId, nombre, localidad );
+    try {
     const proyecto = await prisma.proyecto.create({
       data: {
         nombre,
@@ -156,7 +157,7 @@ export async function newProyecto(formData) {
 export async function editProyecto(formData) {
   const id = Number(formData.get("id"));
   const nombre = formData.get("nombre");
-  const userId = formData.get("usuario_Id");
+  const userId = formData.get("usuario_id");
   const localidad = formData.get("localidad");
   const fecha = formData.get("fecha")
     ? formData.get("fecha") + "T00:00:00.000Z"
