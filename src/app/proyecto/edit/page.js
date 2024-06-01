@@ -1,6 +1,7 @@
 import React from "react";
 import FormProyecto from "@/components/Form-proyecto";
 import { editProyecto, getIdUsuario } from "@/lib/actions-proyecto";
+import { prisma } from "@/lib/prisma";
 import { auth } from "@/auth";
 
 export const dynamic = "force-dynamic";
