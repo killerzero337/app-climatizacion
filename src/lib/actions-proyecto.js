@@ -20,7 +20,7 @@ async function imgCreate(file) {
       invalidate: true,
       folder: "galeria",
       public_id: file.name.split(".").slice(0, -1).join("."),
-      aspect_ratio: "1.0",
+      aspect_ratio: "630:360",
       width: 600,
       crop: "fill",
       gravity: "center",
@@ -69,7 +69,7 @@ export async function newProyecto(formData) {
     const userId = formData.get("usuario_id");
     const localidad = formData.get("localidad");
     const fecha = formData.get("fecha")
-      ? formData.get("fecha" + "T00:00:00.000Z")
+      ? formData.get("fecha") + "T00:00:00.000Z"
       : new Date().toISOString();
     console.log(fecha);
     const temp_ext_ver = Number(formData.get("temp_ext_ver"));
@@ -156,7 +156,7 @@ export async function newProyecto(formData) {
 export async function editProyecto(formData) {
   const id = Number(formData.get("id"));
   const nombre = formData.get("nombre");
-  const userId = formData.get("usuario_Id");
+  const userId = formData.get("usuario_id");
   const localidad = formData.get("localidad");
   const fecha = formData.get("fecha")
     ? formData.get("fecha") + "T00:00:00.000Z"
@@ -242,21 +242,18 @@ export async function editProyecto(formData) {
   }
   redirect("/proyecto");
 }
-
 export async function deleteProyecto(formData) {
+  const id = Number(formData.get("id"));
   try {
-    const id = Number(formData.get("id"));
-    console.log("Delete: ", id);
+    console.log("ID recibido:", id);
     const proyecto = await prisma.proyecto.delete({
-      where: {
-        id: id,
-      },
+      where: { id: id },
     });
-    console.log(proyecto);
+
+    console.log("Proyecto eliminado:", proyecto);
     revalidatePath("/proyecto");
   } catch (error) {
-    console.log(error);
+    console.log("Error al eliminar el proyecto:", error);
   }
-
   redirect("/proyecto");
 }

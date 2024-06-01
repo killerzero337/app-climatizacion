@@ -14,7 +14,6 @@ async function page() {
       <div className="container items-center border-4 border-sky-400 dark:border-sky-700 p-8 rounded-md bg-gray-200/90 dark:bg-gray-900/90">
         <FormProyecto
           title={"Nuevo Proyecto"}
-          id={}
           sesion={userId}
           action={newProyecto}
         />

@@ -13,6 +13,8 @@ async function page({ searchParams }) {
       id: Number(searchParams.id),
     },
   });
+  console.log(searchParams.id);
+  console.log(typeof searchParams.id);
   console.log("USUARIO ACTUAL: " + user?.email);
   const userId = await getIdUsuario(user?.email);
   console.log("ID del usuario:" + userId);
@@ -22,6 +24,7 @@ async function page({ searchParams }) {
         <FormProyecto
           title={"Eliminar Proyecto"}
           sesion={userId}
+          id={Number(searchParams.id)}
           action={deleteProyecto}
           proyecto={proyecto}
           disabled={true}
