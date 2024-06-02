@@ -16,7 +16,7 @@ async function page() {
   console.log("USUARIO ACTUAL: " + user?.email);
   const userId = await getIdUsuario(user?.email);
   console.log("ID del usuario:" + userId);
-
+  const busqueda = "";
   const proyectos = await getProyectosPorId(userId);
 
   if (sesion?.user.role === "ADMIN") {
@@ -31,6 +31,11 @@ async function page() {
             >
               Crear Proyecto
             </Link>
+            <input
+              className="ml-5 text-center"
+              defaultValue={busqueda}
+              placeholder="Busqueda de proyectos"
+            ></input>
           </div>
           <div className="flex flex-wrap gap-5 sm:gap-10 items-center justify-center">
             {proyectos.map((proyecto) => (

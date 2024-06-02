@@ -10,8 +10,9 @@
 
 html {
   scroll-behavior: smooth;
-  scrollbar-width: none;
+  scrollbar-width: thin;
   scrollbar-gutter: stable;
+  scrollbar-color: rgb(1, 87, 121) white;
 }
 
 
