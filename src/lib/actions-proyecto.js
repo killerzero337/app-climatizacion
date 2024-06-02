@@ -41,6 +41,18 @@ export async function getIdUsuario(email) {
   return user.id;
 }
 
+export async function getNameUser(id) {
+  try {
+    const user = await prisma.user.findUnique({
+      where: { id: id },
+    });
+    return user ? user.name : null;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+}
+
 export async function getProyectos() {
   try {
     const proyectos = await prisma.proyecto.findMany();
