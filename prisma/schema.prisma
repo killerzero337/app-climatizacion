@@ -116,14 +116,11 @@ model Recinto {
   temperatura_ver_c_1 Float?
   temperatura_inv_c_1 Float?
   superficie_c_1      Float?
-  
 
   //Valores de techo
   techo_ubicacion String?
   techo_temp_ver  String?
   techo_temp_inv  String?
-
-  Suelo
 
   cerramiento1_ubicacion String?
 
