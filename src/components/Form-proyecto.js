@@ -66,7 +66,7 @@ export function FormProyecto({
                   src="/question.svg"
                   className="ml-2 w-5 h-5"
                   alt="info"
-                  title="Añadir comentario"
+                  title="Valor de temperatura verano"
                 />
               </label>
               <input
@@ -84,7 +84,7 @@ export function FormProyecto({
                   src="/question.svg"
                   className="ml-2 w-5 h-5"
                   alt="info"
-                  title="Añadir comentario"
+                  title="Valor de humedad verano"
                 />
               </label>
               <input
@@ -509,6 +509,23 @@ export function FormProyecto({
                 type="number"
                 name="carga_latente"
                 defaultValue={Number(proyecto?.carga_latente)}
+                className="border-2 border-gray-300 rounded p-2 w-full"
+              />
+            </div>
+            <div className="mb-2">
+              <label className="flex items-center">
+                ODA:
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Valor de ODA"
+                />
+              </label>
+              <input
+                type="text"
+                name="carga_latente"
+                defaultValue={proyecto?.carga_latente}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
             </div>

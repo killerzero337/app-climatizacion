@@ -66,6 +66,7 @@ model Proyecto {
   hr_ext_inv       Float?
   altitud          Float?
   zona_climatica   String?
+  oda              String?
   us_um            Float?
   uc               Float?
   ut_umd           Float?
