@@ -90,15 +90,43 @@ model Proyecto {
   imagen           String?
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @updatedAt
-  camaras          Camara[]
+  recintos         Recinto[]
 
   @@index([userId], name: "user_id_index")
 }
 
-model Camara {
-  id                     Int       @id @default(autoincrement())
-  nombre                 String?
-  orientacion            String?
-  proyecto               Proyecto? @relation(fields: [proyectoId], references: [id], onDelete: Cascade)
-  proyectoId             Int?
+model Recinto {
+  id     Int     @id @default(autoincrement())
+  nombre String?
+
+  // Valores relativos al recinto
+  T_ver_relativa  Float?
+  T_inv_relativa  Float?
+  hr_ver_relativa Float?
+  hr_inv_relativa Float?
+  longitud        Float?
+  anchura         Float?
+  altura          Float?
+  volumen         Float?
+  ida             String?
+
+  //Valores de cada recinto
+  orientacion         String?
+  ubicacion_c_1       String?
+  temperatura_ver_c_1 Float?
+  temperatura_inv_c_1 Float?
+  superficie_c_1      Float?
+  
+
+  //Valores de techo
+  techo_ubicacion String?
+  techo_temp_ver  String?
+  techo_temp_inv  String?
+
+  Suelo
+
+  cerramiento1_ubicacion String?
+
+  proyecto   Proyecto? @relation(fields: [proyectoId], references: [id], onDelete: Cascade)
+  proyectoId Int?
 }

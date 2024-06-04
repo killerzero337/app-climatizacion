@@ -382,7 +382,7 @@ export function FormProyecto({
               <input
                 type="number"
                 name="numero_personas"
-                step="0.01"
+                step="1"
                 defaultValue={Number(proyecto?.numero_personas)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
