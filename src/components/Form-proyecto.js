@@ -60,7 +60,15 @@ export function FormProyecto({
         <div className="mt-4 p-4 border rounded shadow-md">
           <div className="flex flex-col gap-4 md:grid md:grid-cols-3">
             <div className="mb-2">
-              <label className="flex items-center">Temperatura (Verano):</label>
+              <label className="flex items-center">
+                Temperatura (Verano):
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Añadir comentario"
+                />
+              </label>
               <input
                 type="number"
                 name="temp_ext_ver"
@@ -70,7 +78,15 @@ export function FormProyecto({
               />
             </div>
             <div className="mb-2">
-              <label className="flex items-center">Humedad (Verano):</label>
+              <label className="flex items-center">
+                Humedad (Verano):
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Añadir comentario"
+                />
+              </label>
               <input
                 type="number"
                 name="hr_ext_ver"
@@ -81,6 +97,12 @@ export function FormProyecto({
             <div className="mb-2">
               <label className="flex items-center">
                 Temperatura (Invierno):
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Valor de temperatura invierno"
+                />
               </label>
               <input
                 type="number"
@@ -91,7 +113,15 @@ export function FormProyecto({
               />
             </div>
             <div className="mb-2">
-              <label className="flex items-center">Humedad (Invierno):</label>
+              <label className="flex items-center">
+                Humedad (Invierno):
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Valor de humedad invierno"
+                />
+              </label>
               <input
                 type="number"
                 name="hr_ext_inv"
@@ -100,7 +130,15 @@ export function FormProyecto({
               />
             </div>
             <div className="mb-2">
-              <label className="flex items-center">Altitud:</label>
+              <label className="flex items-center">
+                Altitud:
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Valor de altitud"
+                />
+              </label>
               <input
                 type="number"
                 name="altitud"
@@ -109,7 +147,15 @@ export function FormProyecto({
               />
             </div>
             <div className="mb-2">
-              <label className="flex items-center">Zona climatica:</label>
+              <label className="flex items-center">
+                Zona climatica:
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Valor de zona climatica"
+                />
+              </label>
               <input
                 type="text"
                 name="zona_climatica"
@@ -121,7 +167,15 @@ export function FormProyecto({
 
           <div className="mt-4 p-4 border rounded shadow-md grid grid-cols-1 gap-4 md:grid-cols-4">
             <div className="mb-2">
-              <label className="flex items-center">us/um:</label>
+              <label className="flex items-center">
+                us/um:
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Valor de us/um"
+                />
+              </label>
               <input
                 type="number"
                 name="us_um"
@@ -131,7 +185,15 @@ export function FormProyecto({
               />
             </div>
             <div className="mb-2">
-              <label className="flex items-center">uc:</label>
+              <label className="flex items-center">
+                uc:
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Valor de uc"
+                />
+              </label>
               <input
                 type="number"
                 name="uc"
@@ -141,7 +203,15 @@ export function FormProyecto({
               />
             </div>
             <div className="mb-2">
-              <label className="flex items-center">ut/umd:</label>
+              <label className="flex items-center">
+                ut/umd:
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Valor de ut/umd"
+                />
+              </label>
               <input
                 type="number"
                 name="ut_umd"
@@ -151,7 +221,15 @@ export function FormProyecto({
               />
             </div>
             <div className="mb-2">
-              <label className="flex items-center">uh:</label>
+              <label className="flex items-center">
+                uh:
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Valor de uh"
+                />
+              </label>
               <input
                 type="number"
                 name="uh"
@@ -161,7 +239,15 @@ export function FormProyecto({
               />
             </div>
             <div className="mb-2">
-              <label className="flex items-center">up:</label>
+              <label className="flex items-center">
+                up:
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Valor de up"
+                />
+              </label>
               <input
                 type="number"
                 name="up"
@@ -171,7 +257,15 @@ export function FormProyecto({
               />
             </div>
             <div className="mb-2">
-              <label className="flex items-center">uph:</label>
+              <label className="flex items-center">
+                uph:
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Valor de uph"
+                />
+              </label>
               <input
                 type="number"
                 name="uph"
@@ -181,7 +275,15 @@ export function FormProyecto({
               />
             </div>
             <div className="mb-2">
-              <label className="flex items-center">upv:</label>
+              <label className="flex items-center">
+                upv:
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Valor de upv"
+                />
+              </label>
               <input
                 type="number"
                 name="upv"
@@ -191,7 +293,15 @@ export function FormProyecto({
               />
             </div>
             <div className="mb-2">
-              <label className="flex items-center">uphv:</label>
+              <label className="flex items-center">
+                uphv:
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Valor de uphv"
+                />
+              </label>
               <input
                 type="number"
                 name="uphv"
@@ -204,7 +314,15 @@ export function FormProyecto({
 
           <div className="mt-4 p-4 border rounded shadow-md grid grid-cols-1 gap-4 md:grid-cols-3">
             <div className="mb-2">
-              <label className="flex items-center">TPH:</label>
+              <label className="flex items-center">
+                TPH:
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Valor de TPH"
+                />
+              </label>
               <input
                 type="number"
                 name="tph"
@@ -214,7 +332,15 @@ export function FormProyecto({
               />
             </div>
             <div className="mb-2">
-              <label className="flex items-center">TPV:</label>
+              <label className="flex items-center">
+                TPV:
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Valor de TPV"
+                />
+              </label>
               <input
                 type="number"
                 name="tpv"
@@ -224,7 +350,15 @@ export function FormProyecto({
               />
             </div>
             <div className="mb-2">
-              <label className="flex items-center">TPHV:</label>
+              <label className="flex items-center">
+                TPHV:
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Valor de TPV / TPH"
+                />
+              </label>
               <input
                 type="number"
                 name="tphv"
@@ -236,7 +370,15 @@ export function FormProyecto({
           </div>
           <div className="mt-4 p-4 border rounded shadow-md grid grid-cols-1 gap-4 md:grid-cols-3">
             <div className="mb-2">
-              <label className="flex items-center">Numero personas:</label>
+              <label className="flex items-center">
+                Numero personas:
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Numero de personas"
+                />
+              </label>
               <input
                 type="number"
                 name="numero_personas"
@@ -246,7 +388,15 @@ export function FormProyecto({
               />
             </div>
             <div className="mb-2">
-              <label className="flex items-center">W por persona:</label>
+              <label className="flex items-center">
+                W por persona:
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="w por persona"
+                />
+              </label>
               <input
                 type="number"
                 name="w_persona"
@@ -256,7 +406,15 @@ export function FormProyecto({
               />
             </div>
             <div className="mb-2">
-              <label className="flex items-center">Caudales por IDA:</label>
+              <label className="flex items-center">
+                Caudales por IDA:
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Caudales por IDA"
+                />
+              </label>
               <input
                 type="number"
                 name="caudales_ida"
@@ -266,7 +424,15 @@ export function FormProyecto({
               />
             </div>
             <div className="mb-2">
-              <label className="flex items-center">Caudales de aire m3:</label>
+              <label className="flex items-center">
+                Caudales de aire m3:
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Caudales de aire m3"
+                />
+              </label>
               <input
                 type="number"
                 name="caudales_aire"
@@ -276,10 +442,18 @@ export function FormProyecto({
               />
             </div>
             <div className="mb-2">
-              <label className="flex items-center">Tipo lamapara:</label>
+              <label className="flex items-center">
+                Tipo lamapara:
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Permite introducir el tipo de lampara"
+                />
+              </label>
               <select
                 name="tipo_lampara"
-                defaultValue={Number(proyecto?.tipo_lampara)}
+                defaultValue={proyecto?.tipo_lampara}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               >
                 <option value="fluorescente">Fluorescente</option>
@@ -287,7 +461,15 @@ export function FormProyecto({
               </select>
             </div>
             <div className="mb-2">
-              <label className="flex items-center">Potencia luminica:</label>
+              <label className="flex items-center">
+                Potencia luminica:
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Permite introducir la potencia luminica"
+                />
+              </label>
               <input
                 type="number"
                 name="potencia_lampara"
@@ -297,7 +479,15 @@ export function FormProyecto({
               />
             </div>
             <div className="mb-2">
-              <label className="flex items-center">Factor seguridad:</label>
+              <label className="flex items-center">
+                Factor seguridad:
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Permite introducir el valor de seguridad"
+                />
+              </label>
               <input
                 type="number"
                 name="valor_seguridad"
@@ -306,7 +496,15 @@ export function FormProyecto({
               />
             </div>
             <div className="mb-2">
-              <label className="flex items-center">Carga latente:</label>
+              <label className="flex items-center">
+                Carga latente:
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="permite introducir el valor de carga latente"
+                />
+              </label>
               <input
                 type="number"
                 name="carga_latente"
@@ -315,44 +513,7 @@ export function FormProyecto({
               />
             </div>
           </div>
-          <div className="mt-4 p-4 border rounded shadow-md grid grid-cols-1 gap-4 md:grid-cols-3">
-            <div className="mb-2">
-              <label className="flex items-center">Longitud:</label>
-              <input
-                type="number"
-                name="longitud"
-                defaultValue={Number(proyecto?.longitud)}
-                className="border-2 border-gray-300 rounded p-2 w-full"
-              />
-            </div>
-            <div className="mb-2">
-              <label className="flex items-center">Anchura:</label>
-              <input
-                type="number"
-                name="anchura"
-                defaultValue={Number(proyecto?.anchura)}
-                className="border-2 border-gray-300 rounded p-2 w-full"
-              />
-            </div>
-            <div className="mb-2">
-              <label className="flex items-center">Altura:</label>
-              <input
-                type="number"
-                name="altura"
-                defaultValue={Number(proyecto?.altura)}
-                className="border-2 border-gray-300 rounded p-2 w-full"
-              />
-            </div>
-            <div className="mb-2">
-              <label className="flex items-center">Volumen:</label>
-              <input
-                type="number"
-                name="volumen"
-                defaultValue={Number(proyecto?.volumen)}
-                className="border-2 border-gray-300 rounded p-2 w-full"
-              />
-            </div>
-          </div>
+
           <div className="mt-4 p-4 border rounded shadow-md">
             <div className="mb-2">
               <label className="flex items-center">

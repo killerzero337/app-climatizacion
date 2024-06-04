@@ -82,31 +82,32 @@ model Proyecto {
   carga_latente    Float?
   caudales_ida     Float?
   caudales_aire    Float?
-  tipo_lampara     String
+  tipo_lampara     String?
   potencia_lampara Float?
   valor_seguridad  Float?
-  longitud         Float?
-  anchura          Float?
-  altura           Float?
-  volumen          Float?
   comentarios      String?
   imagen           String?
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @updatedAt
-  camaras           Camara[]
+  camaras          Camara[]
 
   @@index([userId], name: "user_id_index")
 }
 
 model Camara {
   id                     Int       @id @default(autoincrement())
+  nombre                 String?
   orientacion            String?
+  longitud               Float?
+  anchura                Float?
+  altura                 Float?
+  volumen                Float?
   cerramiento_inv        Int?
   cerramiento_ver        Int?
   superficie_cerramiento Float?
   superficie_vidrio      Float?
   tipo_vidrio            String?
   superficie_puerta      Float?
-  proyecto               Proyecto? @relation(fields: [proyectoId], references: [id])
+  proyecto               Proyecto? @relation(fields: [proyectoId], references: [id], onDelete: Cascade)
   proyectoId             Int?
 }
