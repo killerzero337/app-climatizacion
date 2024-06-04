@@ -524,8 +524,8 @@ export function FormProyecto({
               </label>
               <input
                 type="text"
-                name="carga_latente"
-                defaultValue={proyecto?.carga_latente}
+                name="oda"
+                defaultValue={proyecto?.oda}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
             </div>

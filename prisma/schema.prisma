@@ -99,16 +99,6 @@ model Camara {
   id                     Int       @id @default(autoincrement())
   nombre                 String?
   orientacion            String?
-  longitud               Float?
-  anchura                Float?
-  altura                 Float?
-  volumen                Float?
-  cerramiento_inv        Int?
-  cerramiento_ver        Int?
-  superficie_cerramiento Float?
-  superficie_vidrio      Float?
-  tipo_vidrio            String?
-  superficie_puerta      Float?
   proyecto               Proyecto? @relation(fields: [proyectoId], references: [id], onDelete: Cascade)
   proyectoId             Int?
 }

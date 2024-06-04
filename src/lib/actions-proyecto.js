@@ -109,10 +109,7 @@ export async function newProyecto(formData) {
     const potencia_lampara = Number(formData.get("potencia_lampara"));
     const valor_seguridad = Number(formData.get("valor_seguridad"));
     const carga_latente = Number(formData.get("carga_latente"));
-    const longitud = Number(formData.get("longitud"));
-    const anchura = Number(formData.get("anchura"));
-    const altura = Number(formData.get("altura"));
-    const volumen = Number(formData.get("volumen"));
+    const oda = formData.get("oda");
     const comentarios = formData.get("comentarios");
     const imagen = formData.get("file");
     const rutaImagen = await imgCreate(imagen);
@@ -148,10 +145,7 @@ export async function newProyecto(formData) {
         tipo_lampara,
         potencia_lampara,
         valor_seguridad,
-        longitud,
-        anchura,
-        altura,
-        volumen,
+        oda,
         comentarios,
         imagen: rutaImagen,
       },
@@ -198,10 +192,7 @@ export async function editProyecto(formData) {
   const potencia_lampara = Number(formData.get("potencia_lampara"));
   const valor_seguridad = Number(formData.get("valor_seguridad"));
   const carga_latente = Number(formData.get("carga_latente"));
-  const longitud = Number(formData.get("longitud"));
-  const anchura = Number(formData.get("anchura"));
-  const altura = Number(formData.get("altura"));
-  const volumen = Number(formData.get("volumen"));
+  const oda = formData.get("oda");
   const comentarios = formData.get("comentarios");
   const imagen = formData.get("file");
   const rutaImagen = await imgCreate(imagen);
@@ -233,10 +224,7 @@ export async function editProyecto(formData) {
         tph,
         tpv,
         tphv,
-        longitud,
-        anchura,
-        altura,
-        volumen,
+        oda,
         caudales_ida,
         caudales_aire,
         tipo_lampara,
