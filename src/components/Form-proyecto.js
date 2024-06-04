@@ -383,6 +383,8 @@ export function FormProyecto({
                 type="number"
                 name="numero_personas"
                 step="1"
+                max="100"
+                min="0"
                 defaultValue={Number(proyecto?.numero_personas)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
