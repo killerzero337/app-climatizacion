@@ -15,17 +15,17 @@ export async function newCamara(formData, id_proyecto) {
         id_proyecto: id_proyecto,
       },
     });
-    revalidatePath(`/proyecto/${id_proyecto}`);
+    revalidatePath(`/camara/${id_proyecto}/${camara.id}`);
     return camara;
   } catch (error) {
     console.log(error);
     return null;
   }
 }
-export async function getCamaras(id_proyecto) {
+export async function getRecintos(proyectoId) {
   try {
     const camaras = await prisma.camara.findMany({
-      where: { id_proyecto: id_proyecto },
+      where: { proyectoId: proyectoId },
     });
     return camaras;
   } catch (error) {

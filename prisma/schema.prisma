@@ -100,8 +100,8 @@ model Recinto {
   nombre String?
 
   // Valores relativos al recinto
-  T_ver_relativa  Float?
-  T_inv_relativa  Float?
+  t_ver_relativa  Float?
+  t_inv_relativa  Float?
   hr_ver_relativa Float?
   hr_inv_relativa Float?
   longitud        Float?
@@ -159,8 +159,6 @@ model Recinto {
   techo_ubicacion String?
   techo_temp_ver  Float?
   techo_temp_inv  Float?
-
-  cerramiento1_ubicacion String?
 
   proyecto   Proyecto? @relation(fields: [proyectoId], references: [id], onDelete: Cascade)
   proyectoId Int?
