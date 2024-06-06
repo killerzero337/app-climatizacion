@@ -14,7 +14,7 @@ function Menu({ sesion}) {
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <img src="/cli-logo.svg" className="h-12" alt="FloWeather Logo" />
-            <span className="xs:hidden  self-center text-2xl font-semibold whitespace-nowrap text-gray-100/80">
+            <span className="xs:hidden  self-center text-2xl font-semibold whitespace-nowrap text-gray-900 dark:text-gray-100/80">
               FloWeather
             </span>
           </Link>

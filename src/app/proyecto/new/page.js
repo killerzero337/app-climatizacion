@@ -22,7 +22,7 @@ async function page() {
                 pathname: "/proyecto/ayuda",
               }}
               target="_blank"
-              className="text-blue-100 animate-pulse"
+              className="dark:text-blue-100 text-blue-500 animate-pulse"
             >
               Si necesita ayuda consulte este enlace.
             </Link>
