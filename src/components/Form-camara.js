@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import Boton from "@/components/boton";
 import ListaProyectos from "@/components/listaProyectos";
+import Spinner from "@/components/spinner";
 export function Formcamara({
   action,
   title,
@@ -25,7 +26,7 @@ export function Formcamara({
               className="border-2 border-gray-300 rounded p-2"
             />
           </div>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<Spinner />}>
             <ListaProyectos proyectoId={proyectoId} disabled={disabled} />
           </Suspense>
         </div>
@@ -150,10 +151,10 @@ export function Formcamara({
                 defaultValue={camara?.orientacion}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               >
-                <option value="ida1">Norte</option>
-                <option value="ida2">Sur</option>
-                <option value="ida3">Este</option>
-                <option value="ida4">Oeste</option>
+                <option value="norte">Norte</option>
+                <option value="sur">Sur</option>
+                <option value="este">Este</option>
+                <option value="oeste">Oeste</option>
               </select>
             </div>
             <div className="mb-2">
@@ -190,7 +191,17 @@ export function Formcamara({
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
             </div>
-
+            <div className="mb-2">
+              <label className="flex items-center">
+                Superficie cerramiento (m2):
+              </label>
+              <input
+                type="number"
+                name="superficie_c_1"
+                defaultValue={Number(camara?.superficie_c_1)}
+                className="border-2 border-gray-300 rounded p-2 w-full"
+              />
+            </div>
             <div className="mb-2">
               <label className="flex items-center">Tipo de vidrio:</label>
               <select
@@ -210,7 +221,7 @@ export function Formcamara({
               <input
                 type="number"
                 name="superficie_vidrio_c_1"
-                defaultValue={Number(camara?.superficie_c_1)}
+                defaultValue={Number(camara?.superficie_vidrio_c_1)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
             </div>
@@ -232,7 +243,7 @@ export function Formcamara({
             <div className="mb-2">
               <label className="flex items-center">Ubicacion:</label>{" "}
               <select
-                name="ubicacion_c_1"
+                name="ubicacion_c_2"
                 defaultValue={camara?.ubicacion_c_2}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               >
@@ -246,7 +257,7 @@ export function Formcamara({
               </label>
               <input
                 type="number"
-                name="temperatura_ver_c_1"
+                name="temperatura_ver_c_2"
                 defaultValue={Number(camara?.temperatura_ver_c_2)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -258,16 +269,26 @@ export function Formcamara({
               </label>
               <input
                 type="number"
-                name="temperatura_inv_c_1"
+                name="temperatura_inv_c_2"
                 defaultValue={Number(camara?.temperatura_inv_c_2)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
             </div>
-
+            <div className="mb-2">
+              <label className="flex items-center">
+                Superficie cerramiento (m2):
+              </label>
+              <input
+                type="number"
+                name="superficie_c_2"
+                defaultValue={Number(camara?.superficie_c_2)}
+                className="border-2 border-gray-300 rounded p-2 w-full"
+              />
+            </div>
             <div className="mb-2">
               <label className="flex items-center">Tipo de vidrio:</label>
               <select
-                name="tipo_vidrio_c_1"
+                name="tipo_vidrio_c_2"
                 defaultValue={camara?.tipo_vidrio_c_2}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               >
@@ -282,8 +303,8 @@ export function Formcamara({
               <label className="flex items-center">Superficie vidrio:</label>
               <input
                 type="number"
-                name="superficie_vidrio_c_1"
-                defaultValue={Number(camara?.superficie_c_2)}
+                name="superficie_vidrio_c_2"
+                defaultValue={Number(camara?.superficie_vidrio_c_2)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
             </div>
@@ -292,7 +313,7 @@ export function Formcamara({
               <label className="flex items-center">Superficie Puertas:</label>
               <input
                 type="number"
-                name="superficie_puertas_c_1"
+                name="superficie_puertas_c_2"
                 defaultValue={Number(camara?.superficie_puertas_c_2)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -305,7 +326,7 @@ export function Formcamara({
             <div className="mb-2">
               <label className="flex items-center">Ubicacion:</label>{" "}
               <select
-                name="ubicacion_c_1"
+                name="ubicacion_c_3"
                 defaultValue={camara?.ubicacion_c_3}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               >
@@ -319,7 +340,7 @@ export function Formcamara({
               </label>
               <input
                 type="number"
-                name="temperatura_ver_c_1"
+                name="temperatura_ver_c_3"
                 defaultValue={Number(camara?.temperatura_ver_c_3)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -331,16 +352,26 @@ export function Formcamara({
               </label>
               <input
                 type="number"
-                name="temperatura_inv_c_1"
+                name="temperatura_inv_c_3"
                 defaultValue={Number(camara?.temperatura_inv_c_3)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
             </div>
-
+            <div className="mb-2">
+              <label className="flex items-center">
+                Superficie cerramiento (m2):
+              </label>
+              <input
+                type="number"
+                name="superficie_c_3"
+                defaultValue={Number(camara?.superficie_c_3)}
+                className="border-2 border-gray-300 rounded p-2 w-full"
+              />
+            </div>
             <div className="mb-2">
               <label className="flex items-center">Tipo de vidrio:</label>
               <select
-                name="tipo_vidrio_c_1"
+                name="tipo_vidrio_c_3"
                 defaultValue={camara?.tipo_vidrio_c_3}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               >
@@ -355,8 +386,8 @@ export function Formcamara({
               <label className="flex items-center">Superficie vidrio:</label>
               <input
                 type="number"
-                name="superficie_vidrio_c_1"
-                defaultValue={Number(camara?.superficie_c_3)}
+                name="superficie_vidrio_c_3"
+                defaultValue={Number(camara?.superficie_vidrio_c_3)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
             </div>
@@ -365,7 +396,7 @@ export function Formcamara({
               <label className="flex items-center">Superficie Puertas:</label>
               <input
                 type="number"
-                name="superficie_puertas_c_1"
+                name="superficie_puertas_c_3"
                 defaultValue={Number(camara?.superficie_puertas_c_3)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -378,7 +409,7 @@ export function Formcamara({
             <div className="mb-2">
               <label className="flex items-center">Ubicacion:</label>{" "}
               <select
-                name="ubicacion_c_1"
+                name="ubicacion_c_4"
                 defaultValue={camara?.ubicacion_c_4}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               >
@@ -392,7 +423,7 @@ export function Formcamara({
               </label>
               <input
                 type="number"
-                name="temperatura_ver_c_1"
+                name="temperatura_ver_c_4"
                 defaultValue={Number(camara?.temperatura_ver_c_4)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -404,16 +435,26 @@ export function Formcamara({
               </label>
               <input
                 type="number"
-                name="temperatura_inv_c_1"
+                name="temperatura_inv_c_4"
                 defaultValue={Number(camara?.temperatura_inv_c_4)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
             </div>
-
+            <div className="mb-2">
+              <label className="flex items-center">
+                Superficie cerramiento (m2):
+              </label>
+              <input
+                type="number"
+                name="superficie_c_4"
+                defaultValue={Number(camara?.superficie_c_4)}
+                className="border-2 border-gray-300 rounded p-2 w-full"
+              />
+            </div>
             <div className="mb-2">
               <label className="flex items-center">Tipo de vidrio:</label>
               <select
-                name="tipo_vidrio_c_1"
+                name="tipo_vidrio_c_4"
                 defaultValue={camara?.tipo_vidrio_c_4}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               >
@@ -428,8 +469,8 @@ export function Formcamara({
               <label className="flex items-center">Superficie vidrio:</label>
               <input
                 type="number"
-                name="superficie_vidrio_c_1"
-                defaultValue={Number(camara?.superficie_c_4)}
+                name="superficie_vidrio_c_4"
+                defaultValue={Number(camara?.superficie_vidrio_c_4)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
             </div>
@@ -438,12 +479,20 @@ export function Formcamara({
               <label className="flex items-center">Superficie Puertas:</label>
               <input
                 type="number"
-                name="superficie_puertas_c_1"
+                name="superficie_puertas_c_4"
                 defaultValue={Number(camara?.superficie_puertas_c_4)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
             </div>
           </div>
+        </div>
+        <div className="mt-2">Suelo:</div>
+        <div className="mt-4 p-4 border rounded shadow-md">
+          <div className="flex flex-col gap-4 md:grid md:grid-cols-4"></div>
+        </div>
+        <div className="mt-2">Techo:</div>
+        <div className="mt-4 p-4 border rounded shadow-md">
+          <div className="flex flex-col gap-4 md:grid md:grid-cols-4"></div>
         </div>
       </fieldset>
       <div className="flex justify-center items-center mt-4">
