@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Boton from "@/components/boton";
+import ListaProyectos from "@/components/listaProyectos";
 export function Formcamara({
   action,
   title,
@@ -24,6 +25,9 @@ export function Formcamara({
               className="border-2 border-gray-300 rounded p-2"
             />
           </div>
+          <Suspense fallback={<div>Loading...</div>}>
+            <ListaProyectos proyectoId={proyectoId} disabled={disabled} />
+          </Suspense>
         </div>
         <div className="mt-4 p-4 border rounded shadow-md">
           <div className="flex flex-col gap-4 md:grid md:grid-cols-4">
