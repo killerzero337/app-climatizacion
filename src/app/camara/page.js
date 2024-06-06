@@ -3,6 +3,7 @@ import { useSearchParams } from "next/navigation";
 import Tarjeta from "@/components/Tarjeta";
 import Link from "next/link";
 function EditPage() {
+  const searchParam = useSearchParams();
   const id = searchParam.get("id");
   return (
     <Tarjeta>
