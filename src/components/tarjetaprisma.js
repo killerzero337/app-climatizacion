@@ -1,11 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { auth } from "@/auth";
-import {
-  getIdUsuario,
-  getProyectos,
-  getNameUser,
-} from "@/lib/actions-proyecto";
+import { getNameUser } from "@/lib/actions-proyecto";
 
 async function tarjetaPrisma({ proyecto }) {
   const sesion = await auth();

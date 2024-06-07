@@ -63,6 +63,21 @@ export async function getProyectos() {
   }
 }
 
+export async function getProyecto(id) {
+  try {
+    const proyectos = await prisma.proyecto.findUnique({
+      where: { id: Number(id) },
+      include: {
+        recintos: true,
+      },
+    });
+    return proyectos;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+
 export async function getProyectosPorId(userId) {
   try {
     const proyectos = await prisma.proyecto.findMany({
