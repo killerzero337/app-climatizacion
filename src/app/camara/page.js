@@ -24,7 +24,7 @@ async function Page({ searchParams }) {
           </div>
           <div className="flex flex-wrap gap-5 sm:gap-10 items-center justify-center">
             {recintos.map((recinto) => (
-              <CamaraTarjeta key={recinto.id} proyecto={recinto} />
+              <CamaraTarjeta key={recinto.id} camara={recinto} />
             ))}
           </div>
         </div>

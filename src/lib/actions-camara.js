@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { getProyectos } from "@/lib/actions-proyecto";
 
 export async function newRecinto(formData) {
+  let redirectUrl;
   try {
     const nombre = formData.get("nombre");
     const proyectoId = Number(formData.get("proyectoId"));
@@ -126,12 +127,13 @@ export async function newRecinto(formData) {
 
     console.log(recinto);
     revalidatePath("/camara");
+    redirectUrl = `/camara?id=${proyectoId}`;
   } catch (error) {
     console.log(error);
     // console.log(recinto)
     console.log("Error al crear el cerramiento");
   }
-  redirect("/camara");
+  redirect(redirectUrl);
 }
 
 export async function getRecintos(proyectoId) {
@@ -148,6 +150,4 @@ export async function getRecintos(proyectoId) {
   }
 }
 
-export async function Camaras(id) {
-  
-} 
+export async function Camaras(id) {}

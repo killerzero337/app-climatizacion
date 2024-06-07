@@ -2,6 +2,9 @@ import React from "react";
 import Link from "next/link";
 
 async function tarjetaPrismacamara({ camara }) {
+  {
+    console.log(camara);
+  }
   return (
     <>
       <div className="relative mx-auto max-w-md rounded-lg bg-gradient-to-tr from-pink-300 to-blue-300 p-0.5 shadow-lg">
