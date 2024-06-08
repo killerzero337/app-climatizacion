@@ -12,7 +12,7 @@ async function Page({ searchParams }) {
 
   return (
     <Tarjeta>
-      <div className="container mx-auto p-8 border-4 border-sky-400 dark:border-sky-700 rounded-md bg-gray-200/90 dark:bg-gray-900/90">
+      
         <div className="flex justify-center mb-6">
           <Link
             href="/camara/new"
@@ -26,7 +26,7 @@ async function Page({ searchParams }) {
             <CamaraTarjeta key={recinto.id} camara={recinto} />
           ))}
         </div>
-      </div>
+      
       <div className="mt-4 p-4 border rounded shadow-md w-full">
         <div className="flex ">
           {qv_sens_ocup(proyecto?.temp_ext_ver, proyecto?.hr_ext_ver)}

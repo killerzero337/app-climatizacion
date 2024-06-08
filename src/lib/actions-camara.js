@@ -150,4 +150,21 @@ export async function getRecintos(proyectoId) {
   }
 }
 
-export async function Camaras(id) {}
+export async function deleteCamara(formData) {
+  let redirectUrl;
+
+  try {
+    const id = Number(formData.get("id"));
+    const proyectoId = formData.get("proyecto_id");
+    console.log("ID recibido:", proyectoId);
+    const recinto = await prisma.recinto.delete({
+      where: { id: id },
+    });
+    console.log("Camaras eliminado:", recinto);
+    revalidatePath("/camara");
+    redirectUrl = `/camara?id=${proyectoId}`;
+  } catch (error) {
+    console.log("Error al eliminar el cerramiento:", error);
+  }
+  redirect(redirectUrl);
+}

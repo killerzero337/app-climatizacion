@@ -26,9 +26,6 @@ export function Formcamara({
               className="border-2 border-gray-300 rounded p-2"
             />
           </div>
-          <Suspense fallback={<Spinner />}>
-            <ListaProyectos proyectoId={proyectoId} disabled={disabled} />
-          </Suspense>
         </div>
         <div className="mt-4 p-4 border rounded shadow-md">
           <div className="flex flex-col gap-4 md:grid md:grid-cols-4">
@@ -495,6 +492,9 @@ export function Formcamara({
           <div className="flex flex-col gap-4 md:grid md:grid-cols-4"></div>
         </div>
       </fieldset>
+      <Suspense fallback={<Spinner />}>
+        <ListaProyectos proyectoId={camara?.proyectoId} disabled={disabled} />
+      </Suspense>
       <div className="flex justify-center items-center mt-4">
         <Boton title={title} />
       </div>
