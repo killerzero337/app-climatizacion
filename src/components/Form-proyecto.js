@@ -72,7 +72,8 @@ export function FormProyecto({
               <input
                 type="number"
                 name="temp_ext_ver"
-                step="0.01"
+                min={"-100"}
+                max={"100"}
                 defaultValue={Number(proyecto?.temp_ext_ver)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -90,6 +91,8 @@ export function FormProyecto({
               <input
                 type="number"
                 name="hr_ext_ver"
+                min={"0"}
+                max={"100"}
                 defaultValue={Number(proyecto?.hr_ext_ver)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -107,7 +110,8 @@ export function FormProyecto({
               <input
                 type="number"
                 name="temp_ext_inv"
-                step="0.01"
+                min={"-100"}
+                max={"100"}
                 defaultValue={Number(proyecto?.temp_ext_inv)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -125,6 +129,8 @@ export function FormProyecto({
               <input
                 type="number"
                 name="hr_ext_inv"
+                min={"0"}
+                max={"100"}
                 defaultValue={Number(proyecto?.hr_ext_inv)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -142,6 +148,8 @@ export function FormProyecto({
               <input
                 type="number"
                 name="altitud"
+                min={"0"}
+                max={"10000"}
                 defaultValue={Number(proyecto?.altitud)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -156,12 +164,16 @@ export function FormProyecto({
                   title="Valor de zona climatica"
                 />
               </label>
-              <input
-                type="text"
+              <select
                 name="zona_climatica"
                 defaultValue={proyecto?.zona_climatica}
                 className="border-2 border-gray-300 rounded p-2 w-full"
-              />
+              >
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+              </select>
             </div>
           </div>
 
@@ -179,6 +191,8 @@ export function FormProyecto({
               <input
                 type="number"
                 name="us_um"
+                min={"0"}
+                max={"1"}
                 step="0.01"
                 defaultValue={Number(proyecto?.us_um)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
@@ -197,6 +211,8 @@ export function FormProyecto({
               <input
                 type="number"
                 name="uc"
+                min={"0"}
+                max={"1"}
                 step="0.01"
                 defaultValue={Number(proyecto?.uc)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
@@ -215,6 +231,8 @@ export function FormProyecto({
               <input
                 type="number"
                 name="ut_umd"
+                min={"0"}
+                max={"1"}
                 step="0.01"
                 defaultValue={Number(proyecto?.ut_umd)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
@@ -233,6 +251,8 @@ export function FormProyecto({
               <input
                 type="number"
                 name="uh"
+                min={"1"}
+                max={"4"}
                 step="0.01"
                 defaultValue={Number(proyecto?.uh)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
@@ -251,6 +271,8 @@ export function FormProyecto({
               <input
                 type="number"
                 name="up"
+                min={"4"}
+                max={"6"}
                 step="0.01"
                 defaultValue={Number(proyecto?.up)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
@@ -326,6 +348,8 @@ export function FormProyecto({
               <input
                 type="number"
                 name="tph"
+                min={"0.5"}
+                max={"2.5"}
                 step="0.01"
                 defaultValue={Number(proyecto?.tph)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
@@ -344,6 +368,8 @@ export function FormProyecto({
               <input
                 type="number"
                 name="tpv"
+                min={"0.1"}
+                max={"2.5"}
                 step="0.01"
                 defaultValue={Number(proyecto?.tpv)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
@@ -362,6 +388,8 @@ export function FormProyecto({
               <input
                 type="number"
                 name="tphv"
+                min={"0.1"}
+                max={"2"}
                 step="0.01"
                 defaultValue={Number(proyecto?.tphv)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
@@ -383,11 +411,30 @@ export function FormProyecto({
                 type="number"
                 name="numero_personas"
                 step="1"
-                max="100"
+                max="1000"
                 min="0"
                 defaultValue={Number(proyecto?.numero_personas)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
+            </div>
+            <div className="mb-2">
+              <label className="flex items-center">
+                Ocupacion de las personas:
+                <img
+                  src="/question.svg"
+                  className="ml-2 w-5 h-5"
+                  alt="info"
+                  title="Este campo identifica la ocupacion de las personas"
+                />
+              </label>
+              <select
+                name="ocupacion_personas"
+                defaultValue={proyecto?.ocupacion_personas}
+                className="border-2 border-gray-300 rounded p-2 w-full"
+              >
+                <option value="sedentario">Sedentaria</option>
+                <option value="activo">Activa</option>
+              </select>
             </div>
             <div className="mb-2">
               <label className="flex items-center">
@@ -524,12 +571,15 @@ export function FormProyecto({
                   title="Valor de ODA"
                 />
               </label>
-              <input
-                type="text"
+              <select
                 name="oda"
                 defaultValue={proyecto?.oda}
                 className="border-2 border-gray-300 rounded p-2 w-full"
-              />
+              >
+                <option value="oda1">oda1</option>
+                <option value="oda2">oda2</option>
+                <option value="oda3">oda3</option>
+              </select>
             </div>
           </div>
 

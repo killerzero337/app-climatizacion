@@ -68,6 +68,20 @@ export async function newRecinto(formData) {
       formData.get("superficie_puertas_c_4")
     );
 
+    // techo
+    const orientacion_techo = formData.get("orientacion_techo");
+    const ubicacion_techo = formData.get("ubicacion_techo");
+    const temperatura_ver_techo = Number(formData.get("temperatura_ver_techo"));
+    const temperatura_inv_techo = Number(formData.get("temperatura_inv_techo"));
+    const superficie_techo = Number(formData.get("superficie_techo"));
+    const tipo_vidrio_techo = formData.get("tipo_vidrio_techo");
+
+    // suelo
+    const ubicacion_suelo = formData.get("ubicacion_suelo");
+    const temperatura_ver_suelo = Number(formData.get("temperatura_ver_suelo"));
+    const temperatura_inv_suelo = Number(formData.get("temperatura_inv_suelo"));
+    const superficie_suelo = Number(formData.get("superficie_suelo"));
+
     const recinto = await prisma.recinto.create({
       data: {
         nombre,
@@ -122,6 +136,22 @@ export async function newRecinto(formData) {
         tipo_vidrio_c_4,
         superficie_vidrio_c_4,
         superficie_puertas_c_4,
+
+        // techo
+
+        orientacion_techo,
+        ubicacion_techo,
+        temperatura_ver_techo,
+        temperatura_inv_techo,
+        superficie_techo,
+        tipo_vidrio_techo,
+
+        // suelo
+
+        ubicacion_suelo,
+        temperatura_ver_suelo,
+        temperatura_inv_suelo,
+        superficie_suelo,
       },
     });
 

@@ -54,43 +54,44 @@ model Account {
 
 //En el proyecto de momento se añadira solo un recinto
 model Proyecto {
-  id               Int       @id @default(autoincrement())
-  nombre           String
-  localidad        String
-  userId           String?
-  user             User?     @relation(fields: [userId], references: [id])
-  fecha            DateTime?
-  temp_ext_ver     Float?
-  hr_ext_ver       Float?
-  temp_ext_inv     Float?
-  hr_ext_inv       Float?
-  altitud          Float?
-  zona_climatica   String?
-  oda              String?
-  us_um            Float?
-  uc               Float?
-  ut_umd           Float?
-  uh               Float?
-  up               Float?
-  uph              Float?
-  upv              Float?
-  uphv             Float?
-  tph              Float?
-  tpv              Float?
-  tphv             Float?
-  numero_personas  Int?
-  w_persona        Float?
-  carga_latente    Float?
-  caudales_ida     Float?
-  caudales_aire    Float?
-  tipo_lampara     String?
-  potencia_lampara Float?
-  valor_seguridad  Float?
-  comentarios      String?
-  imagen           String?
-  createdAt        DateTime  @default(now())
-  updatedAt        DateTime  @updatedAt
-  recintos         Recinto[]
+  id                 Int       @id @default(autoincrement())
+  nombre             String
+  localidad          String
+  userId             String?
+  user               User?     @relation(fields: [userId], references: [id])
+  fecha              DateTime?
+  temp_ext_ver       Float?
+  hr_ext_ver         Float?
+  temp_ext_inv       Float?
+  hr_ext_inv         Float?
+  altitud            Float?
+  zona_climatica     String?
+  oda                String?
+  us_um              Float?
+  uc                 Float?
+  ut_umd             Float?
+  uh                 Float?
+  up                 Float?
+  uph                Float?
+  upv                Float?
+  uphv               Float?
+  tph                Float?
+  tpv                Float?
+  tphv               Float?
+  numero_personas    Int?
+  w_persona          Float?
+  carga_latente      Float?
+  ocupacion_personas String?
+  caudales_ida       Float?
+  caudales_aire      Float?
+  tipo_lampara       String?
+  potencia_lampara   Float?
+  valor_seguridad    Float?
+  comentarios        String?
+  imagen             String?
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  recintos           Recinto[]
 
   @@index([userId], name: "user_id_index")
 }
@@ -151,14 +152,18 @@ model Recinto {
   superficie_puertas_c_4 Float?
 
   //Valores suelo
-  suelo_ubicacion String?
-  suelo_temp_ver  Float?
-  suelo_temp_inv  String?
+  ubicacion_suelo       String?
+  temperatura_ver_suelo Float?
+  temperatura_inv_suelo Float?
+  superficie_suelo      Float?
 
   //Valores de techo
-  techo_ubicacion String?
-  techo_temp_ver  Float?
-  techo_temp_inv  Float?
+  orientacion_techo     String?
+  ubicacion_techo       String?
+  temperatura_ver_techo Float?
+  temperatura_inv_techo Float?
+  superficie_techo      Float?
+  tipo_vidrio_techo     String?
 
   proyecto   Proyecto? @relation(fields: [proyectoId], references: [id], onDelete: Cascade)
   proyectoId Int?

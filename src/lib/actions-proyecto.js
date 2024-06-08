@@ -106,6 +106,7 @@ export async function newProyecto(formData) {
     const altitud = Number(formData.get("altitud"));
     const zona_climatica = formData.get("zona_climatica");
     const numero_personas = Number(formData.get("numero_personas"));
+    const ocupacion_personas = formData.get("ocupacion_personas");
     const w_persona = Number(formData.get("w_persona"));
     const us_um = Number(formData.get("us_um"));
     const uc = Number(formData.get("uc"));
@@ -142,6 +143,7 @@ export async function newProyecto(formData) {
         fecha,
         zona_climatica,
         numero_personas,
+        ocupacion_personas,
         w_persona,
         carga_latente,
         us_um,
@@ -189,6 +191,7 @@ export async function editProyecto(formData) {
   const altitud = Number(formData.get("altitud"));
   const zona_climatica = formData.get("zona_climatica");
   const numero_personas = Number(formData.get("numero_personas"));
+  const ocupacion_personas = formData.get("ocupacion_personas");
   const w_persona = Number(formData.get("w_persona"));
   const us_um = Number(formData.get("us_um"));
   const uc = Number(formData.get("uc"));
@@ -210,45 +213,55 @@ export async function editProyecto(formData) {
   const oda = formData.get("oda");
   const comentarios = formData.get("comentarios");
   const imagen = formData.get("file");
-  const rutaImagen = await imgCreate(imagen);
+
+  let rutaImagen = null;
+  if (imagen && imagen.size > 0) {
+    rutaImagen = await imgCreate(imagen);
+  }
 
   try {
+    const dataUpdate = {
+      nombre,
+      localidad,
+      userId,
+      temp_ext_ver,
+      temp_ext_inv,
+      hr_ext_inv,
+      hr_ext_ver,
+      altitud,
+      fecha,
+      zona_climatica,
+      numero_personas,
+      ocupacion_personas,
+      w_persona,
+      us_um,
+      uc,
+      ut_umd,
+      uh,
+      up,
+      uph,
+      upv,
+      uphv,
+      tph,
+      tpv,
+      tphv,
+      oda,
+      caudales_ida,
+      caudales_aire,
+      tipo_lampara,
+      potencia_lampara,
+      valor_seguridad,
+      carga_latente,
+      comentarios,
+    };
+
+    if (rutaImagen) {
+      dataUpdate.imagen = rutaImagen;
+    }
+
     const proyecto = await prisma.proyecto.update({
       where: { id },
-      data: {
-        nombre,
-        localidad,
-        userId,
-        temp_ext_ver,
-        temp_ext_inv,
-        hr_ext_inv,
-        hr_ext_ver,
-        altitud,
-        fecha,
-        zona_climatica,
-        numero_personas,
-        w_persona,
-        us_um,
-        uc,
-        ut_umd,
-        uh,
-        up,
-        uph,
-        upv,
-        uphv,
-        tph,
-        tpv,
-        tphv,
-        oda,
-        caudales_ida,
-        caudales_aire,
-        tipo_lampara,
-        potencia_lampara,
-        valor_seguridad,
-        carga_latente,
-        comentarios,
-        imagen: rutaImagen,
-      },
+      data: dataUpdate,
     });
     console.log(proyecto);
     revalidatePath("/proyecto");
@@ -271,4 +284,98 @@ export async function deleteProyecto(formData) {
     console.log("Error al eliminar el proyecto:", error);
   }
   redirect("/proyecto");
+}
+
+export async function copiarProyecto(proyectoId) {
+  try {
+    // Obtener los datos del proyecto existente
+    const proyectoExistente = await prisma.proyecto.findUnique({
+      where: { id: proyectoId },
+    });
+
+    if (!proyectoExistente) {
+      throw new Error("Proyecto no encontrado");
+    }
+
+    const {
+      id, // hay que omitir el id ya que obviamente esta en autoincrement
+      nombre,
+      localidad,
+      userId,
+      temp_ext_ver,
+      temp_ext_inv,
+      hr_ext_inv,
+      hr_ext_ver,
+      altitud,
+      fecha,
+      zona_climatica,
+      numero_personas,
+      ocupacion_personas,
+      w_persona,
+      us_um,
+      uc,
+      ut_umd,
+      uh,
+      up,
+      uph,
+      upv,
+      uphv,
+      tph,
+      tpv,
+      tphv,
+      oda,
+      caudales_ida,
+      caudales_aire,
+      tipo_lampara,
+      potencia_lampara,
+      valor_seguridad,
+      carga_latente,
+      comentarios,
+      imagen,
+    } = proyectoExistente;
+
+    const nuevoProyecto = await prisma.proyecto.create({
+      data: {
+        nombre: `${nombre} - Copia`,
+        localidad,
+        userId,
+        temp_ext_ver,
+        temp_ext_inv,
+        hr_ext_inv,
+        hr_ext_ver,
+        altitud,
+        fecha: fecha ? new Date(fecha + "T00:00:00.000Z") : new Date(),
+        zona_climatica,
+        numero_personas,
+        ocupacion_personas,
+        w_persona,
+        us_um,
+        uc,
+        ut_umd,
+        uh,
+        up,
+        uph,
+        upv,
+        uphv,
+        tph,
+        tpv,
+        tphv,
+        oda,
+        caudales_ida,
+        caudales_aire,
+        tipo_lampara,
+        potencia_lampara,
+        valor_seguridad,
+        carga_latente,
+        comentarios,
+        imagen,
+      },
+    });
+
+    console.log(nuevoProyecto);
+  } catch (error) {
+    console.log(error);
+  }
+
+  redirect("/proyectos");
 }
