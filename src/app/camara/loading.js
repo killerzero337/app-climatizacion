@@ -9,19 +9,24 @@ function loading() {
             key={index}
             class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 animate-pulse"
           >
-            <div class="rounded-t-lg w-full h-48 bg-gray-200"></div>
-            <div class="p-5">
-              <div class="mb-2 h-6 bg-gray-200 rounded w-3/4"></div>
-              <div class="mb-3 h-6 bg-gray-200 rounded w-full"></div>
-              <div class="mb-3 h-6 bg-gray-200 rounded w-1/2"></div>
-              <div class="flex justify-around gap-5 mt-5">
-                <div class="inline-flex items-center px-3 py-2 rounded-lg w-1/4 h-6 bg-gray-200"></div>
-                <div class="inline-flex items-center px-3 py-2 rounded-lg w-1/4 h-6 bg-gray-200"></div>
-                <div class="inline-flex items-center px-3 py-2 rounded-lg w-1/4 h-6 bg-gray-200"></div>
+            <div className="rounded-t-lg w-full h-48 bg-gray-200"></div>
+            <div className="p-5">
+              <div className="mb-2 h-6 bg-gray-200 rounded w-3/4"></div>
+              <div className="mb-3 h-6 bg-gray-200 rounded w-full"></div>
+              <div className="mb-3 h-6 bg-gray-200 rounded w-1/2"></div>
+              <div className="flex justify-around gap-5 mt-5">
+                <div className="inline-flex items-center px-3 py-2 rounded-lg w-1/4 h-6 bg-gray-200"></div>
+                <div className="inline-flex items-center px-3 py-2 rounded-lg w-1/4 h-6 bg-gray-200"></div>
+                <div className="inline-flex items-center px-3 py-2 rounded-lg w-1/4 h-6 bg-gray-200"></div>
               </div>
             </div>
           </div>
         ))}
+      </div>
+      <div className="mt-4 p-4 border rounded shadow-md w-full animate-pulse">
+        <div className="flex ">
+          <div className=" h-32 bg-gray-200 rounded w-1/4"></div>
+        </div>
       </div>
     </Tarjeta>
   );
