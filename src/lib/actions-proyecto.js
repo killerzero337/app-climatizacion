@@ -120,6 +120,8 @@ export async function newProyecto(formData) {
     const tpv = Number(formData.get("tpv"));
     const tphv = Number(formData.get("tphv"));
     const caudales_ida = Number(formData.get("caudales_ida"));
+    const temp_terreno_ver = Number((temp_ext_ver + 15) / 2);
+    const temp_terreno_inv = Number((temp_ext_inv + 15) / 2);
     const caudales_aire = Number(formData.get("caudales_aire"));
     const tipo_lampara = formData.get("tipo_lampara");
     const potencia_lampara = Number(formData.get("potencia_lampara"));
@@ -137,6 +139,8 @@ export async function newProyecto(formData) {
         userId,
         temp_ext_ver,
         temp_ext_inv,
+        temp_terreno_ver,
+        temp_terreno_inv,
         hr_ext_inv,
         hr_ext_ver,
         altitud,
@@ -186,6 +190,8 @@ export async function editProyecto(formData) {
     : new Date().toISOString();
   const temp_ext_ver = Number(formData.get("temp_ext_ver"));
   const temp_ext_inv = Number(formData.get("temp_ext_inv"));
+  const temp_terreno_ver = Number((temp_ext_ver + 15) / 2);
+  const temp_terreno_inv = Number((temp_ext_inv + 15) / 2);
   const hr_ext_inv = Number(formData.get("hr_ext_inv"));
   const hr_ext_ver = Number(formData.get("hr_ext_ver"));
   const altitud = Number(formData.get("altitud"));
@@ -226,6 +232,8 @@ export async function editProyecto(formData) {
       userId,
       temp_ext_ver,
       temp_ext_inv,
+      temp_terreno_ver,
+      temp_terreno_inv,
       hr_ext_inv,
       hr_ext_ver,
       altitud,
