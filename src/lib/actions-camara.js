@@ -25,7 +25,7 @@ export async function newRecinto(formData) {
     const ubicacion_c_1 = formData.get("ubicacion_c_1");
     const temperatura_ver_c_1 = Number(formData.get("temperatura_ver_c_1"));
     const temperatura_inv_c_1 = Number(formData.get("temperatura_inv_c_1"));
-    const superficie_c_1 = Number(formData.get("superficie_c_1"));
+    const superficie_c_1 = anchura * altura;
     const tipo_vidrio_c_1 = formData.get("tipo_vidrio_c_1");
     const superficie_vidrio_c_1 = Number(formData.get("superficie_vidrio_c_1"));
     const superficie_puertas_c_1 = Number(
@@ -37,7 +37,7 @@ export async function newRecinto(formData) {
     const ubicacion_c_2 = formData.get("ubicacion_c_2");
     const temperatura_ver_c_2 = Number(formData.get("temperatura_ver_c_2"));
     const temperatura_inv_c_2 = Number(formData.get("temperatura_inv_c_2"));
-    const superficie_c_2 = Number(formData.get("superficie_c_2"));
+    const superficie_c_2 = anchura * altura;
     const tipo_vidrio_c_2 = formData.get("tipo_vidrio_c_2");
     const superficie_vidrio_c_2 = Number(formData.get("superficie_vidrio_c_2"));
     const superficie_puertas_c_2 = Number(
@@ -49,7 +49,7 @@ export async function newRecinto(formData) {
     const ubicacion_c_3 = formData.get("ubicacion_c_3");
     const temperatura_ver_c_3 = Number(formData.get("temperatura_ver_c_3"));
     const temperatura_inv_c_3 = Number(formData.get("temperatura_inv_c_3"));
-    const superficie_c_3 = Number(formData.get("superficie_c_3"));
+    const superficie_c_3 = anchura * altura;
     const tipo_vidrio_c_3 = formData.get("tipo_vidrio_c_3");
     const superficie_vidrio_c_3 = Number(formData.get("superficie_vidrio_c_3"));
     const superficie_puertas_c_3 = Number(
@@ -61,7 +61,7 @@ export async function newRecinto(formData) {
     const ubicacion_c_4 = formData.get("ubicacion_c_4");
     const temperatura_ver_c_4 = Number(formData.get("temperatura_ver_c_4"));
     const temperatura_inv_c_4 = Number(formData.get("temperatura_inv_c_4"));
-    const superficie_c_4 = Number(formData.get("superficie_c_4"));
+    const superficie_c_4 = anchura * altura;
     const tipo_vidrio_c_4 = formData.get("tipo_vidrio_c_4");
     const superficie_vidrio_c_4 = Number(formData.get("superficie_vidrio_c_4"));
     const superficie_puertas_c_4 = Number(
