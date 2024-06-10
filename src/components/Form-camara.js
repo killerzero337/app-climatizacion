@@ -40,6 +40,7 @@ export function Formcamara({
                 name="t_ver_relativa"
                 min={"-100"}
                 max={"100"}
+                step={"0.01"}
                 defaultValue={Number(camara?.t_ver_relativa)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -66,6 +67,7 @@ export function Formcamara({
                 name="t_inv_relativa"
                 min={"-100"}
                 max={"100"}
+                step={"0.01"}
                 defaultValue={Number(camara?.t_inv_relativa)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -89,6 +91,7 @@ export function Formcamara({
                 type="number"
                 name="longitud"
                 defaultValue={Number(camara?.longitud)}
+                step={"0.01"}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
             </div>
@@ -98,6 +101,7 @@ export function Formcamara({
                 type="number"
                 name="anchura"
                 defaultValue={Number(camara?.anchura)}
+                step={"0.01"}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
             </div>
@@ -107,6 +111,7 @@ export function Formcamara({
                 type="number"
                 name="altura"
                 defaultValue={Number(camara?.altura)}
+                step={"0.01"}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
             </div>
@@ -196,6 +201,7 @@ export function Formcamara({
                 name="temperatura_ver_c_1"
                 min={"-100"}
                 max={"100"}
+                step={"0.01"}
                 defaultValue={Number(camara?.temperatura_ver_c_1)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -210,6 +216,7 @@ export function Formcamara({
                 name="temperatura_inv_c_1"
                 min={"-100"}
                 max={"100"}
+                step={"0.01"}
                 defaultValue={Number(camara?.temperatura_inv_c_1)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -245,6 +252,7 @@ export function Formcamara({
               <input
                 type="number"
                 name="superficie_vidrio_c_1"
+                step={"0.01"}
                 defaultValue={Number(camara?.superficie_vidrio_c_1)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -257,6 +265,7 @@ export function Formcamara({
                 name="superficie_puertas_c_1"
                 min={"0"}
                 max={"100"}
+                step={"0.01"}
                 defaultValue={Number(camara?.superficie_puertas_c_1)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -298,6 +307,7 @@ export function Formcamara({
                 name="temperatura_ver_c_2"
                 min={"-100"}
                 max={"100"}
+                step={"0.01"}
                 defaultValue={Number(camara?.temperatura_ver_c_2)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -312,6 +322,7 @@ export function Formcamara({
                 name="temperatura_inv_c_2"
                 min={"-100"}
                 max={"100"}
+                step={"0.01"}
                 defaultValue={Number(camara?.temperatura_inv_c_2)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -347,6 +358,7 @@ export function Formcamara({
               <input
                 type="number"
                 name="superficie_vidrio_c_2"
+                step={"0.01"}
                 defaultValue={Number(camara?.superficie_vidrio_c_2)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -359,6 +371,7 @@ export function Formcamara({
                 name="superficie_puertas_c_2"
                 min={"0"}
                 max={"100"}
+                step={"0.01"}
                 defaultValue={Number(camara?.superficie_puertas_c_2)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -401,6 +414,7 @@ export function Formcamara({
                 name="temperatura_ver_c_3"
                 min={"-100"}
                 max={"100"}
+                step={"0.01"}
                 defaultValue={Number(camara?.temperatura_ver_c_3)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -415,6 +429,7 @@ export function Formcamara({
                 name="temperatura_inv_c_3"
                 min={"-100"}
                 max={"100"}
+                step={"0.01"}
                 defaultValue={Number(camara?.temperatura_inv_c_3)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -450,6 +465,7 @@ export function Formcamara({
               <input
                 type="number"
                 name="superficie_vidrio_c_3"
+                step={"0.01"}
                 defaultValue={Number(camara?.superficie_vidrio_c_3)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -462,6 +478,7 @@ export function Formcamara({
                 name="superficie_puertas_c_3"
                 min={"0"}
                 max={"100"}
+                step={"0.01"}
                 defaultValue={Number(camara?.superficie_puertas_c_3)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -503,6 +520,7 @@ export function Formcamara({
                 type="number"
                 min={"-100"}
                 max={"100"}
+                step={"0.01"}
                 name="temperatura_ver_c_4"
                 defaultValue={Number(camara?.temperatura_ver_c_4)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
@@ -517,6 +535,7 @@ export function Formcamara({
                 type="number"
                 min={"-100"}
                 max={"100"}
+                step={"0.01"}
                 name="temperatura_inv_c_4"
                 defaultValue={Number(camara?.temperatura_inv_c_4)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
@@ -553,6 +572,7 @@ export function Formcamara({
               <input
                 type="number"
                 name="superficie_vidrio_c_4"
+                step={"0.01"}
                 defaultValue={Number(camara?.superficie_vidrio_c_4)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -565,6 +585,7 @@ export function Formcamara({
                 name="superficie_puertas_c_4"
                 min={"0"}
                 max={"100"}
+                step={"0.01"}
                 defaultValue={Number(camara?.superficie_puertas_c_4)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -593,6 +614,7 @@ export function Formcamara({
                 type="number"
                 min={"-100"}
                 max={"100"}
+                step={"0.01"}
                 name="temperatura_ver_suelo"
                 defaultValue={Number(camara?.temperatura_ver_suelo)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
@@ -607,6 +629,7 @@ export function Formcamara({
                 type="number"
                 min={"-100"}
                 max={"100"}
+                step={"0.01"}
                 name="temperatura_inv_suelo"
                 defaultValue={Number(camara?.temperatura_inv_suelo)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
@@ -663,6 +686,7 @@ export function Formcamara({
                 type="number"
                 min={"-100"}
                 max={"100"}
+                step={"0.01"}
                 name="temperatura_ver_techo"
                 defaultValue={Number(camara?.temperatura_ver_techo)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
@@ -677,6 +701,7 @@ export function Formcamara({
                 type="number"
                 min={"-100"}
                 max={"100"}
+                step={"0.01"}
                 name="temperatura_inv_techo"
                 defaultValue={Number(camara?.temperatura_inv_techo)}
                 className="border-2 border-gray-300 rounded p-2 w-full"

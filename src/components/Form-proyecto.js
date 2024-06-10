@@ -74,6 +74,7 @@ export function FormProyecto({
                 name="temp_ext_ver"
                 min={"-100"}
                 max={"100"}
+                step={"0.01"}
                 defaultValue={Number(proyecto?.temp_ext_ver)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -93,6 +94,7 @@ export function FormProyecto({
                 name="hr_ext_ver"
                 min={"0"}
                 max={"100"}
+                step={"0.01"}
                 defaultValue={Number(proyecto?.hr_ext_ver)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -112,6 +114,7 @@ export function FormProyecto({
                 name="temp_ext_inv"
                 min={"-100"}
                 max={"100"}
+                step={"0.01"}
                 defaultValue={Number(proyecto?.temp_ext_inv)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -131,6 +134,7 @@ export function FormProyecto({
                 name="hr_ext_inv"
                 min={"0"}
                 max={"100"}
+                step={"0.01"}
                 defaultValue={Number(proyecto?.hr_ext_inv)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -150,6 +154,7 @@ export function FormProyecto({
                 name="altitud"
                 min={"0"}
                 max={"10000"}
+                step={"0.01"}
                 defaultValue={Number(proyecto?.altitud)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               />
@@ -438,7 +443,7 @@ export function FormProyecto({
             </div>
             <div className="mb-2">
               <label className="flex items-center">
-                W por persona:
+                Carga sensible por persona:
                 <img
                   src="/question.svg"
                   className="ml-2 w-5 h-5"
@@ -546,7 +551,7 @@ export function FormProyecto({
             </div>
             <div className="mb-2">
               <label className="flex items-center">
-                Carga latente:
+                Carga latente por persona:
                 <img
                   src="/question.svg"
                   className="ml-2 w-5 h-5"
