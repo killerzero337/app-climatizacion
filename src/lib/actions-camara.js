@@ -345,9 +345,18 @@ export async function editRecinto(formData) {
     });
     console.log(recinto);
     revalidatePath("/camara");
-    redirectUrl = `/camara?id=${proyecto_id}`;
+    redirectUrl = `/camara?id=${proyectoid}`;
   } catch (error) {
     console.log(error);
   }
+  redirect(redirectUrl);
+}
+
+export async function volver({ formData }) {
+  const proyectoId = formData.get("proyecto_id");
+  console.log("ID recibido:", proyectoId);
+
+  revalidatePath("/camara");
+  redirectUrl = `/camara?id=${proyectoId}`;
   redirect(redirectUrl);
 }

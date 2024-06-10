@@ -207,8 +207,6 @@ export function Formcamara({
               <input
                 type="number"
                 name="superficie_c_1"
-                min={"0"}
-                max={"100"}
                 step={"0.01"}
                 defaultValue={Number(camara?.superficie_c_1)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
@@ -299,8 +297,6 @@ export function Formcamara({
               <input
                 type="number"
                 name="superficie_c_2"
-                min={"0"}
-                max={"100"}
                 step={"0.01"}
                 defaultValue={Number(camara?.superficie_c_2)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
@@ -391,8 +387,6 @@ export function Formcamara({
               <input
                 type="number"
                 name="superficie_c_3"
-                min={"0"}
-                max={"100"}
                 step={"0.01"}
                 defaultValue={Number(camara?.superficie_c_3)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
@@ -483,8 +477,6 @@ export function Formcamara({
               <input
                 type="number"
                 name="superficie_c_4"
-                min={"0"}
-                max={"100"}
                 step={"0.01"}
                 defaultValue={Number(camara?.superficie_c_4)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
@@ -543,7 +535,7 @@ export function Formcamara({
             </div>
             <div className="mb-2">
               <label className="flex items-center">
-                Temperatura techo (Verano):
+                Temperatura suelo (Verano):
               </label>
               <input
                 type="number"
@@ -557,7 +549,7 @@ export function Formcamara({
 
             <div className="mb-2">
               <label className="flex items-center">
-                Temperatura techo (Invierno):
+                Temperatura suelo (Invierno):
               </label>
               <input
                 type="number"
@@ -570,13 +562,11 @@ export function Formcamara({
             </div>
             <div className="mb-2">
               <label className="flex items-center">
-                Superficie techo (m2):
+                Superficie suelo (m2):
               </label>
               <input
                 type="number"
                 name="superficie_suelo"
-                min={"0"}
-                max={"100"}
                 step={"0.01"}
                 defaultValue={Number(camara?.superficie_suelo)}
                 className="border-2 border-gray-300 rounded p-2 w-full"
@@ -647,8 +637,6 @@ export function Formcamara({
               <input
                 type="number"
                 name="superficie_techo"
-                min={"0"}
-                max={"100"}
                 step={"0.01"}
                 defaultValue={Number(camara?.superficie_techo)}
                 className="border-2 border-gray-300 rounded p-2 w-full"

@@ -11,7 +11,7 @@ async function ListaProyectos({ recintoId, disabled }) {
   let proyectoId = null;
   if (recintoId) {
     recinto = await getRecinto(recintoId);
-    proyectoId = recinto.proyectoId;
+    proyectoId = recinto?.proyectoId;
   }
 
   console.log(`PROYECTO del RECINTO ${recintoId}: `, proyectoId);
