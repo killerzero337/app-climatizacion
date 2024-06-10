@@ -10,12 +10,11 @@ export function Formcamara({
   disabled = false,
   id,
 }) {
-
-  console.log('camara ', camara);
+  console.log("camara ", camara);
   return (
     <form action={action}>
       {/* IMPORTANTE: Comentar. El id del proyecto lo cogemos de la lista de proyectos */}
-      {/* <input type="hidden" name="proyecto_id" defaultValue={proyectoId} /> */} 
+      {/* <input type="hidden" name="proyecto_id" defaultValue={proyectoId} /> */}
       <input type="hidden" name="id" defaultValue={id} />
       <fieldset disabled={disabled}>
         <div className="flex flex-col md:flex-row justify-around">
@@ -177,6 +176,18 @@ export function Formcamara({
               </select>
             </div>
             <div className="mb-2">
+              <label className="flex items-center">Color:</label>{" "}
+              <select
+                name="color_c_1"
+                defaultValue={camara?.color_c_1}
+                className="border-2 border-gray-300 rounded p-2 w-full"
+              >
+                <option value="claro">Claro</option>
+                <option value="medio">Medio</option>
+                <option value="oscuro">Oscuro</option>
+              </select>
+            </div>
+            <div className="mb-2">
               <label className="flex items-center">
                 Temperatura cerramiento (Verano):
               </label>
@@ -264,6 +275,18 @@ export function Formcamara({
               >
                 <option value="interior">Interior</option>
                 <option value="exterior">Exterior</option>
+              </select>
+            </div>
+            <div className="mb-2">
+              <label className="flex items-center">Ubicacion:</label>{" "}
+              <select
+                name="color_c_2"
+                defaultValue={camara?.color_c_2}
+                className="border-2 border-gray-300 rounded p-2 w-full"
+              >
+                <option value="claro">Claro</option>
+                <option value="medio">Medio</option>
+                <option value="oscuro">Oscuro</option>
               </select>
             </div>
             <div className="mb-2">
@@ -356,6 +379,19 @@ export function Formcamara({
                 <option value="exterior">Exterior</option>
               </select>
             </div>
+
+            <div className="mb-2">
+              <label className="flex items-center">Ubicacion:</label>{" "}
+              <select
+                name="color_c_3"
+                defaultValue={camara?.color_c_3}
+                className="border-2 border-gray-300 rounded p-2 w-full"
+              >
+                <option value="claro">Claro</option>
+                <option value="medio">Medio</option>
+                <option value="oscuro">Oscuro</option>
+              </select>
+            </div>
             <div className="mb-2">
               <label className="flex items-center">
                 Temperatura cerramiento (Verano):
@@ -444,6 +480,19 @@ export function Formcamara({
               >
                 <option value="interior">Interior</option>
                 <option value="exterior">Exterior</option>
+              </select>
+            </div>
+
+            <div className="mb-2">
+              <label className="flex items-center">Color:</label>{" "}
+              <select
+                name="color_c_4"
+                defaultValue={camara?.color_c_4}
+                className="border-2 border-gray-300 rounded p-2 w-full"
+              >
+                <option value="claro">Claro</option>
+                <option value="medio">Medio</option>
+                <option value="oscuro">Oscuro</option>
               </select>
             </div>
             <div className="mb-2">
@@ -670,6 +719,5 @@ export function Formcamara({
     </form>
   );
 }
-
 
 export default Formcamara;

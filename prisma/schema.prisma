@@ -52,50 +52,63 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
-//En el proyecto de momento se añadira solo un recinto
+//En el proyecto de momento se añadira de forma predeterminada un solo equipo adicional
 model Proyecto {
-  id                 Int       @id @default(autoincrement())
-  nombre             String
-  localidad          String
-  userId             String?
-  user               User?     @relation(fields: [userId], references: [id])
-  fecha              DateTime?
-  temp_ext_ver       Float?
-  hr_ext_ver         Float?
-  temp_ext_inv       Float?
-  hr_ext_inv         Float?
-  temp_terreno_ver   Float?
-  temp_terreno_inv   Float?
-  altitud            Float?
-  zona_climatica     String?
-  oda                String?
-  us_um              Float?
-  uc                 Float?
-  ut_umd             Float?
-  uh                 Float?
-  up                 Float?
-  uph                Float?
-  upv                Float?
-  uphv               Float?
-  tph                Float?
-  tpv                Float?
-  tphv               Float?
-  numero_personas    Int?
-  w_persona          Float?
-  carga_latente      Float?
-  ocupacion_personas String?
-  caudales_ida       Float?
-  caudales_aire      Float?
-  tipo_lampara       String?
-  potencia_lampara   Float?
-  valor_seguridad    Float?
-  comentarios        String?
-  imagen             String?
-  createdAt          DateTime  @default(now())
-  updatedAt          DateTime  @updatedAt
-  recintos           Recinto[]
+  id                    Int            @id @default(autoincrement())
+  nombre                String
+  localidad             String
+  userId                String?
+  user                  User?          @relation(fields: [userId], references: [id])
+  fecha                 DateTime?
+  temp_ext_ver          Float?
+  hr_ext_ver            Float?
+  temp_ext_inv          Float?
+  hr_ext_inv            Float?
+  temp_terreno_ver      Float?
+  temp_terreno_inv      Float?
+  altitud               Float?
+  zona_climatica        String?
+  oda                   String?
+  us_um                 Float?
+  uc                    Float?
+  ut_umd                Float?
+  uh                    Float?
+  up                    Float?
+  uph                   Float?
+  upv                   Float?
+  uphv                  Float?
+  tph                   Float?
+  tpv                   Float?
+  tphv                  Float?
+  numero_personas       Int?
+  w_persona             Float?
+  carga_latente         Float?
+  ocupacion_personas    String?
+  caudales_ida          Float?
+  caudales_aire         Float?
+  tipo_lampara          String?
+  potencia_lampara      Float?
+  valor_seguridad       Float?
+  equipoAdicionalNombre String?
+  potenciaEquipo        Float?
+  factorFuncionamiento  Float?
+  comentarios           String?
+  imagen                String?
+  createdAt             DateTime       @default(now())
+  updatedAt             DateTime       @updatedAt
+  recintos              Recinto[]
+  OtrosEquipos          OtrosEquipos[]
 
   @@index([userId], name: "user_id_index")
+}
+
+model OtrosEquipos {
+  id                    Int       @id @default(autoincrement())
+  proyectoId            Int?
+  nombre                String?
+  potencia              Float?
+  factor_funcionamiento Float?
+  proyecto              Proyecto? @relation(fields: [proyectoId], references: [id], onDelete: Cascade)
 }
 
 model Recinto {
@@ -116,6 +129,7 @@ model Recinto {
   //Valores de cerramiento 1
   orientacion            String?
   ubicacion_c_1          String?
+  color_c_1              String?
   temperatura_ver_c_1    Float?
   temperatura_inv_c_1    Float?
   superficie_c_1         Float?
@@ -125,7 +139,9 @@ model Recinto {
 
   //Valores de cerramiento 2
 
+  orientacion_2          String?
   ubicacion_c_2          String?
+  color_c_2              String?
   temperatura_ver_c_2    Float?
   temperatura_inv_c_2    Float?
   superficie_c_2         Float?
@@ -134,8 +150,9 @@ model Recinto {
   superficie_puertas_c_2 Float?
 
   //Valores de cerramiento 3
-
+  orientacion_3          String?
   ubicacion_c_3          String?
+  color_c_3              String?
   temperatura_ver_c_3    Float?
   temperatura_inv_c_3    Float?
   superficie_c_3         Float?
@@ -145,7 +162,9 @@ model Recinto {
 
   //Valores de cerramiento 4
 
+  orientacion_4          String?
   ubicacion_c_4          String?
+  color_c_4              String?
   temperatura_ver_c_4    Float?
   temperatura_inv_c_4    Float?
   superficie_c_4         Float?
