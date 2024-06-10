@@ -239,78 +239,185 @@ export function qv_sens_trans(
   let valorC4 = 0;
   let valorT = 0;
   let valorS = 0;
+
+  // Determinar el valor de C1
   if (k_cerr1 === "interior") {
     valorC1 = proyecto?.us_um;
   } else {
     valorC1 = proyecto?.tphv;
   }
+  console.log("valorC1:", valorC1);
 
+  // Determinar el valor de C2
   if (k_cerr2 === "interior") {
     valorC2 = proyecto?.us_um;
   } else {
     valorC2 = proyecto?.tphv;
   }
+  console.log("valorC2:", valorC2);
 
+  // Determinar el valor de C3
   if (k_cerr3 === "interior") {
     valorC3 = proyecto?.us_um;
   } else {
     valorC3 = proyecto?.tphv;
   }
+  console.log("valorC3:", valorC3);
 
+  // Determinar el valor de C4
   if (k_cerr4 === "interior") {
     valorC4 = proyecto?.us_um;
   } else {
     valorC4 = proyecto?.tphv;
   }
+  console.log("valorC4:", valorC4);
 
+  // Determinar el valor de T
   if (k_techo === "interior") {
     valorT = proyecto?.us_um;
   } else {
     valorT = proyecto?.tphv;
   }
+  console.log("valorT:", valorT);
 
+  // Determinar el valor de S
   if (k_suelo === "interior") {
     valorS = proyecto?.us_um;
-    console.log("valorS: ", valorS);
   } else {
     valorS = proyecto?.tphv;
-    console.log("valorS: ", valorS);
   }
+  console.log("valorS:", valorS);
+
   // Calcular cada término por separado
   let term1 =
     valorC1 *
     (sup_cerr1 - sup_vid_cerr1 - sup_puer_cerr1) *
     (temp_int_ver - temp_cerr1_ver);
+  if (isNaN(term1)) {
+    console.log("term1 es NaN");
+    term1 = 0;
+  }
+  console.log("term1:", term1);
+
   let term2 = k_vid_cerr1 * sup_vid_cerr1 * (temp_int_ver - temp_cerr1_ver);
+  if (isNaN(term2)) {
+    console.log("term2 es NaN");
+    term2 = 0;
+  }
+  console.log("term2:", term2);
+
   let term3 = k_puer_cerr1 * sup_puer_cerr1 * (temp_int_ver - temp_cerr1_ver);
+  if (isNaN(term3)) {
+    console.log("term3 es NaN");
+    term3 = 0;
+  }
+  console.log("term3:", term3);
+
   let term4 =
     valorC2 *
     (sup_cerr2 - sup_vid_cerr2 - sup_puer_cerr2) *
     (temp_int_ver - temp_cerr2_ver);
+  if (isNaN(term4)) {
+    console.log("term4 es NaN");
+    term4 = 0;
+  }
+  console.log("term4:", term4);
+
   let term5 = k_vid_cerr2 * sup_vid_cerr2 * (temp_int_ver - temp_cerr2_ver);
+  if (isNaN(term5)) {
+    console.log("term5 es NaN");
+    term5 = 0;
+  }
+  console.log("term5:", term5);
+
   let term6 = k_puer_cerr2 * sup_puer_cerr2 * (temp_int_ver - temp_cerr2_ver);
+  if (isNaN(term6)) {
+    console.log("term6 es NaN");
+    term6 = 0;
+  }
+  console.log("term6:", term6);
+
   let term7 =
     valorC3 *
     (sup_cerr3 - sup_vid_cerr3 - sup_puer_cerr3) *
     (temp_int_ver - temp_cerr3_ver);
+  if (isNaN(term7)) {
+    console.log("term7 es NaN");
+    term7 = 0;
+  }
+  console.log("term7:", term7);
+
   let term8 = k_vid_cerr3 * sup_vid_cerr3 * (temp_int_ver - temp_cerr3_ver);
+  if (isNaN(term8)) {
+    console.log("term8 es NaN");
+    return 0;
+  }
+  console.log("term8:", term8);
+
   let term9 = k_puer_cerr3 * sup_puer_cerr3 * (temp_int_ver - temp_cerr3_ver);
+  if (isNaN(term9)) {
+    console.log("term9 es NaN");
+    return 0;
+  }
+  console.log("term9:", term9);
+
   let term10 =
     valorC4 *
     (sup_cerr4 - sup_vid_cerr4 - sup_puer_cerr4) *
     (temp_int_ver - temp_cerr4_ver);
+  if (isNaN(term10)) {
+    console.log("term10 es NaN");
+    term10 = 0;
+  }
+  console.log("term10:", term10);
+
   let term11 = k_vid_cerr4 * sup_vid_cerr4 * (temp_int_ver - temp_cerr4_ver);
+  if (isNaN(term11)) {
+    console.log("term11 es NaN");
+    term11 = 0;
+  }
+  console.log("term11:", term11);
+
   let term12 = k_puer_cerr4 * sup_puer_cerr4 * (temp_int_ver - temp_cerr4_ver);
+  if (isNaN(term12)) {
+    console.log("term12 es NaN");
+    term12 = 0;
+  }
+  console.log("term12:", term12);
+
   let term13 =
     valorT *
     (sup_techo - sup_vid_techo - sup_puer_techo) *
     (temp_int_ver - temp_techo_ver);
+  if (isNaN(term13)) {
+    console.log("term13 es NaN");
+    term13 = 0;
+  }
+  console.log("term13:", term13);
+
   let term14 = k_vid_techo * sup_vid_techo * (temp_int_ver - temp_techo_ver);
+  if (isNaN(term14)) {
+    console.log("term14 es NaN");
+    term14 = 0;
+  }
+  console.log("term14:", term14);
+
   let term15 = k_puer_techo * sup_puer_techo * (temp_int_ver - temp_techo_ver);
+  if (isNaN(term15)) {
+    console.log("term15 es NaN");
+    term15 = 0;
+  }
+  console.log("term15:", term15);
+
   let term16 = valorS * sup_suelo * (temp_int_ver - temp_suelo_ver);
+  if (isNaN(term16)) {
+    console.log("term16 es NaN");
+    term16 = 0;
+  }
+  console.log("term16:", term16);
 
   // Sumar todos los términos
-  let cargaSensibleTransmision = -(
+  let cargaSensibleTransmision =
     term1 +
     term2 +
     term3 +
@@ -326,8 +433,9 @@ export function qv_sens_trans(
     term13 +
     term14 +
     term15 +
-    term16
-  );
+    term16;
+
+  console.log("Carga sensible de transmisión:", cargaSensibleTransmision);
 
   return cargaSensibleTransmision;
 }

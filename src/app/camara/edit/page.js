@@ -79,6 +79,7 @@ async function page({ searchParams }) {
     recinto?.temperatura_ver_suelo
   );
 
+  console.log(valorRadiacion, valorTransmisibilidad);
   
   console.log(searchParams.id);
   console.log(typeof searchParams.id);
