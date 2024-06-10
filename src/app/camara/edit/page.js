@@ -79,8 +79,22 @@ async function page({ searchParams }) {
     recinto?.temperatura_ver_suelo
   );
 
-  console.log(valorRadiacion, valorTransmisibilidad);
+  const valorOcupacionPersonas = calculos.qv_sens_ocup(
+    proyecto?.w_persona,
+    proyecto?.ocupacion_personas
+  );
   
+  const valorrenovacionAire = calculos.qv_sens_renov(
+    proyecto?.caudales_aire,
+    recinto?.temp,
+
+  );
+
+  const valorIluminacion = calculos.qv_sens_ilum(
+    proyecto?.potencia_lampara,
+    recinto?.superficie_suelo,
+    proyecto?.tipo_lampara
+  );
   console.log(searchParams.id);
   console.log(typeof searchParams.id);
   console.log("PROYECTO ID", recinto?.proyectoId);
@@ -103,6 +117,8 @@ async function page({ searchParams }) {
             Cargas térmicas a través de los cerramientos (W):{" "}
             {valorTransmisibilidad}{" "}
           </p>
+          <p>Carga sensible de las personas (W): {valorOcupacionPersonas.toFixed(2)}</p>
+          <p>Carga sensible iluminación (W): {valorIluminacion}</p>
         </div>
       </div>
       <div className="mt-4 p-4 border rounded shadow-md w-full">
