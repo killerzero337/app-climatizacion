@@ -8,7 +8,7 @@ export async function newRecinto(formData) {
   let redirectUrl;
   try {
     const nombre = formData.get("nombre");
-    const proyectoId = Number(formData.get("proyectoId"));
+    const proyectoId = Number(formData.get("proyecto_id"));
     const t_ver_relativa = Number(formData.get("t_ver_relativa"));
     const t_inv_relativa = Number(formData.get("t_inv_relativa"));
     const hr_ver_relativa = Number(formData.get("hr_ver_relativa"));
@@ -166,6 +166,19 @@ export async function newRecinto(formData) {
   redirect(redirectUrl);
 }
 
+export async function getRecinto(recintoId) {
+  try {
+    const camaras = await prisma.recinto.findUnique({
+      where: { id: recintoId },
+    });
+
+    return camaras;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+
 export async function getRecintos(proyectoId) {
   try {
     const proyectos = await getProyectos();
@@ -202,8 +215,9 @@ export async function deleteCamara(formData) {
 export async function editRecinto(formData) {
   let redirectUrl;
 
+  const id = Number(formData.get("id"));
+  const proyectoId = Number(formData.get("proyecto_id"));
   const nombre = formData.get("nombre");
-  const proyectoId = formData.get("proyecto_id");
   const t_ver_relativa = Number(formData.get("t_ver_relativa"));
   const t_inv_relativa = Number(formData.get("t_inv_relativa"));
   const hr_ver_relativa = Number(formData.get("hr_ver_relativa"));
@@ -345,7 +359,7 @@ export async function editRecinto(formData) {
     });
     console.log(recinto);
     revalidatePath("/camara");
-    redirectUrl = `/camara?id=${proyectoid}`;
+    redirectUrl = `/camara?id=${proyectoId}`;
   } catch (error) {
     console.log(error);
   }
@@ -357,6 +371,6 @@ export async function volver({ formData }) {
   console.log("ID recibido:", proyectoId);
 
   revalidatePath("/camara");
-  redirectUrl = `/camara?id=${proyectoId}`;
+  let redirectUrl = `/camara?id=${proyectoId}`;
   redirect(redirectUrl);
 }

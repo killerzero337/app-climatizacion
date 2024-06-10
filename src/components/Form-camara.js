@@ -10,9 +10,12 @@ export function Formcamara({
   disabled = false,
   id,
 }) {
+
+  console.log('camara ', camara);
   return (
     <form action={action}>
-      <input type="hidden" name="proyecto_id" defaultValue={proyectoId} />
+      {/* IMPORTANTE: Comentar. El id del proyecto lo cogemos de la lista de proyectos */}
+      {/* <input type="hidden" name="proyecto_id" defaultValue={proyectoId} /> */} 
       <input type="hidden" name="id" defaultValue={id} />
       <fieldset disabled={disabled}>
         <div className="flex flex-col md:flex-row justify-around">
@@ -659,7 +662,7 @@ export function Formcamara({
         </div>
       </fieldset>
       <Suspense fallback={<Spinner />}>
-        <ListaProyectos proyectoId={camara?.proyectoId} disabled={disabled} />
+        <ListaProyectos recintoId={camara?.id} disabled={disabled} />
       </Suspense>
       <div className="flex justify-center items-center mt-4">
         <Boton title={title} />
@@ -667,5 +670,6 @@ export function Formcamara({
     </form>
   );
 }
+
 
 export default Formcamara;

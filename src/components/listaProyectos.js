@@ -1,11 +1,14 @@
 import { getIdUsuario, getProyectosPorId } from "@/lib/actions-proyecto";
 import { getRecinto } from "@/lib/actions-camara";
 import { auth } from "@/auth";
+
 async function ListaProyectos({ recintoId, disabled }) {
   const sesion = await auth();
   const { user } = sesion;
   const userId = await getIdUsuario(user?.email);
   const proyectos = await getProyectosPorId(userId);
+
+  console.log("RECINTO ID", recintoId);
 
   let recinto = null;
   let proyectoId = null;
@@ -14,25 +17,30 @@ async function ListaProyectos({ recintoId, disabled }) {
     proyectoId = recinto?.proyectoId;
   }
 
-  console.log(`PROYECTO del RECINTO ${recintoId}: `, proyectoId);
+  console.log("RECINTO ", recinto);
+  // console.log(`PROYECTO del RECINTO ${recintoId}: `, recinto?.proyectoId);
 
   return (
     <fieldset disabled={disabled}>
-      <legend>Proyectos</legend>
+      <legend>Proyecto asociado</legend>
       <select
-        name="proyectoId"
-        defaultValue={proyectoId || ""}
+        name="proyecto_id"
         disabled={disabled}
         className="border-2 border-gray-300 rounded p-2"
       >
-        <option value="" disabled>
-          Seleccione un proyecto
-        </option>
-        {proyectos?.map((proyecto) => (
-          <option key={proyecto.id} value={proyecto.id}>
-            {proyecto.nombre}
-          </option>
-        ))}
+        {proyectos?.map((proyecto) =>
+          proyecto.id == recinto?.proyectoId ? (
+            <option key={proyecto.id} value={proyecto.id} selected>
+              {" "}
+              {proyecto.nombre}{" "}
+            </option>
+          ) : (
+            <option key={proyecto.id} value={proyecto.id}>
+              {" "}
+              {proyecto.nombre}{" "}
+            </option>
+          )
+        )}
       </select>
     </fieldset>
   );

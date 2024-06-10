@@ -10,7 +10,7 @@ function Rutas({ sesion }) {
     setMenuOpen(!menuOpen);
   };
 
-  if (sesion?.user.role === "ADMIN") {
+  if (sesion?.user?.role === "ADMIN") {
     return (
       <div>
         <div className="flex items-center">

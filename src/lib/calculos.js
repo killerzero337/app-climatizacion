@@ -47,7 +47,45 @@
 // entalpia_int_inv_lat	(hum_absol_int_inv/1000)*(2501.3)*1000
 // volum_espe_int_inv	0.2870551882*(temp_int_inv+273.15)*(1+1.6078*hum_absol_int_inv/1000)/(presion/1000)
 ///////////////
+export function qr_sens(
+  qv_sens_rad,
+  qv_sens_trans,
+  qv_sens_renov,
+  qv_sens_ocup,
+  qv_sens_ilum
+) {
+  console.log(qv_sens_rad, qv_sens_trans, qv_sens_renov, qv_sens_ocup, qv_sens_ilum);
+  const total =
+    qv_sens_rad + qv_sens_trans + qv_sens_renov + qv_sens_ocup + qv_sens_ilum;
 
+  return Number(total);
+}
+
+export function qv_lat_renov(
+  caudal_aire,
+  volum_espe_int_ver,
+  entalpia_ext_ver_lat,
+  entalpia_int_ver_lat
+) {
+  return (
+    (caudal_aire / 3600) *
+    (1 / volum_espe_int_ver) *
+    (entalpia_ext_ver_lat - entalpia_int_ver_lat) *
+    1.1
+  );
+}
+export function qv_lat_ocup(ql_pers, ocupacion) {
+  const ocupacionFactor = ocupacion === "sedentario" ? 70 : 150;
+  return ql_pers * ocupacionFactor;
+}
+
+export function qr_lat(qv_lat_renov, qv_lat_ocup) {
+  return qv_lat_renov + qv_lat_ocup;
+}
+export function qr(qr_sens, qr_lat, fs) {
+  console.log("lolololo", qr_sens, qr_lat, fs);
+  return (qr_sens + qr_lat) * (1 + fs / 100);
+}
 export function qv_sens_rad(
   rad_cerr1,
   sup_vid_cerr1,
@@ -126,7 +164,7 @@ export function qv_sens_rad(
   );
 }
 
-export async function qv_sens_renov(
+export function qv_sens_renov(
   caudal_aire,
   volum_espe_int_ver,
   entalpia_ext_ver_sens,
@@ -147,15 +185,29 @@ export async function qv_sens_renov(
 }
 
 export function qv_sens_ocup(qs_pers, ocupacion) {
-  // Un ejemeplo perfecto de cuando empezar a usar TypeScript
+  console.log("qs_pers:", qs_pers);
+  console.log("ocupacion:", ocupacion);
+
+  if (typeof qs_pers !== "number" || isNaN(qs_pers)) {
+    console.error("qs_pers debe ser un número válido");
+    return 0; // o lanzar un error
+  }
+
+  if (ocupacion !== "sedentario" && ocupacion !== "activo") {
+    console.error("ocupacion debe ser 'sedentario' o 'activo'");
+    return 0; // o lanzar un error
+  }
 
   const valor_ocupacion = ocupacion === "sedentario" ? 70 : 150;
 
+  console.log("valor_ocupacion:", valor_ocupacion);
+
   const qv_sens_ocup = qs_pers * valor_ocupacion;
+
+  console.log("qv_sens_ocup:", qv_sens_ocup);
 
   return qv_sens_ocup;
 }
-
 export function qv_sens_ilum(iluminacion, sup_suelo, tipo_luz) {
   if (typeof tipo_luz !== "string") {
     return 0;
@@ -168,7 +220,7 @@ export function qv_sens_ilum(iluminacion, sup_suelo, tipo_luz) {
       ? 20
       : 0;
 
-  const qv_sens_ilum = (iluminacion * sup_suelo * valor_iluminacion).toFixed(2);
+  const qv_sens_ilum = iluminacion * sup_suelo * valor_iluminacion;
 
   return qv_sens_ilum;
 }
@@ -372,6 +424,14 @@ export function qv_sens_trans(
   console.log("term10:", term10);
 
   let term11 = k_vid_cerr4 * sup_vid_cerr4 * (temp_int_ver - temp_cerr4_ver);
+  console.log(
+    "k_vid_cerr4:",
+    k_vid_cerr4,
+    "sup_vid_cerr4:",
+    sup_vid_cerr4,
+    temp_int_ver,
+    temp_cerr4_ver
+  );
   if (isNaN(term11)) {
     console.log("term11 es NaN");
     term11 = 0;
@@ -440,7 +500,7 @@ export function qv_sens_trans(
   return cargaSensibleTransmision;
 }
 
-export function calcularPresion(altitud) {
+export function presion(altitud) {
   return (
     101325 *
     Math.pow(
@@ -450,7 +510,7 @@ export function calcularPresion(altitud) {
   );
 }
 
-export function calcularPsatAguaExt(temp_ext_ver) {
+export function temp_cerr1_inv(proyecto, temp_ext_ver) {
   return Math.exp(
     -5800.2206 * Math.pow(temp_ext_ver + 273.15, -1) +
       1.3914993 -
@@ -461,14 +521,63 @@ export function calcularPsatAguaExt(temp_ext_ver) {
   );
 }
 
-export function calcularHumAbsolExt(hum_ext_ver, presion, p_sat_agua_ext_ver) {
-  return (
-    (1000 * 0.62198 * (hum_ext_ver / 100) * p_sat_agua_ext_ver) /
-    (presion - (hum_ext_ver / 100) * p_sat_agua_ext_ver)
+export function temp_cerr2_inv(proyecto, ubicacion, recinto) {
+  ubiVariable = ubicacion;
+  if (ubicacion === "interior") {
+  } else {
+  }
+  return Math.exp(
+    -5800.2206 * Math.pow(temp_ext_ver + 273.15, -1) +
+      1.3914993 -
+      0.048640239 * (temp_ext_ver + 273.15) +
+      0.000041764768 * Math.pow(temp_ext_ver + 273.15, 2) -
+      0.000000014452093 * Math.pow(temp_ext_ver + 273.15, 3) +
+      6.5459673 * Math.log(temp_ext_ver + 273.15)
   );
 }
 
-export function calcularEntalpiaExtSens(temp_ext_ver, hum_absol_ext_ver) {
+export function p_sat_agua_ext_ver(temp_ext_ver) {
+  return Math.exp(
+    -5800.2206 * Math.pow(temp_ext_ver + 273.15, -1) +
+      1.3914993 -
+      0.048640239 * (temp_ext_ver + 273.15) +
+      0.000041764768 * Math.pow(temp_ext_ver + 273.15, 2) -
+      0.000000014452093 * Math.pow(temp_ext_ver + 273.15, 3) +
+      6.5459673 * Math.log(temp_ext_ver + 273.15)
+  );
+}
+
+export function temp_cerr3_inv(proyecto, temp_ext_ver) {
+  return Math.exp(
+    -5800.2206 * Math.pow(temp_ext_ver + 273.15, -1) +
+      1.3914993 -
+      0.048640239 * (temp_ext_ver + 273.15) +
+      0.000041764768 * Math.pow(temp_ext_ver + 273.15, 2) -
+      0.000000014452093 * Math.pow(temp_ext_ver + 273.15, 3) +
+      6.5459673 * Math.log(temp_ext_ver + 273.15)
+  );
+}
+
+export function temp_cerr4_inv(proyecto, temp_ext_ver) {
+  return Math.exp(
+    -5800.2206 * Math.pow(temp_ext_ver + 273.15, -1) +
+      1.3914993 -
+      0.048640239 * (temp_ext_ver + 273.15) +
+      0.000041764768 * Math.pow(temp_ext_ver + 273.15, 2) -
+      0.000000014452093 * Math.pow(temp_ext_ver + 273.15, 3) +
+      6.5459673 * Math.log(temp_ext_ver + 273.15)
+  );
+} //
+
+export function hum_absol_ext_ver(pres, hum_ext_ver, temp_ext_ver) {
+  const p_sat = p_sat_agua_ext_ver(temp_ext_ver);
+  return (
+    (1000 * 0.62198 * (hum_ext_ver / 100) * p_sat) /
+    (pres - (hum_ext_ver / 100) * p_sat)
+  );
+}
+
+export function entalpia_ext_ver_sens(temp_ext_ver, hum_absol_ext_ver) {
   return (
     (1.006 * temp_ext_ver +
       (hum_absol_ext_ver / 1000) * (1.89 * temp_ext_ver)) *
@@ -476,67 +585,11 @@ export function calcularEntalpiaExtSens(temp_ext_ver, hum_absol_ext_ver) {
   );
 }
 
-export function calcularEntalpiaExtLat(hum_absol_ext_ver) {
+export function entalpia_ext_ver_lat(hum_absol_ext_ver) {
   return (hum_absol_ext_ver / 1000) * 2501.3 * 1000;
 }
 
-export function calcularVolumEspeExt(temp_ext_ver, hum_absol_ext_ver, presion) {
-  return (
-    (0.2870551882 *
-      (temp_ext_ver + 273.15) *
-      (1 + (1.6078 * hum_absol_ext_ver) / 1000)) /
-    (presion / 1000)
-  );
-}
-
-export function calcularPsatAguaExtInv(temp_ext_inv) {
-  return Math.exp(
-    -5800.2206 * Math.pow(temp_ext_inv + 273.15, -1) +
-      1.3914993 -
-      0.048640239 * (temp_ext_inv + 273.15) +
-      0.000041764768 * Math.pow(temp_ext_inv + 273.15, 2) -
-      0.000000014452093 * Math.pow(temp_ext_inv + 273.15, 3) +
-      6.5459673 * Math.log(temp_ext_inv + 273.15)
-  );
-}
-
-export function calcularHumAbsolExtInv(
-  hum_ext_inv,
-  presion,
-  p_sat_agua_ext_inv
-) {
-  return (
-    (1000 * 0.62198 * (hum_ext_inv / 100) * p_sat_agua_ext_inv) /
-    (presion - (hum_ext_inv / 100) * p_sat_agua_ext_inv)
-  );
-}
-
-export function calcularEntalpiaExtInvSens(temp_ext_inv, hum_absol_ext_inv) {
-  return (
-    (1.006 * temp_ext_inv +
-      (hum_absol_ext_inv / 1000) * (1.89 * temp_ext_inv)) *
-    1000
-  );
-}
-
-export function calcularEntalpiaExtInvLat(hum_absol_ext_inv) {
-  return (hum_absol_ext_inv / 1000) * 2501.3 * 1000;
-}
-
-export function calcularVolumEspeExtInv(
-  temp_ext_inv,
-  hum_absol_ext_inv,
-  presion
-) {
-  return (
-    (0.2870551882 *
-      (temp_ext_inv + 273.15) *
-      (1 + (1.6078 * hum_absol_ext_inv) / 1000)) /
-    (presion / 1000)
-  );
-}
-
-export function calcularPsatAguaInt(temp_int_ver) {
+export function p_sat_agua_int_ver(temp_int_ver) {
   return Math.exp(
     -5800.2206 * Math.pow(temp_int_ver + 273.15, -1) +
       1.3914993 -
@@ -547,14 +600,14 @@ export function calcularPsatAguaInt(temp_int_ver) {
   );
 }
 
-export function calcularHumAbsolInt(hum_int_ver, presion, p_sat_agua_int_ver) {
+export function hum_absol_int_ver(hum_int_ver, p_sat, presion) {
   return (
-    (1000 * 0.62198 * (hum_int_ver / 100) * p_sat_agua_int_ver) /
-    (presion - (hum_int_ver / 100) * p_sat_agua_int_ver)
+    (1000 * 0.62198 * (hum_int_ver / 100) * p_sat) /
+    (presion - (hum_int_ver / 100) * p_sat)
   );
 }
 
-export function calcularEntalpiaIntSens(temp_int_ver, hum_absol_int_ver) {
+export function entalpia_int_ver_sens(temp_int_ver, hum_absol_int_ver) {
   return (
     (1.006 * temp_int_ver +
       (hum_absol_int_ver / 1000) * (1.89 * temp_int_ver)) *
@@ -562,11 +615,11 @@ export function calcularEntalpiaIntSens(temp_int_ver, hum_absol_int_ver) {
   );
 }
 
-export function calcularEntalpiaIntLat(hum_absol_int_ver) {
+export function entalpia_int_ver_lat(hum_absol_int_ver) {
   return (hum_absol_int_ver / 1000) * 2501.3 * 1000;
 }
 
-export function calcularVolumEspeInt(temp_int_ver, hum_absol_int_ver, presion) {
+export function volum_espe_int_ver(temp_int_ver, hum_absol_int_ver, presion) {
   return (
     (0.2870551882 *
       (temp_int_ver + 273.15) *
@@ -575,7 +628,35 @@ export function calcularVolumEspeInt(temp_int_ver, hum_absol_int_ver, presion) {
   );
 }
 
-export function calcularPsatAguaIntInv(temp_int_inv) {
+export function hum_absol_int_inv(hum_int_inv, p_sat, presion) {
+  return (
+    (1000 * 0.62198 * (hum_int_inv / 100) * p_sat) /
+    (presion - (hum_int_inv / 100) * p_sat)
+  );
+}
+
+export function entalpia_int_inv_sens(temp_int_inv, hum_absol_int_inv) {
+  return (
+    (1.006 * temp_int_inv +
+      (hum_absol_int_inv / 1000) * (1.89 * temp_int_inv)) *
+    1000
+  );
+}
+
+export function entalpia_int_inv_lat(hum_absol_int_inv) {
+  return (hum_absol_int_inv / 1000) * 2501.3 * 1000;
+}
+
+export function volum_espe_int_inv(temp_int_inv, hum_absol_int_inv, presion) {
+  return (
+    (0.2870551882 *
+      (temp_int_inv + 273.15) *
+      (1 + (1.6078 * hum_absol_int_inv) / 1000)) /
+    (presion / 1000)
+  );
+}
+
+export function p_sat_agua_int_inv(temp_int_inv) {
   return Math.exp(
     -5800.2206 * Math.pow(temp_int_inv + 273.15, -1) +
       1.3914993 -
@@ -586,77 +667,58 @@ export function calcularPsatAguaIntInv(temp_int_inv) {
   );
 }
 
-export function calcularHumAbsolIntInv(
-  hum_int_inv,
-  presion,
-  p_sat_agua_int_inv
-) {
-  return (
-    (1000 * 0.62198 * (hum_int_inv / 100) * p_sat_agua_int_inv) /
-    (presion - (hum_int_inv / 100) * p_sat_agua_int_inv)
-  );
-}
-
-export function calcularEntalpiaIntInvSens(temp_int_inv, hum_absol_int_inv) {
-  return (
-    (1.006 * temp_int_inv +
-      (hum_absol_int_inv / 1000) * (1.89 * temp_int_inv)) *
-    1000
-  );
-}
-
-export function calcularEntalpiaIntInvLat(hum_absol_int_inv) {
-  return (hum_absol_int_inv / 1000) * 2501.3 * 1000;
-}
-
-export function calcularVolumEspeIntInv(
-  temp_int_inv,
-  hum_absol_int_inv,
-  presion
-) {
-  return (
+export function volum_espe_ext_ver(presion, temp_ext_ver, hum_absol_ext_ver) {
+  var volum_espe_ext_ver =
     (0.2870551882 *
-      (temp_int_inv + 273.15) *
-      (1 + (1.6078 * hum_absol_int_inv) / 1000)) /
-    (presion / 1000)
-  );
+      (temp_ext_ver + 273.15) *
+      (1 + (1.6078 * hum_absol_ext_ver) / 1000)) /
+    (presion / 1000);
+
+  return volum_espe_ext_ver;
 }
 
-// Función para calcular la presión de vapor de agua en el interior (sensible)
-export function calcularPsatAguaIntVer(temp_int_ver) {
-  return Math.exp(
-    -5800.2206 * Math.pow(temp_int_ver + 273.15, -1) +
+export function p_sat_agua_ext_inv(temp_ext_inv) {
+  var p_sat_agua_ext_inv = Math.exp(
+    -5800.2206 * Math.pow(temp_ext_inv + 273.15, -1) +
       1.3914993 -
-      0.048640239 * (temp_int_ver + 273.15) +
-      0.000041764768 * Math.pow(temp_int_ver + 273.15, 2) -
-      0.000000014452093 * Math.pow(temp_int_ver + 273.15, 3) +
-      6.5459673 * Math.log(temp_int_ver + 273.15)
+      0.048640239 * (temp_ext_inv + 273.15) +
+      0.000041764768 * Math.pow(temp_ext_inv + 273.15, 2) -
+      0.000000014452093 * Math.pow(temp_ext_inv + 273.15, 3) +
+      6.5459673 * Math.log(temp_ext_inv + 273.15)
   );
+
+  return p_sat_agua_ext_inv;
 }
 
-// Función para calcular la humedad absoluta interna (sensible)
-export function calcularHumAbsolIntVer(
-  hum_int_ver,
-  temp_int_ver,
-  presion,
-  p_sat_agua_int_ver
-) {
-  return (
-    (1000 * 0.62198 * (hum_int_ver / 100) * p_sat_agua_int_ver) /
-    (presion - (hum_int_ver / 100) * p_sat_agua_int_ver)
-  );
+export function hum_absol_ext_inv(presion, hum_ext_inv, p_sat_agua_ext_inv) {
+  var hum_absol_ext_inv =
+    (1000 * 0.62198 * (hum_ext_inv / 100) * p_sat_agua_ext_inv) /
+    (presion - (hum_ext_inv / 100) * p_sat_agua_ext_inv);
+
+  return hum_absol_ext_inv;
 }
 
-// Función para calcular la entalpía sensible interna
-export function calcularEntalpiaIntVerSens(temp_int_ver, hum_absol_int_ver) {
-  return (
-    (1.006 * temp_int_ver +
-      (hum_absol_int_ver / 1000) * (1.89 * temp_int_ver)) *
-    1000
-  );
+export function entalpia_ext_inv_sens(temp_ext_inv, hum_absol_ext_inv) {
+  var entalpia_ext_inv_sens =
+    (1.006 * temp_ext_inv +
+      (hum_absol_ext_inv / 1000) * (1.89 * temp_ext_inv)) *
+    1000;
+
+  return entalpia_ext_inv_sens;
 }
 
-// Función para calcular la entalpía latente interna
-export function calcularEntalpiaIntVerLat(hum_absol_int_ver) {
-  return (hum_absol_int_ver / 1000) * 2501.3 * 1000;
+export function entalpia_ext_inv_lat(hum_absol_ext_inv) {
+  var entalpia_ext_inv_lat = (hum_absol_ext_inv / 1000) * 2501.3 * 1000;
+
+  return entalpia_ext_inv_lat;
+}
+
+export function volum_espe_ext_inv(temp_ext_inv, hum_absol_ext_inv, presion) {
+  var volum_espe_ext_inv =
+    (0.2870551882 *
+      (temp_ext_inv + 273.15) *
+      (1 + (1.6078 * hum_absol_ext_inv) / 1000)) /
+    (presion / 1000);
+
+  return volum_espe_ext_inv;
 }
