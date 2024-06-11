@@ -2,7 +2,8 @@ import Tarjeta from "@/components/Tarjeta";
 import Link from "next/link";
 import { getProyecto } from "@/lib/actions-proyecto";
 import { getProyectoEquipo } from "@/lib/actions-equipo";
-import CamaraTarjeta from "@/components/tarjetaPrismacamara";
+import CamaraTarjetaCamara from "@/components/tarjetaPrismacamara";
+import CamaraTarjetaEquipo from "@/components/tarjetaPrismaEquipo";
 export const dynamic = "force-dynamic";
 
 async function Page({ searchParams }) {
@@ -14,6 +15,9 @@ async function Page({ searchParams }) {
 
   return (
     <Tarjeta>
+      <div className="flex justify-center mb-6">
+        <h1 className="font-bold text-3xl mb-2">Camaras</h1>
+      </div>
       <div className="flex justify-center mb-6 gap-5">
         <Link
           href="/camara/new"
@@ -21,19 +25,14 @@ async function Page({ searchParams }) {
         >
           Crear recinto
         </Link>
-        <Link
-          href="/equipo/new"
-          className="inline-flex items-center px-5 py-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        >
-          Crear equipo
-        </Link>
       </div>
-      <div className="flex flex-wrap gap-5 sm:gap-10 items-center justify-center">
+      <div className="flex flex-wrap gap-5 sm:gap-10 items-center justify-center mb-10">
         {recintos.map((recinto) => (
-          <CamaraTarjeta key={recinto.id} camara={recinto} />
+          <CamaraTarjetaCamara key={recinto.id} camara={recinto} />
         ))}
       </div>
-      <Tarjeta>
+      <div className="mt-4 p-4 border rounded shadow-md">
+        <h1 className="font-bold text-3xl text-center mb-10">Equipos</h1>
         <div className="flex justify-center mb-6">
           <Link
             href="/equipo/new"
@@ -44,10 +43,10 @@ async function Page({ searchParams }) {
         </div>
         <div className="flex flex-wrap gap-5 sm:gap-10 items-center justify-center">
           {equipos.map((otrosEquipos) => (
-            <CamaraTarjeta key={otrosEquipos.id} camara={otrosEquipos} />
+            <CamaraTarjetaEquipo key={otrosEquipos.id} equipo={otrosEquipos} />
           ))}
         </div>
-      </Tarjeta>
+      </div>
     </Tarjeta>
   );
 }

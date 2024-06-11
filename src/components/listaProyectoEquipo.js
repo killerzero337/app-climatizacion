@@ -1,5 +1,5 @@
 import { getIdUsuario, getProyectosPorId } from "@/lib/actions-proyecto";
-import { getEquipoId } from "@/lib/actions-equipo";
+import { getProyectoEquipo } from "@/lib/actions-equipo";
 import { auth } from "@/auth";
 
 async function ListaProyectos({ equipoId, disabled }) {
@@ -13,7 +13,7 @@ async function ListaProyectos({ equipoId, disabled }) {
   let equipo = null;
   let proyectoId = null;
   if (equipoId) {
-    equipo = await getEquipoId(equipoId);
+    equipo = await getProyectoEquipo(equipoId);
     proyectoId = equipo?.proyectoId;
   }
 
