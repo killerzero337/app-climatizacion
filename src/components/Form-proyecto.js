@@ -581,9 +581,11 @@ export function FormProyecto({
                 defaultValue={proyecto?.oda}
                 className="border-2 border-gray-300 rounded p-2 w-full"
               >
-                <option value="oda1">oda1</option>
-                <option value="oda2">oda2</option>
-                <option value="oda3">oda3</option>
+                <option value="oda1">ODA 1</option>
+                <option value="oda2" selected>
+                  ODA 2
+                </option>
+                <option value="oda3">ODA 3</option>
               </select>
             </div>
           </div>

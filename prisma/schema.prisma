@@ -53,49 +53,53 @@ model Account {
 }
 
 model Proyecto {
-  id                    Int            @id @default(autoincrement())
-  nombre                String
-  localidad             String
-  userId                String?
-  user                  User?          @relation(fields: [userId], references: [id])
-  fecha                 DateTime?
-  temp_ext_ver          Float?
-  hr_ext_ver            Float?
-  temp_ext_inv          Float?
-  hr_ext_inv            Float?
-  temp_terreno_ver      Float?
-  temp_terreno_inv      Float?
-  altitud               Float?
-  zona_climatica        String?
-  oda                   String?
-  us_um                 Float?
-  uc                    Float?
-  ut_umd                Float?
-  uh                    Float?
-  up                    Float?
-  uph                   Float?
-  upv                   Float?
-  uphv                  Float?
-  tph                   Float?
-  tpv                   Float?
-  tphv                  Float?
-  numero_personas       Int?
-  w_persona             Float?
-  carga_latente         Float?
-  ocupacion_personas    String?
-  caudales_ida          Float?
-  caudales_aire         Float?
-  tipo_lampara          String?
-  potencia_lampara      Float?
-  valor_seguridad       Float?
-  factorFuncionamiento  Float?
-  comentarios           String?
-  imagen                String?
-  createdAt             DateTime       @default(now())
-  updatedAt             DateTime       @updatedAt
-
+  id                   Int       @id @default(autoincrement())
+  nombre               String
+  localidad            String
+  userId               String?
+  user                 User?     @relation(fields: [userId], references: [id])
+  fecha                DateTime?
+  temp_ext_ver         Float?
+  hr_ext_ver           Float?
+  temp_ext_inv         Float?
+  hr_ext_inv           Float?
+  temp_terreno_ver     Float?
+  temp_terreno_inv     Float?
+  altitud              Float?
+  zona_climatica       String?
+  oda                  String?
+  us_um                Float?
+  uc                   Float?
+  ut_umd               Float?
+  uh                   Float?
+  up                   Float?
+  uph                  Float?
+  upv                  Float?
+  uphv                 Float?
+  tph                  Float?
+  tpv                  Float?
+  tphv                 Float?
+  numero_personas      Int?
+  w_persona            Float?
+  carga_latente        Float?
+  ocupacion_personas   String?
+  caudales_ida         Float?
+  caudales_aire        Float?
+  tipo_lampara         String?
+  potencia_lampara     Float?
+  valor_seguridad      Float?
+  factorFuncionamiento Float?
+  comentarios          String?
+  imagen               String?
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
 
   // Calculos ext no visibles:
+  temp_int_ver Float?
+  temp_int_inv Float?
+  hum_int_ver  Float?
+  hum_int_inv  Float?
+
   presion               Float?
   p_sat_agua_ext_ver    Float?
   hum_absol_ext_ver     Float?
@@ -110,13 +114,24 @@ model Proyecto {
 
   // Calculos int no visibles
 
-  recintos              Recinto[]
-  OtrosEquipos          OtrosEquipos[]
+  p_sat_agua_int_ver    Float?
+  hum_absol_int_ver     Float?
+  entalpia_int_ver_sens Float?
+  entalpia_int_ver_lat  Float?
+  volum_espe_int_ver    Float?
+  p_sat_agua_int_inv    Float?
+  hum_absol_int_inv     Float?
+  entalpia_int_inv_sens Float?
+  entalpia_int_inv_lat  Float?
+  volum_espe_int_inv    Float?
+
+  recintos Recinto[]
+  equipos  Equipo[]
 
   @@index([userId], name: "user_id_index")
 }
 
-model OtrosEquipos {
+model Equipo {
   id                    Int       @id @default(autoincrement())
   proyectoId            Int?
   nombre                String?
