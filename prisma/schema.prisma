@@ -52,7 +52,6 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
-//En el proyecto de momento se añadira de forma predeterminada un solo equipo adicional
 model Proyecto {
   id                    Int            @id @default(autoincrement())
   nombre                String
@@ -89,13 +88,28 @@ model Proyecto {
   tipo_lampara          String?
   potencia_lampara      Float?
   valor_seguridad       Float?
-  equipoAdicionalNombre String?
-  potenciaEquipo        Float?
   factorFuncionamiento  Float?
   comentarios           String?
   imagen                String?
   createdAt             DateTime       @default(now())
   updatedAt             DateTime       @updatedAt
+
+
+  // Calculos ext no visibles:
+  presion               Float?
+  p_sat_agua_ext_ver    Float?
+  hum_absol_ext_ver     Float?
+  entalpia_ext_ver_sens Float?
+  entalpia_ext_ver_lat  Float?
+  volum_espe_ext_ver    Float?
+  p_sat_agua_ext_inv    Float?
+  hum_absol_ext_inv     Float?
+  entalpia_ext_inv_sens Float?
+  entalpia_ext_inv_lat  Float?
+  volum_espe_ext_inv    Float?
+
+  // Calculos int no visibles
+
   recintos              Recinto[]
   OtrosEquipos          OtrosEquipos[]
 

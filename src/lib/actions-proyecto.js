@@ -2,6 +2,7 @@
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import * as calculos from "@/lib/calculos";
 import cloudinary from "@/lib/cloudinary";
 
 async function imgCreate(file) {
@@ -107,7 +108,7 @@ export async function newProyecto(formData) {
     const zona_climatica = formData.get("zona_climatica");
     const numero_personas = Number(formData.get("numero_personas"));
     const ocupacion_personas = formData.get("ocupacion_personas");
-    const w_persona = Number(formData.get("w_persona"));
+    const w_persona = ocupacion_personas === "sedentario" ? 70 : 150;
     const us_um = Number(formData.get("us_um"));
     const uc = Number(formData.get("uc"));
     const ut_umd = Number(formData.get("ut_umd"));
@@ -126,7 +127,7 @@ export async function newProyecto(formData) {
     const tipo_lampara = formData.get("tipo_lampara");
     const potencia_lampara = Number(formData.get("potencia_lampara"));
     const valor_seguridad = Number(formData.get("valor_seguridad"));
-    const carga_latente = Number(formData.get("carga_latente"));
+    const carga_latente = ocupacion_personas === "sedentario" ? 50 : 300;
     const oda = formData.get("oda");
     const comentarios = formData.get("comentarios");
     const imagen = formData.get("file");

@@ -12,9 +12,7 @@ function formEquipo({
   return (
     <form action={action}>
       <input type="hidden" name="id" defaultValue={id} />
-      <fieldset disabled={disabled}>
-        
-      </fieldset>
+      <fieldset disabled={disabled}></fieldset>
       <Suspense fallback={<Spinner />}>
         <ListaProyectos recintoId={camara?.id} disabled={disabled} />
       </Suspense>
@@ -25,4 +23,4 @@ function formEquipo({
   );
 }
 
-export default form - equipo;
+export default formEquipo;

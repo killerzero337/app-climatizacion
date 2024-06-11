@@ -9,11 +9,6 @@ async function Page({ searchParams }) {
   console.log("PROYECTO", proyecto);
   const { recintos } = proyecto; // desestructuracion
 
-  const mediaSuperficieSuelo =
-    recintos.reduce((total, recintos) => total + recintos.superficie_suelo, 0) /
-    recintos.length;
-  console.log("MEDIA", mediaSuperficieSuelo);
-
   return (
     <Tarjeta>
       <div className="flex justify-center mb-6">
