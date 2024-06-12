@@ -33,14 +33,11 @@ export async function newEquipo(formData) {
 
 export async function getProyectoEquipo(id) {
   try {
-    const proyectos = await prisma.proyecto.findUnique({
-      where: { id: Number(id) },
-      include: {
-        equipos: true,
-      },
+    const equipos = await prisma.equipo.findUnique({
+      where: { id: id },
     });
-    console.log(proyectos);
-    return proyectos;
+    console.log(equipos);
+    return equipos;
   } catch (error) {
     console.log(error);
     return null;
@@ -52,8 +49,8 @@ export async function getEquipo(id) {
     const equipo = await prisma.equipo.findUnique({
       where: { id: Number(id) },
       include: {
-        proyecto: true 
-      }
+        proyecto: true,
+      },
     });
     console.log(equipo);
     return equipo;
@@ -73,11 +70,11 @@ export async function deleteEquipo(formData) {
     const equipo = await prisma.equipo.delete({
       where: { id: id },
     });
-    console.log("Camaras eliminado:", equipo);
-    revalidatePath("/camara");
+    console.log("Equipo eliminado:", equipo);
+    revalidatePath("/equipo");
     redirectUrl = `/camara?id=${proyectoId}`;
   } catch (error) {
-    console.log("Error al eliminar el cerramiento:", error);
+    console.log("Error al eliminar el equipo:", error);
   }
   redirect(redirectUrl);
 }
