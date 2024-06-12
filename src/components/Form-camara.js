@@ -13,6 +13,7 @@ export function Formcamara({
   console.log("camara ", camara);
   return (
     <form action={action}>
+      <h1 className="font-bold text-3xl mb-2">Recinto: {camara?.nombre}</h1>
       {/* IMPORTANTE: Comentar. El id del proyecto lo cogemos de la lista de proyectos */}
       {/* <input type="hidden" name="proyecto_id" defaultValue={proyectoId} /> */}
       <input type="hidden" name="id" defaultValue={id} />

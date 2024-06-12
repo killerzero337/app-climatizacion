@@ -205,3 +205,350 @@ export function calcularVolum_espe_int_inv(
   return total;
 }
 
+export function qv_sens_rad(
+  rad_cerr1,
+  sup_vid_cerr1,
+  tipo_vidrio_cerr1,
+  rad_cerr2,
+  sup_vid_cerr2,
+  tipo_vidrio_cerr2,
+  rad_cerr3,
+  sup_vid_cerr3,
+  tipo_vidrio_cerr3,
+  rad_cerr4,
+  sup_vid_cerr4,
+  tipo_vidrio_cerr4,
+  rad_techo,
+  sup_vid_techo,
+  tipo_vidrio_techo
+) {
+  const valoresDireccion = {
+    norte: 38,
+    noreste: 32,
+    este: 32,
+    sureste: 32,
+    sur: 49,
+    suroste: 423,
+    oeste: 556,
+    noroeste: 350,
+    horizonte: 372,
+  };
+
+  const valoresVidrio = {
+    normal: 1,
+    doble: [0.8, 0.9],
+    triple: [0.7, 0.8],
+    baja_emisividad: [0.1, 0.5],
+  };
+
+  function obtenerValorDireccion(cadena) {
+    return valoresDireccion[cadena] || 0;
+  }
+
+  function obtenerValorVidrio(cadena) {
+    const valor = valoresVidrio[cadena];
+    if (Array.isArray(valor)) {
+      // Como no tegno claro que valor devolver devolvera el primero cuando sea array
+      return valor[0];
+    } else {
+      return valor;
+    }
+  }
+
+  const rad_cerr1_valor = obtenerValorDireccion(rad_cerr1);
+  const rad_cerr2_valor = obtenerValorDireccion(rad_cerr2);
+  const rad_cerr3_valor = obtenerValorDireccion(rad_cerr3);
+  const rad_cerr4_valor = obtenerValorDireccion(rad_cerr4);
+  const rad_techo_valor = obtenerValorDireccion(rad_techo);
+
+  const f_cerr1 = obtenerValorVidrio(tipo_vidrio_cerr1);
+  const f_cerr2 = obtenerValorVidrio(tipo_vidrio_cerr2);
+  const f_cerr3 = obtenerValorVidrio(tipo_vidrio_cerr3);
+  const f_cerr4 = obtenerValorVidrio(tipo_vidrio_cerr4);
+  const f_techo = obtenerValorVidrio(tipo_vidrio_techo);
+
+  return (
+    rad_cerr1_valor * sup_vid_cerr1 * f_cerr1 +
+    rad_cerr2_valor * sup_vid_cerr2 * f_cerr2 +
+    rad_cerr3_valor * sup_vid_cerr3 * f_cerr3 +
+    rad_cerr4_valor * sup_vid_cerr4 * f_cerr4 +
+    rad_techo_valor * sup_vid_techo * f_techo
+  );
+}
+
+export function qv_sens_renov(
+  caudal_aire,
+  volum_espe_int_ver,
+  entalpia_ext_ver_sens,
+  entalpia_int_ver_sens
+) {
+  console.log(
+    entalpia_ext_ver_sens,
+    entalpia_int_ver_sens,
+    volum_espe_int_ver,
+    caudal_aire
+  );
+  return (
+    (caudal_aire / 3600) *
+    (1 / volum_espe_int_ver) *
+    (entalpia_ext_ver_sens - entalpia_int_ver_sens) *
+    1.1
+  );
+}
+
+export function qv_sens_trans(
+  proyecto,
+  k_cerr1,
+  sup_cerr1,
+  sup_vid_cerr1,
+  sup_puer_cerr1,
+  temp_int_ver,
+  temp_cerr1_ver,
+  k_vid_cerr1,
+  k_puer_cerr1,
+  k_cerr2,
+  sup_cerr2,
+  sup_vid_cerr2,
+  sup_puer_cerr2,
+  temp_cerr2_ver,
+  k_vid_cerr2,
+  k_puer_cerr2,
+  k_cerr3,
+  sup_cerr3,
+  sup_vid_cerr3,
+  sup_puer_cerr3,
+  temp_cerr3_ver,
+  k_vid_cerr3,
+  k_puer_cerr3,
+  k_cerr4,
+  sup_cerr4,
+  sup_vid_cerr4,
+  sup_puer_cerr4,
+  temp_cerr4_ver,
+  k_vid_cerr4,
+  k_puer_cerr4,
+  k_techo,
+  sup_techo,
+  sup_vid_techo,
+  sup_puer_techo,
+  temp_techo_ver,
+  k_vid_techo,
+  k_puer_techo,
+  k_suelo,
+  sup_suelo,
+  temp_suelo_ver
+) {
+  let valorC1 = 0;
+  let valorC2 = 0;
+  let valorC3 = 0;
+  let valorC4 = 0;
+  let valorT = 0;
+  let valorS = 0;
+
+  // Determinar el valor de C1
+  if (k_cerr1 === "interior") {
+    valorC1 = proyecto?.us_um;
+  } else {
+    valorC1 = proyecto?.tphv;
+  }
+  console.log("valorC1:", valorC1);
+
+  // Determinar el valor de C2
+  if (k_cerr2 === "interior") {
+    valorC2 = proyecto?.us_um;
+  } else {
+    valorC2 = proyecto?.tphv;
+  }
+  console.log("valorC2:", valorC2);
+
+  // Determinar el valor de C3
+  if (k_cerr3 === "interior") {
+    valorC3 = proyecto?.us_um;
+  } else {
+    valorC3 = proyecto?.tphv;
+  }
+  console.log("valorC3:", valorC3);
+
+  // Determinar el valor de C4
+  if (k_cerr4 === "interior") {
+    valorC4 = proyecto?.us_um;
+  } else {
+    valorC4 = proyecto?.tphv;
+  }
+  console.log("valorC4:", valorC4);
+
+  // Determinar el valor de T
+  if (k_techo === "interior") {
+    valorT = proyecto?.us_um;
+  } else {
+    valorT = proyecto?.tphv;
+  }
+  console.log("valorT:", valorT);
+
+  // Determinar el valor de S
+  if (k_suelo === "interior") {
+    valorS = proyecto?.us_um;
+  } else {
+    valorS = proyecto?.tphv;
+  }
+  console.log("valorS:", valorS);
+
+  // Calcular cada término por separado
+  let term1 =
+    valorC1 *
+    (sup_cerr1 - sup_vid_cerr1 - sup_puer_cerr1) *
+    (temp_int_ver - temp_cerr1_ver);
+  if (isNaN(term1)) {
+    console.log("term1 es NaN");
+    term1 = 0;
+  }
+  console.log("term1:", term1);
+
+  let term2 = k_vid_cerr1 * sup_vid_cerr1 * (temp_int_ver - temp_cerr1_ver);
+  if (isNaN(term2)) {
+    console.log("term2 es NaN");
+    term2 = 0;
+  }
+  console.log("term2:", term2);
+
+  let term3 = k_puer_cerr1 * sup_puer_cerr1 * (temp_int_ver - temp_cerr1_ver);
+  if (isNaN(term3)) {
+    console.log("term3 es NaN");
+    term3 = 0;
+  }
+  console.log("term3:", term3);
+
+  let term4 =
+    valorC2 *
+    (sup_cerr2 - sup_vid_cerr2 - sup_puer_cerr2) *
+    (temp_int_ver - temp_cerr2_ver);
+  if (isNaN(term4)) {
+    console.log("term4 es NaN");
+    term4 = 0;
+  }
+  console.log("term4:", term4);
+
+  let term5 = k_vid_cerr2 * sup_vid_cerr2 * (temp_int_ver - temp_cerr2_ver);
+  if (isNaN(term5)) {
+    console.log("term5 es NaN");
+    term5 = 0;
+  }
+  console.log("term5:", term5);
+
+  let term6 = k_puer_cerr2 * sup_puer_cerr2 * (temp_int_ver - temp_cerr2_ver);
+  if (isNaN(term6)) {
+    console.log("term6 es NaN");
+    term6 = 0;
+  }
+  console.log("term6:", term6);
+
+  let term7 =
+    valorC3 *
+    (sup_cerr3 - sup_vid_cerr3 - sup_puer_cerr3) *
+    (temp_int_ver - temp_cerr3_ver);
+  if (isNaN(term7)) {
+    console.log("term7 es NaN");
+    term7 = 0;
+  }
+  console.log("term7:", term7);
+
+  let term8 = k_vid_cerr3 * sup_vid_cerr3 * (temp_int_ver - temp_cerr3_ver);
+  if (isNaN(term8)) {
+    console.log("term8 es NaN");
+    return 0;
+  }
+  console.log("term8:", term8);
+
+  let term9 = k_puer_cerr3 * sup_puer_cerr3 * (temp_int_ver - temp_cerr3_ver);
+  if (isNaN(term9)) {
+    console.log("term9 es NaN");
+    return 0;
+  }
+  console.log("term9:", term9);
+
+  let term10 =
+    valorC4 *
+    (sup_cerr4 - sup_vid_cerr4 - sup_puer_cerr4) *
+    (temp_int_ver - temp_cerr4_ver);
+  if (isNaN(term10)) {
+    console.log("term10 es NaN");
+    term10 = 0;
+  }
+  console.log("term10:", term10);
+
+  let term11 = k_vid_cerr4 * sup_vid_cerr4 * (temp_int_ver - temp_cerr4_ver);
+  console.log(
+    "k_vid_cerr4:",
+    k_vid_cerr4,
+    "sup_vid_cerr4:",
+    sup_vid_cerr4,
+    temp_int_ver,
+    temp_cerr4_ver
+  );
+  if (isNaN(term11)) {
+    console.log("term11 es NaN");
+    term11 = 0;
+  }
+  console.log("term11:", term11);
+
+  let term12 = k_puer_cerr4 * sup_puer_cerr4 * (temp_int_ver - temp_cerr4_ver);
+  if (isNaN(term12)) {
+    console.log("term12 es NaN");
+    term12 = 0;
+  }
+  console.log("term12:", term12);
+
+  let term13 =
+    valorT *
+    (sup_techo - sup_vid_techo - sup_puer_techo) *
+    (temp_int_ver - temp_techo_ver);
+  if (isNaN(term13)) {
+    console.log("term13 es NaN");
+    term13 = 0;
+  }
+  console.log("term13:", term13);
+
+  let term14 = k_vid_techo * sup_vid_techo * (temp_int_ver - temp_techo_ver);
+  if (isNaN(term14)) {
+    console.log("term14 es NaN");
+    term14 = 0;
+  }
+  console.log("term14:", term14);
+
+  let term15 = k_puer_techo * sup_puer_techo * (temp_int_ver - temp_techo_ver);
+  if (isNaN(term15)) {
+    console.log("term15 es NaN");
+    term15 = 0;
+  }
+  console.log("term15:", term15);
+
+  let term16 = valorS * sup_suelo * (temp_int_ver - temp_suelo_ver);
+  if (isNaN(term16)) {
+    console.log("term16 es NaN");
+    term16 = 0;
+  }
+  console.log("term16:", term16);
+
+  // Sumar todos los términos
+  let cargaSensibleTransmision =
+    term1 +
+    term2 +
+    term3 +
+    term4 +
+    term5 +
+    term6 +
+    term7 +
+    term8 +
+    term9 +
+    term10 +
+    term11 +
+    term12 +
+    term13 +
+    term14 +
+    term15 +
+    term16;
+
+  console.log("Carga sensible de transmisión:", cargaSensibleTransmision);
+
+  return cargaSensibleTransmision;
+}

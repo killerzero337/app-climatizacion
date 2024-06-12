@@ -215,6 +215,11 @@ model Recinto {
   superficie_techo      Float?
   tipo_vidrio_techo     String?
 
+  temp_int_ver Float?   
+  temp_int_inv Float?
+  hum_int_ver  Float?
+  hum_int_inv  Float?
+
   proyecto   Proyecto? @relation(fields: [proyectoId], references: [id], onDelete: Cascade)
   proyectoId Int?
 }

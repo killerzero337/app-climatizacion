@@ -22,6 +22,7 @@ export function FormProyecto({
 
   return (
     <form action={action}>
+      <h1 className="font-bold text-3xl mb-2">Proyecto: {proyecto?.nombre}</h1>
       <input type="hidden" name="id" defaultValue={proyectoId} />
       <input type="hidden" name="usuario_id" defaultValue={usuarioId} />
       <fieldset disabled={disabled}>

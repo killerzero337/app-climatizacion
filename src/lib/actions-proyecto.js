@@ -141,7 +141,7 @@ export async function newProyecto(formData) {
     const temp_terreno_inv = Number((temp_ext_inv + 15) / 2);
     const caudales_aire = Number(formData.get("caudales_aire"));
     const tipo_lampara = formData.get("tipo_lampara");
-    const potencia_lampara = Number(formData.get("potencia_lampara"));
+    const potencia_lampara = tipo_lampara === "led" ? 4 : 20;
     const valor_seguridad = Number(formData.get("valor_seguridad"));
     const carga_latente = ocupacion_personas === "sedentario" ? 50 : 300;
     const oda = formData.get("oda");
