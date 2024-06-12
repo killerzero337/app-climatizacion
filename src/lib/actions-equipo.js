@@ -47,6 +47,22 @@ export async function getProyectoEquipo(id) {
   }
 }
 
+export async function getEquipo(id) {
+  try {
+    const equipo = await prisma.equipo.findUnique({
+      where: { id: Number(id) },
+      include: {
+        proyecto: true 
+      }
+    });
+    console.log(equipo);
+    return equipo;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+
 export async function deleteEquipo(formData) {
   let redirectUrl;
 

@@ -1,8 +1,10 @@
 import React, { Suspense } from "react";
 import Boton from "@/components/boton";
 import ListaProyectos from "@/components/listaProyectoEquipo";
+import { getEquipo } from "@/lib/actions-equipo";
 import Spinner from "@/components/spinner";
-function formEquipo({ action, title, equipo, disabled = false, id }) {
+async function formEquipo({ action, title, equipoId, disabled = false, id }) {
+  const equipo = await getEquipo(equipoId);
   console.log("equipo ", equipo);
   return (
     <form action={action}>

@@ -4,14 +4,19 @@ import { getProyecto } from "@/lib/actions-proyecto";
 import { getProyectoEquipo } from "@/lib/actions-equipo";
 import CamaraTarjetaCamara from "@/components/tarjetaPrismacamara";
 import CamaraTarjetaEquipo from "@/components/tarjetaPrismaEquipo";
+import { redirect } from "next/navigation";
 export const dynamic = "force-dynamic";
 
 async function Page({ searchParams }) {
   const proyecto = await getProyecto(searchParams.id);
   console.log("PROYECTO", proyecto);
-  const { recintos } = proyecto; // desestructuracion
+  const { recintos } = proyecto; // desestructuracion es super mega util
   const proyectoEquipo = await getProyectoEquipo(searchParams.id);
   const { equipos } = proyectoEquipo; // desestructuracion
+
+  if (!proyecto) {
+    redirect("/proyectos");
+  }
 
   return (
     <Tarjeta>
