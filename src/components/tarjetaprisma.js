@@ -13,9 +13,7 @@ async function tarjetaPrisma({ proyecto }) {
   if (sesion?.user.role === "ADMIN") {
     return (
       <div className=" max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-        <Link
-          href={{ pathname: "/proyecto/edit", query: { id: proyecto?.id } }}
-        >
+        <Link href={{ pathname: "../camara", query: { id: proyecto?.id } }}>
           <img
             className="rounded-t-lg w-full h-48 object-cover"
             src={

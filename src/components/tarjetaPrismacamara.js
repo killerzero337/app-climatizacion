@@ -7,8 +7,8 @@ async function tarjetaPrismacamara({ camara }) {
   }
   return (
     <>
-      <div className="relative mx-auto w-full max-w-md rounded-lg bg-gradient-to-tr from-pink-300 to-blue-300 p-0.5 shadow-lg">
-        <div className="bg-white p-7 rounded-md">
+      <div className="relative mx-auto w-full max-w-md rounded-lg bg-gradient-to-tr dark:from-sky-100 dark:to-sky-400 from-gray-300 to-blue-500 p-0.5 shadow-lg">
+        <div className="bg-gray-100 dark:bg-gray-900/90 p-7 rounded-md">
           <h1 className="font-bold text-xl mb-2">
             {camara?.nombre || "Ejemplo"}
           </h1>
