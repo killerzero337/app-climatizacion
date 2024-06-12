@@ -18,7 +18,6 @@ async function page({ searchParams }) {
 
   const { proyecto } = recinto;
 
-
   return (
     <Tarjeta>
       <div className="container items-center border-4 border-sky-400 dark:border-sky-700 p-8 rounded-md bg-gray-200/90 dark:bg-gray-900/90">
@@ -33,7 +32,7 @@ async function page({ searchParams }) {
       <div className="mt-4 p-4 border rounded shadow-md w-full">
         <p className="mb-2 dark:text-orange-300 text-orange-800">Verano</p>
         <div className="flex flex-col ">
-          <p>Carga sensible radiación vidrios (W): {valorRadiacion} </p>
+          {/* <p>Carga sensible radiación vidrios (W): {valorRadiacion} </p>
           <p>
             Cargas térmicas a través de los cerramientos (W):{" "}
             {valorTransmisibilidad}{" "}
@@ -41,7 +40,7 @@ async function page({ searchParams }) {
           <p>
             Carga sensible de las personas (W):{" "}
             {valorOcupacionPersonas.toFixed(2)}
-          </p>
+          </p> */}
           {/* <p>Carga sensible iluminación (W): {valorIluminacion}</p> */}
           {/* <p>Carga sensible renovación de aire (W): {valorrenovacionAire}</p> */}
           {/* <p>Carga total sensible refrigeración (W): {valorTotal}</p> */}
