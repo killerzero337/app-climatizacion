@@ -69,11 +69,11 @@ export async function deleteEquipo(formData) {
     const equipo = await prisma.equipo.delete({
       where: { id: id },
     });
-    console.log("Equipo eliminado:", equipo);
-    revalidatePath("/equipo");
+    console.log("Camaras eliminado:", ca);
+    revalidatePath("/camara");
     redirectUrl = `/camara?id=${proyectoId}`;
   } catch (error) {
-    console.log("Error al eliminar el equipo:", error);
+    console.log("Error al eliminar el cerramiento:", error);
   }
   redirect(redirectUrl);
 }

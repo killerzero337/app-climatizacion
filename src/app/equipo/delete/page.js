@@ -2,9 +2,15 @@ import React from "react";
 import Tarjeta from "@/components/Tarjeta";
 import Form from "@/components/Form-equipo";
 import { deleteEquipo } from "@/lib/actions-equipo";
-function page({ searchParams }) {
+import { prisma } from "@/lib/prisma";
+async function page({ searchParams }) {
   console.log(searchParams?.equipo_id);
   console.log(typeof searchParams?.equipo_id);
+  const equipo = await prisma.equipo.findUnique({
+    where: {
+      id: Number(searchParams.id),
+    },
+  });
   return (
     <Tarjeta>
       <div className="text-center mb-10">
@@ -14,8 +20,8 @@ function page({ searchParams }) {
         id={Number(searchParams?.id)}
         action={deleteEquipo}
         title={"Eliminar equipo"}
-        equipoId={searchParams?.equipo_id}
         disabled={true}
+        equipo={equipo}
       />
     </Tarjeta>
   );
