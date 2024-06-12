@@ -11,8 +11,7 @@ async function Page({ searchParams }) {
   const proyecto = await getProyecto(searchParams.id);
   console.log("PROYECTO", proyecto);
   const { recintos } = proyecto; // desestructuracion es super mega util
-  const proyectoEquipo = await getProyectoEquipo(searchParams.id);
-  const { equipos } = proyectoEquipo; // desestructuracion
+  const { equipos } = proyecto;
 
   if (!proyecto) {
     redirect("/proyectos");

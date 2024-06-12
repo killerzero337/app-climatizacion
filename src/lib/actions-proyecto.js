@@ -70,6 +70,7 @@ export async function getProyecto(id) {
       where: { id: Number(id) },
       include: {
         recintos: true,
+        equipos: true,
       },
     });
     return proyectos;

@@ -14,7 +14,7 @@ function page({ searchParams }) {
         id={Number(searchParams?.id)}
         action={deleteEquipo}
         title={"Eliminar equipo"}
-        equipoId={Number(searchParams?.equipo_id)}
+        equipoId={searchParams?.equipo_id}
         disabled={true}
       />
     </Tarjeta>
