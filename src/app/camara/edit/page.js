@@ -12,12 +12,22 @@ async function page({ searchParams }) {
       id: Number(searchParams.id),
     },
     include: {
-      proyecto: true,
+      proyecto: {
+        include: {
+          equipos: true,
+        },
+      },
     },
   });
+  const temp_int_ver = 25;
+  const temp_int_inv = 21;
+  const hum_int_ver = 50;
+  const hum_int_inv = 50;
 
   const { proyecto } = recinto;
+  const { equipos } = proyecto;
 
+  console.log("EQUIPOS", equipos);
   const presion = calculos.presion(proyecto?.altitud);
 
   const presionAguaVer = calculos.p_sat_agua_ext_ver(proyecto?.temp_ext_ver);
@@ -52,52 +62,49 @@ async function page({ searchParams }) {
     proyecto?.temp_ext_inv,
     humedadExtInv
   );
-  const satAguaIntVer = calculos.p_sat_agua_int_ver(proyecto?.temp_ext_ver);
+  const satAguaIntVer = calculos.p_sat_agua_int_ver(temp_int_ver);
   const hum_absol_int_ver = calculos.hum_absol_int_ver(
-    proyecto?.hr_ext_ver,
+    hum_int_ver,
     satAguaIntVer,
     presion
   );
 
   const entalpiaIntVerSens = calculos.entalpia_int_ver_sens(
-    proyecto?.temp_ext_ver,
+    temp_int_ver,
     hum_absol_int_ver
   );
 
-  const entalpiaIntVerLat = calculos.entalpia_int_ver_lat(
-    proyecto?.temp_ext_ver,
-    hum_absol_int_ver
-  );
+  const entalpiaIntVerLat = calculos.entalpia_int_ver_lat(hum_absol_int_ver);
 
   console.log(entalpiaIntVerLat);
 
   const volumEspeIntVer = calculos.volum_espe_int_ver(
-    presion,
-    proyecto?.temp_ext_ver,
-    hum_absol_int_ver
+    temp_int_ver,
+    hum_absol_int_ver,
+    presion
   );
 
   const humAbsolIntInv = calculos.hum_absol_int_inv(
-    proyecto?.hr_ext_inv,
+    temp_int_inv,
     satAguaIntVer,
     presion
   );
 
-  const satAguaIntInv = calculos.p_sat_agua_int_inv(proyecto?.temp_ext_inv);
+  const satAguaIntInv = calculos.p_sat_agua_int_inv(temp_int_inv);
   const EntalpiaIntInvSens = calculos.entalpia_int_inv_sens(
-    proyecto?.temp_ext_inv,
+    temp_int_inv,
     humAbsolIntInv
   );
 
   const entalpiaIntInvSens = calculos.entalpia_int_inv_sens(
-    proyecto?.temp_ext_inv,
+    temp_int_inv,
     humAbsolIntInv
   );
 
   const entalpiaIntInvLat = calculos.entalpia_int_inv_lat(humAbsolIntInv);
 
   const volumnEspeIntInv = calculos.volum_espe_int_inv(
-    proyecto?.temp_ext_inv,
+    temp_int_inv,
     humAbsolIntInv,
     presion
   );
@@ -106,16 +113,16 @@ async function page({ searchParams }) {
     recinto?.orientacion,
     recinto?.superficie_vidrio_c_1,
     recinto?.tipo_vidrio_c_1,
-    recinto?.orientacion,
+    recinto?.orientacion_2,
     recinto?.superficie_vidrio_c_2,
     recinto?.tipo_vidrio_c_2,
-    recinto?.orientacion,
+    recinto?.orientacion_3,
     recinto?.superficie_vidrio_c_3,
     recinto?.tipo_vidrio_c_3,
-    recinto?.orientacion,
+    recinto?.orientacion_4,
     recinto?.superficie_vidrio_c_4,
     recinto?.tipo_vidrio_c_4,
-    recinto?.orientacion,
+    recinto?.orientacion_techo,
     recinto?.superficie_techo,
     recinto?.tipo_vidrio_techo
   );
@@ -126,7 +133,7 @@ async function page({ searchParams }) {
     recinto?.superficie_vidrio_c_1,
     recinto?.superficie_c_1,
     recinto?.superficie_puertas_c_1,
-    recinto?.temperatura_inv_c_1,
+    temp_int_ver,
     recinto?.temperatura_ver_c_1,
     recinto?.superficie_vidrio_c_1,
     recinto?.superficie_puertas_c_1,
@@ -201,7 +208,60 @@ async function page({ searchParams }) {
 
   const qr_lat = calculos.qr_lat(lat_renov, ocupacionLat);
 
+  const potenciaEquipos = calculos.qv_sens_equip(equipos);
+
+  const qi_sens_renov = calculos.qi_sens_renov(
+    proyecto,
+    proyecto?.caudales_aire,
+    volumnEspeIntInv,
+    entalpatiaExtInviernoSens,
+    entalpiaIntInvSens
+  );
+
+  const qi_sens_trans = calculos.qi_sens_trans(
+    recinto?.ubicacion_c_1,
+    recinto?.superficie_vidrio_c_1,
+    recinto?.superficie_c_1,
+    recinto?.superficie_puertas_c_1,
+    temp_int_inv,
+    recinto?.temperatura_ver_c_1,
+    recinto?.superficie_vidrio_c_1,
+    recinto?.superficie_puertas_c_1,
+    recinto?.ubicacion_c_2,
+    recinto?.superficie_vidrio_c_2,
+    recinto?.superficie_c_2,
+    recinto?.superficie_puertas_c_2,
+    recinto?.temperatura_inv_c_2,
+    recinto?.temperatura_ver_c_2,
+    recinto?.superficie_vidrio_c_2,
+    recinto?.superficie_puertas_c_2,
+    recinto?.ubicacion_c_3,
+    recinto?.superficie_vidrio_c_3,
+    recinto?.superficie_c_3,
+    recinto?.superficie_puertas_c_3,
+    recinto?.temperatura_ver_c_3,
+    recinto?.temperatura_inv_c_3,
+    recinto?.superficie_vidrio_c_3,
+    recinto?.superficie_puertas_c_3,
+    recinto?.ubicacion_c_4,
+    recinto?.superficie_vidrio_c_4,
+    recinto?.superficie_c_4,
+    recinto?.superficie_puertas_c_4,
+    recinto?.temperatura_ver_c_4,
+    recinto?.temperatura_inv_c_4,
+    recinto?.superficie_vidrio_c_4,
+    recinto?.superficie_puertas_c_4,
+    recinto?.superficie_techo,
+    recinto?.tipo_vidrio_techo,
+    recinto?.temperatura_ver_techo,
+    recinto?.temperatura_inv_techo,
+    recinto?.ubicacion_suelo,
+    recinto?.superficie_suelo,
+    recinto?.temperatura_ver_suelo
+  );
+  const qc_sens = calculos.qc_sens(qi_sens_trans, qi_sens_renov);
   const qr = calculos.qr(valorTotal, qr_lat, proyecto?.valor_seguridad);
+  const qc = calculos.qc(qc_sens, proyecto?.valor_seguridad);
   return (
     <Tarjeta>
       <div className="container items-center border-4 border-sky-400 dark:border-sky-700 p-8 rounded-md bg-gray-200/90 dark:bg-gray-900/90">
@@ -237,8 +297,13 @@ async function page({ searchParams }) {
       <div className="mt-4 p-4 border rounded shadow-md w-full">
         <p className="mb-2 dark:text-orange-300 text-orange-800">Invierno</p>
         <div className="flex flex-col ">
-          <p>Carga sensible radiación vidrios (W): {valorRadiacion} </p>
-          <p>Carga sensible radiación vidrios (W): {valorRadiacion} </p>
+          <p>Carga sensible trasmisión cerramientos (W): {qi_sens_trans} </p>
+          <p>
+            Carga sensible infiltraciones y renovaciones de aire (W):{" "}
+            {qi_sens_renov}{" "}
+          </p>
+          <p>Carga total sensible calefacción (W): {qc_sens} </p>
+          <p>Potencia calefacción (W): {qc} </p>
         </div>
       </div>
     </Tarjeta>
