@@ -94,37 +94,6 @@ model Proyecto {
   createdAt            DateTime  @default(now())
   updatedAt            DateTime  @updatedAt
 
-  // Calculos ext no visibles:
-  temp_int_ver Float?
-  temp_int_inv Float?
-  hum_int_ver  Float?
-  hum_int_inv  Float?
-
-  presion               Float?
-  p_sat_agua_ext_ver    Float?
-  hum_absol_ext_ver     Float?
-  entalpia_ext_ver_sens Float?
-  entalpia_ext_ver_lat  Float?
-  volum_espe_ext_ver    Float?
-  p_sat_agua_ext_inv    Float?
-  hum_absol_ext_inv     Float?
-  entalpia_ext_inv_sens Float?
-  entalpia_ext_inv_lat  Float?
-  volum_espe_ext_inv    Float?
-
-  // Calculos int no visibles
-
-  p_sat_agua_int_ver    Float?
-  hum_absol_int_ver     Float?
-  entalpia_int_ver_sens Float?
-  entalpia_int_ver_lat  Float?
-  volum_espe_int_ver    Float?
-  p_sat_agua_int_inv    Float?
-  hum_absol_int_inv     Float?
-  entalpia_int_inv_sens Float?
-  entalpia_int_inv_lat  Float?
-  volum_espe_int_inv    Float?
-
   recintos Recinto[]
   equipos  Equipo[]
 
@@ -214,11 +183,6 @@ model Recinto {
   temperatura_inv_techo Float?
   superficie_techo      Float?
   tipo_vidrio_techo     String?
-
-  temp_int_ver Float?   
-  temp_int_inv Float?
-  hum_int_ver  Float?
-  hum_int_inv  Float?
 
   proyecto   Proyecto? @relation(fields: [proyectoId], references: [id], onDelete: Cascade)
   proyectoId Int?
