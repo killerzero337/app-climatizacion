@@ -20,26 +20,26 @@ function Footer() {
           <ul className="flex flex-wrap text-sm font-medium text-gray-800 dark:text-gray-400 sm:mt-0 space-x-5 sm:justify-center sm:items-center">
             <li>
               <a
-                href="#"
+                href="/politicas"
                 className="transition duration-500 hover:text-gray-700/70"
               >
-                Privacy Policy
+                Politica de privacidad
               </a>
             </li>
             <li>
               <a
-                href="#"
+                href="/politicas"
                 className="transition duration-500 hover:text-gray-700/70"
               >
-                Licensing
+                Licencias
               </a>
             </li>
             <li>
               <a
-                href="#"
+                href="/contacto"
                 className="transition duration-500 hover:text-gray-700/70"
               >
-                Contact
+                Contacto
               </a>
             </li>
           </ul>
