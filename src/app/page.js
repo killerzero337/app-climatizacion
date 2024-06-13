@@ -23,7 +23,7 @@ export default function Home() {
             Empieza hoy mismo a mejorar el ambiente de tus espacios con nuestra
             aplicación.
           </p>
-          <Link href="/climatizacion" className="text-blue-500 hover:underline">
+          <Link href="/proyecto" className="text-blue-500 hover:underline">
             Ver servicios de climatización
           </Link>
         </Tarjeta>

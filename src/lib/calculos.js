@@ -388,6 +388,8 @@ export function qv_sens_trans(
   // Determinar el valor de S
   if (k_suelo === "interior") {
     valorS = proyecto?.us_um;
+  } else if (k_suelo === "exterior") {
+    valorS = proyecto?.tphv;
   } else {
     valorS = proyecto?.tphv;
   }
