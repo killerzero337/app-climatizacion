@@ -1,7 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { auth } from "@/auth";
-import { getNameUser } from "@/lib/actions-proyecto";
+import { getNameUser, createPDF } from "@/lib/actions-proyecto";
+import Button from "./button-form";
 
 async function tarjetaPrisma({ proyecto }) {
   const sesion = await auth();

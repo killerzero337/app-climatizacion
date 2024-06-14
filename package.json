@@ -14,6 +14,7 @@
     "@prisma/client": "^5.13.0",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^2.2.0",
+    "jspdf": "^2.5.1",
     "next": "14.2.3",
     "next-auth": "^5.0.0-beta.17",
     "pdf-lib": "^1.17.1",

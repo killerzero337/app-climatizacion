@@ -4,7 +4,8 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import * as calculos from "@/lib/calculos";
 import cloudinary from "@/lib/cloudinary";
-
+import { PDFDocument, rgb } from "pdf-lib";
+import fs from "node:fs/promises";
 async function imgCreate(file) {
   console.log(file);
 
@@ -405,4 +406,93 @@ export async function copiarProyecto(proyectoId) {
   redirect("/proyectos");
 }
 
-export async function imprimir() {}
+export async function createPDF(id) {
+  try {
+    // Obtener el proyecto y sus relaciones
+    const proyecto = await prisma.proyecto.findUnique({
+      where: { id: Number(id) },
+      include: {
+        recintos: true,
+        equipos: true,
+      },
+    });
+
+    if (!proyecto) {
+      throw new Error("Proyecto no encontrado");
+    }
+
+    // Crear un nuevo documento PDF
+    const pdfDoc = await PDFDocument.create();
+    const page = pdfDoc.addPage([600, 400]);
+
+    // Agregar texto al PDF
+    const { width, height } = page.getSize();
+    page.drawText(`Proyecto: ${proyecto.nombre}`, {
+      x: 50,
+      y: height - 50,
+      size: 20,
+      color: rgb(0, 0, 0),
+    });
+
+    let yPosition = height - 80;
+    page.drawText(`Localidad: ${proyecto.localidad}`, {
+      x: 50,
+      y: yPosition,
+      size: 15,
+      color: rgb(0, 0, 0),
+    });
+
+    yPosition -= 20;
+    page.drawText(`Número de personas: ${proyecto.numero_personas}`, {
+      x: 50,
+      y: yPosition,
+      size: 15,
+      color: rgb(0, 0, 0),
+    });
+
+    yPosition -= 20;
+    page.drawText("Recintos:", {
+      x: 50,
+      y: yPosition,
+      size: 15,
+      color: rgb(0, 0, 0),
+    });
+
+    yPosition -= 20;
+    proyecto.recintos.forEach((recinto) => {
+      page.drawText(`- ${recinto.nombre}`, {
+        x: 50,
+        y: yPosition,
+        size: 15,
+        color: rgb(0, 0, 0),
+      });
+      yPosition -= 20;
+    });
+
+    yPosition -= 20;
+    page.drawText("Equipos:", {
+      x: 50,
+      y: yPosition,
+      size: 15,
+      color: rgb(0, 0, 0),
+    });
+
+    yPosition -= 20;
+    proyecto.equipos.forEach((equipo) => {
+      page.drawText(`- ${equipo.nombre}`, {
+        x: 50,
+        y: yPosition,
+        size: 15,
+        color: rgb(0, 0, 0),
+      });
+      yPosition -= 20;
+    });
+
+    // Guardar el documento PDF
+    const pdfBytes = await pdfDoc.save();
+    return pdfBytes;
+  } catch (error) {
+    console.error("Error al generar el PDF:", error);
+    throw error; // Opcional: Puedes manejar el error según sea necesario
+  }
+}
