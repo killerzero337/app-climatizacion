@@ -39,6 +39,7 @@
 ///////////////
 
 export function qc_sens(qi_sens_trans, qi_sens_renov) {
+  console.log("SENSITIVO:", qi_sens_trans, qi_sens_renov);
   let total = qi_sens_trans + qi_sens_renov;
   return total;
 }
@@ -169,7 +170,8 @@ export function qr_sens(
   qv_sens_trans,
   qv_sens_renov,
   qv_sens_ocup,
-  qv_sens_ilum
+  qv_sens_ilum,
+  qv_sens_equip
 ) {
   console.log(
     qv_sens_rad,
@@ -179,13 +181,17 @@ export function qr_sens(
     qv_sens_ilum
   );
   const total =
-    qv_sens_rad + qv_sens_trans + qv_sens_renov + qv_sens_ocup + qv_sens_ilum;
+    qv_sens_rad +
+    qv_sens_trans +
+    qv_sens_renov +
+    qv_sens_ocup +
+    qv_sens_ilum +
+    qv_sens_equip;
 
   return Number(total);
 }
 
 export function qi_sens_renov(
-  proyecto,
   caudal_aire,
   volum_espe_int_inv,
   entalpia_ext_inv_sens,
@@ -196,6 +202,14 @@ export function qi_sens_renov(
     (1 / volum_espe_int_inv) *
     (entalpia_ext_inv_sens - entalpia_int_inv_sens) *
     1.1;
+  console.log(
+    "RENOV: ",
+    caudal_aire,
+    volum_espe_int_inv,
+    entalpia_ext_inv_sens,
+    entalpia_int_inv_sens,
+    total
+  );
   return total;
 }
 

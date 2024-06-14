@@ -404,3 +404,5 @@ export async function copiarProyecto(proyectoId) {
 
   redirect("/proyectos");
 }
+
+export async function imprimir() {}

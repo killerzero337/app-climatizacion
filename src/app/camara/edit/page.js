@@ -84,13 +84,12 @@ async function page({ searchParams }) {
     presion
   );
 
+  const satAguaIntInv = calculos.p_sat_agua_int_inv(temp_int_inv);
   const humAbsolIntInv = calculos.hum_absol_int_inv(
     temp_int_inv,
-    satAguaIntVer,
+    satAguaIntInv,
     presion
   );
-
-  const satAguaIntInv = calculos.p_sat_agua_int_inv(temp_int_inv);
   const EntalpiaIntInvSens = calculos.entalpia_int_inv_sens(
     temp_int_inv,
     humAbsolIntInv
@@ -188,13 +187,6 @@ async function page({ searchParams }) {
     proyecto?.tipo_lampara
   );
 
-  const valorTotal = calculos.qr_sens(
-    valorRadiacion,
-    valorTransmisibilidad,
-    valorOcupacionPersonas,
-    valorrenovacionAire,
-    valorIluminacion
-  );
   const lat_renov = calculos.qv_lat_renov(
     valorrenovacionAire,
     volumEspeIntVer,
@@ -210,11 +202,18 @@ async function page({ searchParams }) {
 
   const potenciaEquipos = calculos.qv_sens_equip(equipos);
 
+  const valorTotal = calculos.qr_sens(
+    valorRadiacion,
+    valorTransmisibilidad,
+    valorOcupacionPersonas,
+    valorrenovacionAire,
+    valorIluminacion,
+    potenciaEquipos
+  );
   const qi_sens_renov = calculos.qi_sens_renov(
-    proyecto,
     proyecto?.caudales_aire,
     volumnEspeIntInv,
-    entalpatiaExtInviernoSens,
+    EntalpiaIntInvSens,
     entalpiaIntInvSens
   );
 
