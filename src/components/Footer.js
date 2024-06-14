@@ -17,11 +17,11 @@ function Footer() {
           </p>
         </div>
         <div className="flex items-center justify-center text-bold">
-          <ul className="flex flex-wrap text-sm font-medium text-gray-800 dark:text-gray-400 sm:mt-0 space-x-5 sm:justify-center sm:items-center">
+          <ul className="flex flex-wrap text-sm font-medium text-gray-800 sm:mt-0 space-x-5 sm:justify-center sm:items-center">
             <li>
               <a
                 href="/politicas"
-                className="transition duration-500 hover:text-gray-700/70"
+                className="transition duration-500 hover:text-gray-700/70 dark:text-white md:dark:hover:text-blue-500 md:hover:text-blue-700"
               >
                 Politica de privacidad
               </a>
@@ -29,7 +29,7 @@ function Footer() {
             <li>
               <a
                 href="/politicas"
-                className="transition duration-500 hover:text-gray-700/70"
+                className="transition duration-500 hover:text-gray-700/70 dark:text-white md:dark:hover:text-blue-500 md:hover:text-blue-700"
               >
                 Licencias
               </a>
@@ -37,7 +37,7 @@ function Footer() {
             <li>
               <a
                 href="/contacto"
-                className="transition duration-500 hover:text-gray-700/70"
+                className="transition duration-500 hover:text-gray-700/70 dark:text-white md:dark:hover:text-blue-500 md:hover:text-blue-700"
               >
                 Contacto
               </a>
