@@ -605,6 +605,8 @@ export function Formcamara({
               >
                 <option value="interior">Interior</option>
                 <option value="exterior">Exterior</option>
+                <option value="terreno">Contacto con el terreno</option>
+
               </select>
             </div>
             <div className="mb-2">
