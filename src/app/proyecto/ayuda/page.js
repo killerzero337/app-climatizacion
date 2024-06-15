@@ -1,6 +1,6 @@
 import React from "react";
 import FormProyectoOld from "@/components/Form-proyecto-old";
-import Tarjeta from "@/components/tarjeta";
+import Tarjeta from "@/components/Tarjeta";
 function page() {
   return (
     <Tarjeta>

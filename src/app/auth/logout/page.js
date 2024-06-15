@@ -1,7 +1,7 @@
 import { logout } from "@/lib/actions";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
-import Tarjeta from "@/components/tarjeta";
+import Tarjeta from "@/components/Tarjeta";
 
 async function page() {
   const sesion = await auth();

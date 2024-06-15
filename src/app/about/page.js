@@ -1,4 +1,4 @@
-import Tarjeta from "@/components/tarjeta";
+import Tarjeta from "@/components/Tarjeta";
 function About() {
   return (
     <Tarjeta>

@@ -1,4 +1,4 @@
-import Tarjeta from "@/components/tarjeta";
+import Tarjeta from "@/components/Tarjeta";
 import Link from "next/link";
 import { getProyecto } from "@/lib/actions-proyecto";
 import CamaraTarjetaCamara from "@/components/tarjetaPrismacamara";

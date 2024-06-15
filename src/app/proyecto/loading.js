@@ -1,5 +1,5 @@
 import React from "react";
-import Tarjeta from "@/components/tarjeta";
+import Tarjeta from "@/components/Tarjeta";
 import Skeeleton from "@/components/skeletons/proyectoSkeeleton";
 function loading() {
   return (

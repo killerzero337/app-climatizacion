@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Tarjeta from "@/components/tarjeta";
+import Tarjeta from "@/components/Tarjeta";
 export default function Home() {
   return (
     <>
