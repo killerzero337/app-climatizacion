@@ -1,9 +1,9 @@
-// invierno
+/*invierno
 // qi_sens_trans	(k_cerr1*(sup_cerr1-sup_vid_cerr1-sup_puer_cerr1)*(temp_int_inv-temp_cerr1_inv))+(k_cerr2*(sup_cerr2-sup_vid_cerr2-sup_puer_cerr2)*(temp_int_inv-temp_cerr2_inv))+(k_cerr3*(sup_cerr3-sup_vid_cerr3-sup_puer_cerr3)*(temp_int_inv-temp_cerr3_inv))+(k_cerr4*(sup_cerr4-sup_vid_cerr4-sup_puer_cerr4)*(temp_int_inv-temp_cerr4_inv))+(k_techo*(sup_techo-sup_vid_techo-sup_puer_techo)*(temp_int_inv-temp_techo_inv))+(k_suelo*(sup_suelo)*(temp_int_inv-temp_suelo_inv))
 // qi_sens_renov	(caudal_aire/3600)*(1/volum_espe_int_inv)*(entalpia_ext_inv_sens-entalpia_int_inv_sens)*1.1
 // qc_sens	qi_sens_trans+qi_sens_renov
 // qc	qc_sens*(1+fs/100)
-
+*/
 ///////////////
 // presion	101325*pow((1-0.0065/(15+273.15)*altitud),(9.807/0.2883419/0.0065/1000))
 // p_sat_agua_ext_ver	exp(-5800.2206*pow((temp_ext_ver+273.15),-1)+1.3914993-0.048640239*(temp_ext_ver+273.15)+0.000041764768*pow((temp_ext_ver+273.15),2)-0.000000014452093*pow((temp_ext_ver+273.15),3)+6.5459673*log(temp_ext_ver+273.15)))

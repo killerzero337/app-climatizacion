@@ -84,6 +84,16 @@ async function tarjetaPrisma({ proyecto }) {
               ? proyecto.comentarios
               : "Sin comentarios..."}
           </p>
+          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-2">
+            {proyecto?.fecha
+              ?  proyecto.fecha.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
+              : "Fecha no introducida..."}
+          </p>
+          <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-2">
+            {proyecto?.localidad
+              ?  proyecto.localidad
+              : "Localidad no introducida..."}
+          </p>
 
           <div className="flex justify-around gap-5">
             <Link
