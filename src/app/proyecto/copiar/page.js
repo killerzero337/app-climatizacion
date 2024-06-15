@@ -1,5 +1,5 @@
 import React from "react";
-import Tarjeta from "@/components/Tarjeta";
+import Tarjeta from "@/components/tarjeta";
 import FormProyecto from "@/components/Form-proyecto";
 import { copiarProyecto } from "@/lib/actions-proyecto";
 import { auth } from "@/auth";

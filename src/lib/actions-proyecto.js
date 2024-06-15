@@ -420,12 +420,10 @@ export async function createPDF(id) {
     if (!proyecto) {
       throw new Error("Proyecto no encontrado");
     }
-
-    // Crear un nuevo documento PDF
+    const proyectoString = JSON.stringify(proyecto);
     const pdfDoc = await PDFDocument.create();
     const page = pdfDoc.addPage([600, 400]);
 
-    // Agregar texto al PDF
     const { width, height } = page.getSize();
     page.drawText(`Proyecto: ${proyecto.nombre}`, {
       x: 50,
@@ -448,44 +446,6 @@ export async function createPDF(id) {
       y: yPosition,
       size: 15,
       color: rgb(0, 0, 0),
-    });
-
-    yPosition -= 20;
-    page.drawText("Recintos:", {
-      x: 50,
-      y: yPosition,
-      size: 15,
-      color: rgb(0, 0, 0),
-    });
-
-    yPosition -= 20;
-    proyecto.recintos.forEach((recinto) => {
-      page.drawText(`- ${recinto.nombre}`, {
-        x: 50,
-        y: yPosition,
-        size: 15,
-        color: rgb(0, 0, 0),
-      });
-      yPosition -= 20;
-    });
-
-    yPosition -= 20;
-    page.drawText("Equipos:", {
-      x: 50,
-      y: yPosition,
-      size: 15,
-      color: rgb(0, 0, 0),
-    });
-
-    yPosition -= 20;
-    proyecto.equipos.forEach((equipo) => {
-      page.drawText(`- ${equipo.nombre}`, {
-        x: 50,
-        y: yPosition,
-        size: 15,
-        color: rgb(0, 0, 0),
-      });
-      yPosition -= 20;
     });
 
     // Guardar el documento PDF

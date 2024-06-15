@@ -9,7 +9,9 @@ const ApiStatusLink = () => {
     const checkApiStatus = async () => {
       try {
         setStatus("waiting"); // Set status to waiting initially
-        const response = await fetch("https://api-climatologia.onrender.com/status");
+        const response = await fetch(
+          "https://api-climatologia.onrender.com/status"
+        );
         if (response.ok) {
           setStatus("success");
         } else {
@@ -22,10 +24,8 @@ const ApiStatusLink = () => {
 
     checkApiStatus();
 
-    // You can set an interval to check the API status periodically if needed
-    const interval = setInterval(checkApiStatus, 60000); // Check every 60 seconds
+    const interval = setInterval(checkApiStatus, 60000);
 
-    // Clear the interval when the component unmounts
     return () => clearInterval(interval);
   }, []);
 

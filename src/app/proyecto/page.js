@@ -3,7 +3,7 @@ import {
   getIdUsuario,
   getProyectos,
 } from "@/lib/actions-proyecto";
-import Tarjeta from "@/components/Tarjeta";
+import Tarjeta from "@/components/tarjeta";
 import CardPrisma from "@/components/tarjetaprisma";
 import Link from "next/link";
 import { auth } from "@/auth";

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { createPDF } from "@/lib/actions-proyecto";
-import Tarjeta from "@/components/Tarjeta";
+import Tarjeta from "@/components/tarjeta";
 
 async function GeneratorPage({ searchParams }) {
   const [loading, setLoading] = useState(false);

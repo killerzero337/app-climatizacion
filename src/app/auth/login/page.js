@@ -1,6 +1,6 @@
 import LoginForm from "@/components/login-form";
 import OAuthForm from "@/components/oauth-form";
-import Tarjeta from "@/components/Tarjeta";
+import Tarjeta from "@/components/tarjeta";
 
 const errors = new Map();
 errors.set("OAuthSignin", "Error al construir una URL de autorización.");

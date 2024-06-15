@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Tarjeta from "@/components/Tarjeta";
+import Tarjeta from "@/components/tarjeta";
 export default function NotFound() {
   return (
     <Tarjeta>

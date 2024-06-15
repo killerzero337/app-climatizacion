@@ -1,6 +1,6 @@
 import React from "react";
 import { editRecinto } from "@/lib/actions-camara";
-import Tarjeta from "@/components/Tarjeta";
+import Tarjeta from "@/components/tarjeta";
 import Formcamara from "@/components/Form-camara";
 import { prisma } from "@/lib/prisma";
 import * as calculos from "@/lib/calculos"; //SUPER UTIL quizas deba comentarlo

@@ -1,5 +1,5 @@
 import React from "react";
-import Tarjeta from "@/components/Tarjeta";
+import Tarjeta from "@/components/tarjeta";
 import Form from "@/components/Form-equipo";
 import { deleteEquipo } from "@/lib/actions-equipo";
 import { prisma } from "@/lib/prisma";

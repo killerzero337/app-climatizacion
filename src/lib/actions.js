@@ -32,7 +32,7 @@ export async function register(formData) {
   return { success: "Registro correcto" };
 }
 
-// LOGIN credentials
+  // LOGIN credentials
 export async function login(formData) {
   const email = formData.get("email");
   const password = formData.get("password");
@@ -49,7 +49,11 @@ export async function login(formData) {
 
   if (user && matchPassword) {
     // && user.emailVerified
-    await signIn("credentials", { email, password, redirectTo: "/auth/logout" });
+    await signIn("credentials", {
+      email,
+      password,
+      redirectTo: "/auth/logout",
+    });
     // return { success: "Inicio de sesión correcto" }
   } else {
     return { error: "Credenciales incorrectas." };

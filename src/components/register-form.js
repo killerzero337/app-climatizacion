@@ -3,7 +3,7 @@ import { useState } from "react";
 import { register } from "@/lib/actions";
 import { redirect } from "next/navigation";
 import Button from "@/components/button-form";
-import Tarjeta from "@/components/Tarjeta";
+import Tarjeta from "@/components/tarjeta";
 
 function RegisterForm() {
   const [resultado, setResultado] = useState("");

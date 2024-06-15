@@ -1,5 +1,5 @@
 import React from "react";
-import Tarjeta from "@/components/Tarjeta";
+import Tarjeta from "@/components/tarjeta";
 import Form from "@/components/Form-equipo";
 import { newEquipo } from "@/lib/actions-equipo";
 function page() {

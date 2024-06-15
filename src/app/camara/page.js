@@ -1,7 +1,6 @@
-import Tarjeta from "@/components/Tarjeta";
+import Tarjeta from "@/components/tarjeta";
 import Link from "next/link";
 import { getProyecto } from "@/lib/actions-proyecto";
-import { getProyectoEquipo } from "@/lib/actions-equipo";
 import CamaraTarjetaCamara from "@/components/tarjetaPrismacamara";
 import CamaraTarjetaEquipo from "@/components/tarjetaPrismaEquipo";
 import { redirect } from "next/navigation";
