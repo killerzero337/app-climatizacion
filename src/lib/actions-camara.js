@@ -213,9 +213,9 @@ export async function deleteCamara(formData) {
     const recinto = await prisma.recinto.delete({
       where: { id: id },
     });
-    console.log("Camaras eliminado:", recinto);
+    console.log("Recinto eliminado:", recinto);
     revalidatePath("/camara");
-    redirectUrl = `/camara?id=${proyectoId}`;
+    redirectUrl = `/proyecto`;
   } catch (error) {
     console.log("Error al eliminar el cerramiento:", error);
   }
