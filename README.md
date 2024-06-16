@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# App Climatización
 
-## Getting Started
+Este es un proyecto de **Next.js** que permite a los usuarios obtener información sobre el clima y la climatización.
 
-First, run the development server:
+## Tabla de Contenidos
+1. [Descripción](#descripción)
+2. [Características](#características)
+3. [Instalación](#instalación)
+4. [Tecnologias Usadas](#tecnologias-usadas)
+
+
+## Descripción
+
+App Climatización es una aplicación web que proporciona información sobre el clima y la climatización utilizando tecnologías modernas como **Next.js** y **Tailwind CSS**.
+
+## Características
+
+- Información climática en tiempo real.
+- Diseño responsivo.
+- Integración con API de terceros para datos climatológicos.
+
+## Instalación
+
+Para comenzar con el desarrollo, primero clona el repositorio y luego instala las dependencias.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/killerzero337/app-climatizacion.git
+cd app-climatizacion
+npm install
+
+# Una descripcion algo mas detallada de los diferentes directorios:
+app-climatizacion/
+├── prisma/                  # Configuración de Prisma
+│   └── schema.prisma        # Esquema de la base de datos
+├── public/                  # Archivos públicos
+│   ├── favicon.ico          # Ícono de la aplicación
+│   └── ...                  # Otros archivos públicos
+├── src/                     # Código fuente principal
+│   ├── pages/               # Páginas de Next.js
+│   ├── components/          # Componentes de React
+│   ├── styles/              # Archivos de estilos (CSS/Tailwind)
+│   ├── lib/                 # Utilidades y funciones auxiliares
+│   ├── prisma/              # Interacción con Prisma
+│   └── ...                  # Otros archivos y carpetas
+├── .gitignore               # Archivos y carpetas ignorados por Git
+├── README.md                # Documentación del proyecto
+├── jsconfig.json            # Configuración de JavaScript
+├── next.config.mjs          # Configuración de Next.js
+├── package-lock.json        # Archivo de bloqueo de dependencias
+├── package.json             # Dependencias y scripts del proyecto
+├── postcss.config.mjs       # Configuración de PostCSS
+├── tailwind.config.js       # Configuración de Tailwind CSS
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Tecnologias usadas
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+* Prisma ORM
+* Next auth
+* Tailwind
+* Next con React
