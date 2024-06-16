@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Boton from "@/components/boton";
 import Popover from "@/components/popover";
 import Skeleton from "@/components/skeletons/formProyectosSkeleton";
 
@@ -29,7 +28,6 @@ export function FormProyecto() {
   const [selectedTabiques, setSelectedTabiques] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [customLocalidad, setCustomLocalidad] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -109,52 +107,22 @@ export function FormProyecto() {
   return (
     <>
       <div className="flex flex-col md:flex-row justify-around">
-        <div>
-          <label className="block">Nombre de proyecto:</label>
-          <input
-            className="border-2 border-black rounded p-2 w-full"
-            type="text"
-            name="nombre"
-            placeholder="Nombre del proyecto"
-            onChange={handleInputChange}
-          />
-        </div>
         <div className="relative">
           <label className="block">Localidad:</label>
-          {!customLocalidad ? (
-            <>
-              <input
-                className="border-2 border-black rounded p-2 w-full"
-                list="localidades"
-                defaultValue={selectedLocalidad.nombre}
-                onChange={handleLocalidadChange}
-              />
-              <datalist id="localidades">
-                {data.map((item, index) => (
-                  <option key={index} value={item.nombre} />
-                ))}
-              </datalist>
-            </>
-          ) : (
+
+          <>
             <input
               className="border-2 border-black rounded p-2 w-full"
-              type="text"
-              name="localidad"
-              placeholder="Introduce una localidad"
-              defaultValue={""}
-              onChange={handleInputChange}
+              list="localidades"
+              defaultValue={selectedLocalidad.nombre}
+              onChange={handleLocalidadChange}
             />
-          )}
-          <div className="mt-2">
-            <label className="flex items-center">
-              <input
-                type="checkbox"
-                checked={customLocalidad}
-                onChange={() => setCustomLocalidad((prev) => !prev)}
-              />
-              <span className="ml-2">Introducir una localidad propia</span>
-            </label>
-          </div>
+            <datalist id="localidades">
+              {data.map((item, index) => (
+                <option key={index} value={item.nombre} />
+              ))}
+            </datalist>
+          </>
         </div>
       </div>
       <div className="mt-4 p-4 border rounded shadow-md">
