@@ -13,42 +13,24 @@ function page() {
           <ul className="flex flex-col space-y-4">
             <li>
               <a
-                href="https://twitter.com/ejemplo"
-                className="text-blue-500 hover:text-blue-700 transition duration-300"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Twitter
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.facebook.com/ejemplo"
-                className="text-blue-500 hover:text-blue-700 transition duration-300"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Facebook
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.instagram.com/ejemplo"
-                className="text-blue-500 hover:text-blue-700 transition duration-300"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Instagram
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.instagram.com/ejemplo"
+                href="https://github.com/killerzero337"
                 className="text-blue-500 hover:text-blue-700 transition duration-300"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Github
+              </a>
+            </li>
+          </ul>
+          <ul className="flex flex-col space-y-4">
+            <li>
+              <a
+                href="https://www.instagram.com/killerzero37/"
+                className="text-blue-500 hover:text-blue-700 transition duration-300"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Instagram
               </a>
             </li>
           </ul>

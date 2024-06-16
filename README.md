@@ -15,9 +15,9 @@ App Climatización es una aplicación web que proporciona información sobre el 
 
 ## Características
 
-- Información climática en tiempo real.
+- Permite crear y gestionar proyectos con calculos.
 - Diseño responsivo.
-- Integración con API de terceros para datos climatológicos.
+- Integración con API propia para datos.
 
 ## Instalación
 
