@@ -35,12 +35,10 @@ app-climatizacion/
 ├── public/                  # Archivos públicos
 │   ├── favicon.ico          # Ícono de la aplicación
 │   └── ...                  # Otros archivos públicos
-├── src/                     # Código fuente principal
-│   ├── pages/               # Páginas de Next.js
+├── src/                     # Código fuente principal y donde se ubica las páginas de Next.js
 │   ├── components/          # Componentes de React
 │   ├── styles/              # Archivos de estilos (CSS/Tailwind)
 │   ├── lib/                 # Utilidades y funciones auxiliares
-│   ├── prisma/              # Interacción con Prisma
 │   └── ...                  # Otros archivos y carpetas
 ├── .gitignore               # Archivos y carpetas ignorados por Git
 ├── README.md                # Documentación del proyecto
