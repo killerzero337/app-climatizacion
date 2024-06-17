@@ -215,7 +215,7 @@ export async function deleteCamara(formData) {
     });
     console.log("Recinto eliminado:", recinto);
     revalidatePath("/camara");
-    redirectUrl = `/proyecto`;
+    redirectUrl = `/camara?id=${proyectoId}`;
   } catch (error) {
     console.log("Error al eliminar el cerramiento:", error);
   }

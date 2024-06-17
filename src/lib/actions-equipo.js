@@ -71,7 +71,7 @@ export async function deleteEquipo(formData) {
     });
     console.log("Equipo eliminado:", equipo);
     revalidatePath("/camara");
-    redirectUrl = `/proyecto`;
+    redirectUrl = `/camara?id=${proyectoId}`;
   } catch (error) {
     console.log("Error al eliminar el equipo:", error);
   }

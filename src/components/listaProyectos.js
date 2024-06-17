@@ -21,11 +21,11 @@ async function ListaProyectos({ recintoId, disabled }) {
   // console.log(`PROYECTO del RECINTO ${recintoId}: `, recinto?.proyectoId);
 
   return (
-    <fieldset disabled={disabled}>
+    <fieldset>
       <legend>Proyecto asociado</legend>
       <select
         name="proyecto_id"
-        disabled={disabled}
+        // disabled={disabled}
         className="border-2 border-gray-300 rounded p-2"
       >
         {proyectos?.map((proyecto) =>
